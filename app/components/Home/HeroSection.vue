@@ -111,7 +111,7 @@ const handleSearch = () => {
       <div
         v-for="i in 12"
         :key="i"
-        class="absolute w-2 h-2 bg-white/30 rounded-full animate-float"
+        class="absolute w-2 h-2 bg-gradient-to-b from-primary to-secondary  rounded-full animate-float"
         :style="{
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
@@ -123,16 +123,14 @@ const handleSearch = () => {
 
     <!-- Main Content -->
     <div class="container mx-auto px-1 relative z-10">
-      <div class="max-w-7xl mx-auto">
+      <div class="w-full mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <!-- Left Content -->
           <div class="space-y-8 text-white">
             <!-- Enhanced Main Heading -->
             <div class="space-y-6">
               <div class="flex items-center gap-3 mb-2">
-                <div
-                  class="w-3 h-8 bg-white rounded-full animate-bounce"
-                ></div>
+                <div class="w-3 h-8 bg-gradient-to-b from-primary to-secondary rounded-full animate-bounce"></div>
                 <span
                   class="text-white font-semibold tracking-wider uppercase text-sm"
                   >Luxury Experience</span
@@ -146,7 +144,7 @@ const handleSearch = () => {
                   Welcome to
                 </span>
                 <br />
-                <span class="linear-wipe animate-gradient uppercase">
+                <span class="linear-wipe uppercase">
                   Barobi Apartments
                 </span>
               </h1>
@@ -188,8 +186,6 @@ const handleSearch = () => {
                 ></div>
               </button>
             </div>
-
-           
           </div>
 
           <!-- Enhanced Booking Form -->
@@ -204,7 +200,6 @@ const handleSearch = () => {
             <div class="relative z-10">
               <!-- Form Header -->
               <div class="text-center mb-8">
-                
                 <h2
                   class="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
                 >
@@ -321,8 +316,6 @@ const handleSearch = () => {
                   ></div>
                 </button>
               </form>
-
-              
             </div>
           </div>
         </div>
@@ -345,6 +338,7 @@ const handleSearch = () => {
 </template>
 
 <style scoped>
+/* Gradient Text Animation */
 .linear-wipe {
   text-align: center;
   background: linear-gradient(
@@ -362,59 +356,10 @@ const handleSearch = () => {
   animation: shine 3s linear infinite;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
+/* Move Keyframes Outside */
+@keyframes shine {
+  to {
+    background-position: 200% center;
   }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient 3s ease infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
-}
-
-/* Custom scrollbar for select elements */
-select {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.5rem center;
-  background-repeat: no-repeat;
-  background-size: 1.5em 1.5em;
-  padding-right: 2.5rem;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-primary text-white pt-20 pb-12">
-    <div class="container mx-auto">
+    <div class="container mx-auto px-4">
       <!-- Main Footer Content -->
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-16">
         
@@ -172,7 +172,7 @@
           <div class="w-full border-t border-white/10"></div>
         </div>
         <div class="relative flex justify-center">
-          <span class="bg-white px-4 text-sm text-primary">Barobi Premium</span>
+          <span class="bg-secondary px-4 text-sm text-white">Barobi Premium</span>
         </div>
       </div>
 

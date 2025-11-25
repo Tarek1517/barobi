@@ -5,20 +5,23 @@
     class="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-lg"
   >
     <div class="container mx-auto">
-      <div class="flex items-center justify-between h-20">
+      <NuxtLink class="flex items-center justify-between h-20">
         <!-- Logo -->
-        <div class="flex items-center">
-          <img class="object-contain rounded w-24 h-24" src="/images/logo.png" />
-        </div>
+        <NuxtLink to="/" class="flex items-center">
+          <img
+            class="object-contain rounded w-24 h-24"
+            src="/images/logo.png"
+          />
+        </NuxtLink>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center">
+        <nav class="hidden lg:flex items-center gap-3">
           <!-- Home -->
-          
+
           <!-- Apartments Dropdown -->
           <div class="relative group">
             <button
-              class="flex items-center space-x-2 px-6 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300"
+              class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -47,7 +50,6 @@
                 <div class="grid grid-cols-2 gap-2">
                   <!-- Apartment Types -->
                   <div>
-                    
                     <div class="space-y-3">
                       <a
                         href="/apartments/studio"
@@ -67,7 +69,7 @@
                           </svg>
                         </div>
                         <span class="text-sm font-medium text-gray-700"
-                          >Studio Apartments</span
+                          >Studio A</span
                         >
                       </a>
                       <a
@@ -117,7 +119,6 @@
 
                   <!-- Apartment Features -->
                   <div>
-                    
                     <div class="space-y-3">
                       <a
                         href="/apartments/luxury"
@@ -199,53 +200,37 @@
           <!-- Hotels -->
           <a
             href="/hotels"
-            class="flex items-center space-x-2 px-6 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
+            class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
-            <Icon name="temaki:social-facility" class="text-xl" />
             <span>Facilities</span>
           </a>
 
           <!-- Destinations -->
           <a
             href="/destinations"
-            class="flex items-center space-x-2 px-6 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
+            class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
-            <svg
-              class="w-4 h-4 group-hover:scale-110 transition-transform"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                clip-rule="evenodd"
-              />
-            </svg>
             <span>Location</span>
           </a>
 
           <a
             href="/destinations"
-            class="flex items-center space-x-2 px-6 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
+            class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
-            <svg
-              class="w-4 h-4 group-hover:scale-110 transition-transform"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                clip-rule="evenodd"
-              />
-            </svg>
             <span>Gallery</span>
           </a>
+
+          <NuxtLink
+            to="/blog"
+            class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
+          >
+            <span>Blog</span>
+          </NuxtLink>
 
           <!-- Special Deals -->
           <a
             href="/deals"
-            class="flex items-center space-x-2 px-6 py-3 text-orange-600 hover:text-orange-700 font-medium transition-all duration-300 group bg-orange-50 rounded-xl hover:bg-orange-100"
+            class="flex items-center space-x-2 px-3 py-3 text-orange-600 hover:text-orange-700 font-medium transition-all duration-300 group bg-orange-50 rounded-xl hover:bg-orange-100"
           >
             <svg
               class="w-4 h-4 group-hover:scale-110 transition-transform"
@@ -264,8 +249,7 @@
 
         <!-- Right Actions -->
         <div class="flex items-center">
-
-           <!-- Language Selector -->
+          <!-- Language Selector -->
           <div class="relative group">
             <button
               class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
@@ -314,7 +298,6 @@
             </div>
           </div>
 
-         
           <!-- User Actions -->
           <div class="flex items-center space-x-2">
             <button
@@ -328,7 +311,7 @@
                 />
               </svg>
             </button>
-            
+
             <a
               href="/login"
               class="flex items-center space-x-2 px-6 py-2.5 bg-primary text-white font-medium hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -362,7 +345,7 @@
             </svg>
           </button>
         </div>
-      </div>
+      </NuxtLink>
     </div>
   </header>
 </template>

@@ -5,4 +5,8 @@
   <HomeProcessSection />
   <HomeAboutSection />
   <HomeBestRoomSection />
+  <HomeServiceSection />
+  <HomeTestimonialSection />
+  <HomeNearbySection />
+  <HomeBlogSection />
 </template>

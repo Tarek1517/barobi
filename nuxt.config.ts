@@ -10,5 +10,5 @@ export default defineNuxtConfig({
   },
 
   modules: ["@nuxt/icon", "nuxt-swiper", "@nuxt/ui", "@nuxt/image"],
-  
+  ssr: false,
 });

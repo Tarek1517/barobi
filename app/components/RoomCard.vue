@@ -10,10 +10,9 @@ const props = defineProps({
 <template>
   <NuxtLink :to="`/rooms/${room.id}`" class="block group">
     <div
-      class="bg-primary/10 shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border border-primary/10 h-full flex flex-col hover:-translate-y-2"
+      class="bg-tertiary/10 shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border border-primary/10 h-full flex flex-col hover:-translate-y-2"
     >
-      <!-- Image Section -->
-      <div class="relative h-56 overflow-hidden">
+      <div class="relative h-68 overflow-hidden">
         <!-- Room Image -->
         <img
           :src="room.image"
@@ -27,27 +26,44 @@ const props = defineProps({
           class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         ></div>
 
-        <!-- Room Type Badge -->
-        <div
-          class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg"
-        >
-          <span class="text-sm font-semibold text-primary">{{
-            room.type
-          }}</span>
+        <!-- Badges Container -->
+        <div class="absolute top-4 left-4 flex flex-col gap-2">
+          <!-- Room Type Badge -->
+          <div
+            class="bg-gradient-to-r from-emerald-500 to-emerald-700 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
+          >
+            <span class="text-xs font-medium text-white">{{ room.type }}</span>
+          </div>
+
+          <!-- Free Breakfast Badge -->
+          <div
+            class="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
+          >
+            <span class="text-xs font-medium text-white">Free Breakfast</span>
+          </div>
+
+          <!-- Free Self Parking Badge -->
+          <div
+            class="bg-gradient-to-r from-tertiary to-secondary/55 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
+          >
+            <span class="text-xs font-medium text-white"
+              >Free Self Parking</span
+            >
+          </div>
         </div>
 
         <!-- Favorite Button -->
         <button
           class="absolute top-4 right-4 text-white hover:text-red-500 transition-colors p-2 bg-black/20 rounded-full backdrop-blur-sm"
         >
-          <Icon name="heroicons:heart" class="w-5 h-5" />
+          <Icon name="heroicons:heart" class="w-5 h-5 text-primary" />
         </button>
       </div>
 
       <!-- Content Section -->
       <div class="p-6 flex-1 flex flex-col">
         <!-- Room Details Grid -->
-        <div class="grid grid-cols-2 gap-3 mb-4">
+        <div class="grid grid-cols-3 gap-3 mb-4">
           <div class="flex items-center gap-2 text-gray-600">
             <div
               class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center"
@@ -68,6 +84,48 @@ const props = defineProps({
             <div>
               <div class="text-xs text-gray-500">Guests</div>
               <div class="text-sm font-semibold">{{ room.guests }}</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-600">
+            <div
+              class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center"
+            >
+              <Icon
+                name="material-symbols:android-wifi-3-bar"
+                class="w-4 h-4 text-primary"
+              />
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">Wifi</div>
+              <div class="text-sm font-semibold text-success">Free Wifi</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-600">
+            <div
+              class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center"
+            >
+              <Icon
+                name="material-symbols:bath-bedrock"
+                class="w-4 h-4 text-primary"
+              />
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">Beds</div>
+              <div class="text-sm font-semibold">{{ room?.beds }}</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-gray-600">
+            <div
+              class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center"
+            >
+              <Icon
+                name="material-symbols:android-wifi-3-bar"
+                class="w-4 h-4 text-primary"
+              />
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">View</div>
+              <div class="text-sm font-semibold">City View</div>
             </div>
           </div>
         </div>
