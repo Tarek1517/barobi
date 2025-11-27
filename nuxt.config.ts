@@ -9,6 +9,13 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["@nuxt/icon", "nuxt-swiper", "@nuxt/ui", "@nuxt/image"],
+  modules: [
+    "@nuxt/icon",
+    "nuxt-swiper",
+    "@nuxt/ui",
+    "@nuxt/image",
+    "@pinia/nuxt",
+    "pinia-plugin-persistedstate/nuxt",
+  ],
   ssr: false,
 });

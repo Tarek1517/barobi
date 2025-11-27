@@ -20,7 +20,8 @@
 
           <!-- Apartments Dropdown -->
           <div class="relative group">
-            <button
+            <NuxtLink
+              to="/room"
               class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -40,7 +41,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-            </button>
+            </NuxtLink>
 
             <!-- Apartments Mega Menu -->
             <div

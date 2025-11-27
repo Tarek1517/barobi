@@ -76,8 +76,8 @@
           </a>
         </div>
         <div class="h-5 w-px bg-gray-100 mx-3"></div>
-        <a
-          href="/login"
+        <NuxtLink
+          to="/auth/login"
           class="flex items-center group space-x-1 px-2 py-1 bg-primary hover:bg-white border border-white text-white hover:text-primary font-medium hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           <Icon
@@ -85,9 +85,9 @@
             class="text-lg group-hover:scale-110 transition-transform"
           />
           <span>Login</span>
-        </a>
-        <a
-          href="/login"
+        </NuxtLink>
+        <NuxtLink
+          to="/auth/register"
           class="flex items-center group space-x-1 px-2 py-1 bg-white hover:bg-primary border border-white text-primary hover:text-white font-bold hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           <Icon
@@ -95,7 +95,7 @@
             class="text-lg group-hover:scale-110 transition-transform"
           />
           <span>Join Now</span>
-        </a>
+        </NuxtLink>
       </div>
     </div>
   </div>

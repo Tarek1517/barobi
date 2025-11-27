@@ -11,8 +11,9 @@ const rooms = [
     price: "$299",
     period: "per night",
     guests: "2 Adults",
+    availableRooms: 5,
     short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
+      "Experience ultimate luxury in our spacious suite with panoramic city views and premium amenities.",
   },
   {
     id: 2,
@@ -24,8 +25,9 @@ const rooms = [
     price: "$189",
     period: "per night",
     guests: "2 Adults",
+    availableRooms: 2,
     short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
+      "Elegant room with modern comforts and thoughtful touches for a perfect stay.",
   },
   {
     id: 3,
@@ -37,8 +39,9 @@ const rooms = [
     price: "$399",
     period: "per night",
     guests: "4 Adults",
+    availableRooms: 1,
     short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
+      "Perfect for families with separate living area and all the comforts of home.",
   },
   {
     id: 4,
@@ -50,8 +53,9 @@ const rooms = [
     price: "$259",
     period: "per night",
     guests: "2 Adults",
+    availableRooms: 3,
     short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
+      "Sophisticated suite designed for business travelers with dedicated workspace.",
   },
   {
     id: 5,
@@ -63,8 +67,9 @@ const rooms = [
     price: "$229",
     period: "per night",
     guests: "2 Adults",
+    availableRooms: 0,
     short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
+      "Enhanced comfort with premium bedding and upgraded amenities.",
   },
   {
     id: 6,
@@ -76,8 +81,9 @@ const rooms = [
     price: "$159",
     period: "per night",
     guests: "2 Adults",
+    availableRooms: 8,
     short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
+      "Compact and efficient space perfect for short stays and budget-conscious travelers.",
   },
 ];
 </script>

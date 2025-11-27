@@ -13,7 +13,7 @@ const formatDate = (dateStr) => {
   });
 };
 
-// Calculate average rating
+
 const averageRating = computed(() => {
   if (!props.blogs?.blog_reviews?.length) return 0;
   const sum = props.blogs.blog_reviews.reduce(
@@ -23,7 +23,7 @@ const averageRating = computed(() => {
   return (sum / props.blogs.blog_reviews.length).toFixed(1);
 });
 
-// Generate star rating display
+
 const starRating = computed(() => {
   const rating = averageRating.value;
   const fullStars = Math.floor(rating);
@@ -132,5 +132,5 @@ const starRating = computed(() => {
 </template>
 
 <style scoped>
-
+           
 </style>
