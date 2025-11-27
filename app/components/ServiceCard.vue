@@ -44,7 +44,7 @@ defineProps({
 
       <!-- Hidden Content on Hover -->
       <div
-        class="opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200"
+        class="flex flex-col opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200"
       >
         <!-- Short Description -->
         <p class="text-gray-200 mb-4 line-clamp-2 text-center">
@@ -52,24 +52,12 @@ defineProps({
         </p>
 
         <!-- View Details Button -->
-        <button
-          class="bg-gradient-to-r from-tertiary to-secondary/55 hover:from-secondary/55 hover:to-tertiary backdrop-blur-sm px-6 py-2 rounded-full font-semibold transition-colors duration-300 flex items-center gap-2 mx-auto shadow-lg"
+        <NuxtLink
+          to="/service/show"
+          class="bg-gradient-to-r inline-block from-tertiary to-secondary/55 hover:from-secondary/55 hover:to-tertiary backdrop-blur-sm px-6 py-2 rounded-full font-semibold transition-colors duration-300 mx-auto shadow-lg"
         >
           View Details
-          <svg
-            class="w-4 h-4 transition-transform group-hover:translate-x-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
-        </button>
+        </NuxtLink>
       </div>
     </div>
   </div>

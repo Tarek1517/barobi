@@ -13,7 +13,6 @@ const formatDate = (dateStr) => {
   });
 };
 
-
 const averageRating = computed(() => {
   if (!props.blogs?.blog_reviews?.length) return 0;
   const sum = props.blogs.blog_reviews.reduce(
@@ -23,6 +22,11 @@ const averageRating = computed(() => {
   return (sum / props.blogs.blog_reviews.length).toFixed(1);
 });
 
+function wordLimit(text, limit = 20) {
+  if (!text) return "";
+  const words = text.split(" ");
+  return words.slice(0, limit).join(" ") + (words.length > limit ? "..." : "");
+}
 
 const starRating = computed(() => {
   const rating = averageRating.value;
@@ -110,8 +114,8 @@ const starRating = computed(() => {
       </h3>
 
       <!-- Short Description -->
-      <p class="text-gray-600 mb-6 line-clamp-3 leading-relaxed text-sm flex-1">
-        {{ blogs?.short_description }}
+      <p class="text-gray-600 mb-6 leading-relaxed text-sm flex-1">
+        {{ wordLimit(blogs?.short_description, 12) }}
       </p>
 
       <!-- CTA Button -->
@@ -131,6 +135,4 @@ const starRating = computed(() => {
   </div>
 </template>
 
-<style scoped>
-           
-</style>
+<style scoped></style>

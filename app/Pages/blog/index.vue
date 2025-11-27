@@ -126,13 +126,13 @@ const formatDate = (dateStr) => {
     />
     <!-- Gradient Overlay -->
     <div
-      class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-black/25"
+      class="absolute inset-0 bg-gradient-to-r from-black/30 via-black/40 to-black/25"
     ></div>
 
     <!-- Content -->
-    <div class="container h-full mx-auto px-4 flex items-center relative z-10">
+    <div class="container h-full mx-auto px-4 flex items-center justify-center relative z-10">
       <div class="max-w-5xl space-y-4">
-        <nav class="flex items-center text-white/90 text-sm mb-6">
+        <nav class="flex items-center justify-center text-white/90 text-sm mb-6">
           <NuxtLink
             to="/"
             class="hover:text-primary transition-colors duration-300 flex items-center"
@@ -143,19 +143,19 @@ const formatDate = (dateStr) => {
             name="iconamoon:arrow-right-2"
             class="mx-3 text-xs opacity-70"
           />
-          <span class="text-primary font-medium">Blog</span>
+          <span class="text-white font-medium">Blog</span>
         </nav>
 
         <h1
-          class="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight"
+          class="text-5xl md:text-7xl text-center font-bold text-white leading-tight tracking-tight"
         >
           Our Latest <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary drop-shadow-lg"
+            class="linear-wipe drop-shadow-lg"
           >
             News & Blog
           </span>
         </h1>
-        <p class="text-xl text-gray-200 mt-4 max-w-lg">
+        <p class="text-xl text-center text-gray-200 mt-4">
           Discover insights, trends, and stories from our team of experts
         </p>
       </div>
@@ -292,6 +292,28 @@ const formatDate = (dateStr) => {
 </template>
 
 <style scoped>
+.linear-wipe {
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    #7e1218 20%,
+    #cd986c 40%,
+    #cd986c 60%,
+    #1f2d3e 80%
+  );
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;

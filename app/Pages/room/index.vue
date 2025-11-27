@@ -10,7 +10,7 @@
         loading="eager"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"
+        class="absolute inset-0 bg-gradient-to-r from-black/30 via-black/40 to-transparent"
       />
 
       <div

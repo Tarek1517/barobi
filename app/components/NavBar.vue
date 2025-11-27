@@ -199,12 +199,12 @@
           </div>
 
           <!-- Hotels -->
-          <a
-            href="/hotels"
+           <NuxtLink
+              to="/service"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
             <span>Facilities</span>
-          </a>
+          </NuxtLink>
 
           <!-- Destinations -->
           <a
