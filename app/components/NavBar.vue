@@ -2,7 +2,7 @@
 
 <template>
   <header
-    class="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-lg"
+    class="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-lg"
   >
     <div class="container mx-auto">
       <NuxtLink class="flex items-center justify-between h-20">
@@ -208,14 +208,21 @@
 
           <!-- Destinations -->
           <a
-            href="/destinations"
+            href="/location"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
             <span>Location</span>
           </a>
 
+          <NuxtLink
+            to="/nearby"
+            class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
+          >
+            <span>Nearby</span>
+          </NuxtLink>
+
           <a
-            href="/destinations"
+            href="/gallery"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
             <span>Gallery</span>
@@ -228,24 +235,13 @@
             <span>Blog</span>
           </NuxtLink>
 
-          <!-- Special Deals -->
-          <a
-            href="/deals"
-            class="flex items-center space-x-2 px-3 py-3 text-orange-600 hover:text-orange-700 font-medium transition-all duration-300 group bg-orange-50 rounded-xl hover:bg-orange-100"
+          <NuxtLink
+            to="/contact"
+            class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
-            <svg
-              class="w-4 h-4 group-hover:scale-110 transition-transform"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12 8a1 1 0 100-2 1 1 0 000 2zM7 7a1 1 0 000 2h.5a1 1 0 000-2H7zm4 4a1 1 0 100-2 1 1 0 000 2zm-5 1a1 1 0 000 2h.5a1 1 0 000-2H6zm5 1a1 1 0 100-2 1 1 0 000 2zm-5 1a1 1 0 000 2h.5a1 1 0 000-2H6z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            <span>Special Deals</span>
-          </a>
+            <span>Contact Us</span>
+          </NuxtLink>
+
         </nav>
 
         <!-- Right Actions -->

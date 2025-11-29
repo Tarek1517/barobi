@@ -211,7 +211,7 @@
 
         <!-- Card 6: Car Parking -->
         <div
-          class="group text-start bg-white p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden"
+          class="group text-start bg-white mt-3 p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden"
         >
           <div
             class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"
@@ -285,7 +285,7 @@
 
         <!-- Card 8: gym -->
         <div
-          class="group text-start bg-white p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden"
+          class="group text-start bg-white mt-3 p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden"
         >
           <div
             class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"

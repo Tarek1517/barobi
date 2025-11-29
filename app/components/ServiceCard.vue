@@ -12,18 +12,19 @@ defineProps({
     class="group relative h-[500px] overflow-hidden cursor-pointer mx-2 shadow-lg hover:shadow-2xl transition-all duration-500"
   >
     <!-- Background Image -->
-    <img
-      :src="service.image"
-      :alt="service.name"
-      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      loading="lazy"
-    />
+    <nuxt-link to="/service/show">
+      <img
+        :src="service.image"
+        :alt="service.name"
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        loading="lazy"
+      />
 
-    <!-- Gradient Overlay -->
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-300"
-    ></div>
-
+      <!-- Gradient Overlay -->
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-300"
+      ></div>
+    </nuxt-link>
     <!-- Price Badge -->
     <div
       class="absolute top-4 right-4 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 rounded-full px-3 py-1 shadow-lg w-fit backdrop-blur-sm rounded-full px-4 py-2 shadow-lg"

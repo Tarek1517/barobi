@@ -72,8 +72,6 @@
               v-slot="{ item }"
               :items="allImages"
               loop
-              arrows
-              dots
               :autoplay="{ delay: 4000 }"
               class="overflow-visible pb-6 w-full max-w-4xl"
               :ui="{
@@ -104,11 +102,11 @@
         </div>
 
         <!-- Two Column Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
           <!-- Left Column - Overview & Statistics (2/3 width) -->
-          <div class="lg:col-span-2 space-y-8">
+          <div class="lg:col-span-2 space-y-2">
             <!-- Overview -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <div class="bg-white p-8 border border-gray-200">
               <h2 class="text-3xl font-bold text-gray-900 mb-6">
                 Room Overview
               </h2>
@@ -169,30 +167,30 @@
             </div>
 
             <!-- Room Statistics -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <div class="bg-white p-8 border border-gray-200">
               <h2 class="text-3xl font-bold text-gray-900 mb-6">
                 Room Availability
               </h2>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                <div class="text-center p-6 bg-gray-50">
                   <div class="text-2xl font-bold text-gray-900">
                     {{ room.totalRooms }}
                   </div>
                   <div class="text-sm text-gray-500">Total Rooms</div>
                 </div>
-                <div class="text-center p-6 bg-green-50 rounded-xl">
+                <div class="text-center p-6 bg-green-50">
                   <div class="text-2xl font-bold text-green-600">
                     {{ room.availableCount }}
                   </div>
                   <div class="text-sm text-green-600">Available Now</div>
                 </div>
-                <div class="text-center p-6 bg-red-50 rounded-xl">
+                <div class="text-center p-6 bg-red-50">
                   <div class="text-2xl font-bold text-red-600">
                     {{ room.bookedCount }}
                   </div>
                   <div class="text-sm text-red-600">Currently Booked</div>
                 </div>
-                <div class="text-center p-6 bg-yellow-50 rounded-xl">
+                <div class="text-center p-6 bg-yellow-50">
                   <div class="text-2xl font-bold text-yellow-600">
                     {{ room.maintenanceCount }}
                   </div>
@@ -203,10 +201,8 @@
           </div>
 
           <!-- Right Column - Room Header & Book Button (1/3 width) -->
-          <div class="lg:col-span-1">
-            <div
-              class="bg-tertiary/15 p-8 border border-primary/25 sticky mt-12"
-            >
+          <div class="lg:col-span-1 space-y-2">
+            <div class="bg-tertiary/15 p-8 border border-primary/25 sticky">
               <!-- Room Header -->
               <div class="text-start mb-6">
                 <h1 class="text-3xl font-bold text-gray-900 mb-4">
@@ -233,23 +229,35 @@
 
               <!-- Book Button -->
               <div class="text-center">
-                <NuxtLink
-                  :to="`/booking?roomId=${room.id}`"
+                <nuxtLink
+                  to="/checkout"
                   class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold text-lg py-4 px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl w-full justify-center"
                 >
                   <Icon name="ph:calendar-check" class="text-xl" />
                   Book This Room
-                </NuxtLink>
+                </nuxtLink>
+              </div>
+            </div>
+            <div class="bg-tertiary/15 p-7 border border-primary/25 sticky">
+              <!-- Secure Booking Info -->
+              <div class="space-y-2 text-center">
+                <h2 class="text-xl font-bold text-gray-800">Secure Booking</h2>
+                <div
+                  class="flex items-center justify-center gap-2 text-green-600 font-semibold"
+                >
+                  <Icon name="ph:shield-check" class="text-2xl" />
+                  100% Safe & Verified
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Full Width Sections -->
-        <div class="space-y-8 mt-8">
+        <div class="space-y-8 mt-2">
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
             <!-- Bed and Bedding -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <div class="bg-white p-8 border border-gray-200">
               <h2 class="text-3xl font-bold text-gray-900 mb-6">
                 Bed & Bedding
               </h2>
@@ -271,7 +279,7 @@
             </div>
 
             <!-- Room Features -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <div class="bg-white p-8 border border-gray-200">
               <h2 class="text-3xl font-bold text-gray-900 mb-6">
                 Room Features
               </h2>
@@ -293,7 +301,7 @@
             </div>
 
             <!-- Bath & Bathroom Features -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <div class="bg-white p-8 border border-gray-200">
               <h2 class="text-3xl font-bold text-gray-900 mb-6">
                 Bath & Bathroom Features
               </h2>
@@ -315,7 +323,7 @@
             </div>
 
             <!-- Furniture & Furnishings -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <div class="bg-white p-8 border border-gray-200">
               <h2 class="text-3xl font-bold text-gray-900 mb-6">
                 Furniture & Furnishings
               </h2>
@@ -337,7 +345,7 @@
             </div>
 
             <!-- Food & Beverage -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-200">
+            <div class="bg-white p-8 border border-gray-200">
               <h2 class="text-3xl font-bold text-gray-900 mb-6">
                 Food & Beverage
               </h2>
@@ -359,14 +367,14 @@
             </div>
           </div>
           <!-- Description -->
-          <div class="bg-white rounded-2xl p-8 border border-gray-200">
+          <div class="bg-white p-8 border border-gray-200">
             <h2 class="text-3xl font-bold text-gray-900 mb-6">Description</h2>
             <p class="text-gray-600 leading-relaxed text-lg">
               {{ room.description }}
             </p>
           </div>
           <!-- Amenities -->
-          <div class="bg-white rounded-2xl p-8 border border-gray-200">
+          <div class="bg-white p-8 border border-gray-200">
             <h2 class="text-3xl font-bold text-gray-900 mb-6">Amenities</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               <div
