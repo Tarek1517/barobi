@@ -153,7 +153,7 @@
         <p class="mt-8 text-center text-gray-500 text-sm">
           Don't have an account?
           <NuxtLink
-            to="/auth/register"
+            to="/dashboard"
             class="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
           >
             Create account
@@ -175,7 +175,9 @@
         <!-- Overlay Text -->
         <div class="absolute inset-0 flex items-center justify-center z-20 p-8">
           <div class="text-center max-w-md">
-            <h2 class="text-3xl linear-wipe uppercase font-bold mb-4 drop-shadow-lg">
+            <h2
+              class="text-3xl linear-wipe uppercase font-bold mb-4 drop-shadow-lg"
+            >
               Brobi Appartments
             </h2>
             <p class="text-lg drop-shadow-md text-gray-500 opacity-90">

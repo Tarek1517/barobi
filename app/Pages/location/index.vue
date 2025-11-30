@@ -238,16 +238,6 @@ const mapLocation = {
               </div>
             </div>
           </div>
-
-          <!-- Call to Action -->
-          <div class="mt-8 pt-6 border-t border-gray-200">
-            <button
-              class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 px-6 rounded-lg font-semibold hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-            >
-              <Icon name="mdi:calendar-check" />
-              Make a Reservation
-            </button>
-          </div>
         </div>
       </div>
     </div>
