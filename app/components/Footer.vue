@@ -17,7 +17,7 @@
             </div>
           
           </div>
-          <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+          <p class="text-gray-300 mb-6 font-secondary leading-relaxed text-sm">
             Experience luxury living with our premium apartment bookings. Unmatched comfort, exceptional service, and memorable stays await you.
           </p>
           <div class="flex gap-3">
@@ -40,31 +40,31 @@
         <div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-8">
           <!-- Company -->
           <div>
-            <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+            <h3 class="text-white font-primary  font-bold text-lg mb-6 flex items-center gap-2">
               <div class="w-2 h-2 bg-gradient-to-r from-white to-primary rounded-full"></div>
               Company
             </h3>
             <ul class="space-y-4">
               <li>
-                <NuxtLink to="/about" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/about" class="text-gray-300 font-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-blue-500 transition-colors"></div>
                   About Us
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/careers" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/careers" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-blue-500 transition-colors"></div>
                   Careers
                 </NuxtLink>
               </li>
               <li>
                 <NuxtLink to="/blog" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
-                  <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-blue-500 transition-colors"></div>
+                  <div class="w-1.5 h-1.5 font-secondary bg-gray-500 rounded-full group-hover:bg-blue-500 transition-colors"></div>
                   Blog
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/press" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/press" class="text-gray-300 font-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-blue-500 transition-colors"></div>
                   Press
                 </NuxtLink>
@@ -74,31 +74,31 @@
 
           <!-- Support -->
           <div>
-            <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+            <h3 class="text-white font-bold font-primary  text-lg mb-6 flex items-center gap-2">
               <div class="w-2 h-2 bg-gradient-to-r from-white to-primary rounded-full"></div>
               Support
             </h3>
             <ul class="space-y-4">
               <li>
-                <NuxtLink to="/help" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/help" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
                   Help Center
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/faq" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/faq" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
                   FAQs
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/contact" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/contact" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
                   Contact
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/support" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/support" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
                   24/7 Support
                 </NuxtLink>
@@ -108,31 +108,31 @@
 
           <!-- Apartments -->
           <div>
-            <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+            <h3 class="text-white font-primary  font-bold text-lg mb-6 flex items-center gap-2">
               <div class="w-2 h-2 bg-gradient-to-r from-white to-primary rounded-full"></div>
               Apartments
             </h3>
             <ul class="space-y-4">
               <li>
-                <NuxtLink to="/apartments/studio" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/apartments/studio" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-purple-500 transition-colors"></div>
                   Studio
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/apartments/1-bedroom" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/apartments/1-bedroom" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-purple-500 transition-colors"></div>
                   1-Bedroom
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/apartments/2-bedroom" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/apartments/2-bedroom" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-purple-500 transition-colors"></div>
                   2-Bedroom
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/apartments/luxury" class="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/apartments/luxury" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-purple-500 transition-colors"></div>
                   Luxury
                 </NuxtLink>
@@ -145,8 +145,8 @@
         <div class="lg:col-span-1">
           <!-- Newsletter -->
           <div class="bg-white/5 backdrop-blur-sm p-6 mb-8 border border-white/10">
-            <h3 class="text-white font-bold text-lg mb-3">Stay Updated</h3>
-            <p class="text-gray-300 text-sm mb-4">
+            <h3 class="text-white font-primary font-bold text-lg mb-3">Stay Updated</h3>
+            <p class="text-gray-300 font-secondary  text-sm mb-4">
               Get exclusive deals and apartment updates
             </p>
             <div class="space-y-3">
@@ -156,7 +156,7 @@
                 class="w-full bg-white/10 border border-white/20  px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
               />
               <button
-                class="w-full bg-secondary text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
+                class="w-full font-primary  bg-secondary text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
               >
                 Subscribe
               </button>
@@ -172,7 +172,7 @@
           <div class="w-full border-t border-white/10"></div>
         </div>
         <div class="relative flex justify-center">
-          <span class="bg-secondary px-4 text-sm text-white">Barobi Premium</span>
+          <span class="bg-secondary px-4 font-primary  text-sm text-white">Barobi Premium</span>
         </div>
       </div>
 
@@ -180,25 +180,25 @@
       <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
         <!-- Copyright -->
         <div class="text-center lg:text-left">
-          <p class="text-gray-400 text-sm">
+          <p class="text-gray-400 font-secondary  text-sm">
             &copy; 2025 Barobi Apartments. All rights reserved.
           </p>
           <div class="flex gap-6 mt-2 text-xs text-gray-500">
-            <NuxtLink to="/privacy" class="hover:text-gray-300 transition-colors">Privacy Policy</NuxtLink>
-            <NuxtLink to="/terms" class="hover:text-gray-300 transition-colors">Terms of Service</NuxtLink>
-            <NuxtLink to="/cookies" class="hover:text-gray-300 transition-colors">Cookie Policy</NuxtLink>
+            <NuxtLink to="/privacy" class="hover:text-gray-300 font-secondary  transition-colors">Privacy Policy</NuxtLink>
+            <NuxtLink to="/terms" class="hover:text-gray-300 font-secondary  transition-colors">Terms of Service</NuxtLink>
+            <NuxtLink to="/cookies" class="hover:text-gray-300 font-secondary  transition-colors">Cookie Policy</NuxtLink>
           </div>
         </div>
 
         <!-- Developer Credit -->
         <div class="text-center lg:text-right">
-          <p class="text-gray-400 text-sm">
+          <p class="text-gray-400 font-secondary  text-sm">
             Crafted by 
             <a
               href="https://creativetechpark.com/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-white hover:text-blue-300 transition-colors duration-300 font-medium"
+              class="text-white  font-primary hover:text-blue-300 transition-colors duration-300 font-medium"
             >
               Creative Tech Park
             </a>

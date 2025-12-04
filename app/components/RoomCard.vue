@@ -10,7 +10,7 @@ const props = defineProps({
 <template>
   <div class="block group">
     <div
-      class="bg-tertiary/10 shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border border-primary/10 h-full flex flex-col hover:-translate-y-2"
+      class="bg-white shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border border-primary/10 h-full flex flex-col hover:-translate-y-2"
     >
       <div class="relative h-68 overflow-hidden">
         <NuxtLink to="/room/show">
@@ -29,39 +29,51 @@ const props = defineProps({
         </NuxtLink>
 
         <!-- Badges Container -->
-        <div class="absolute top-4 left-4 flex flex-col gap-2">
-          <!-- Room Type Badge -->
-          <div
-            class="bg-gradient-to-r from-emerald-500 to-emerald-700 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
-          >
-            <span class="text-xs font-medium text-white">{{ room.type }}</span>
-          </div>
-
-          <!-- Available Rooms Badge -->
-          <div
-            v-if="room.availableRooms"
-            class="bg-gradient-to-r from-blue-500 to-blue-600 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
-          >
-            <span class="text-xs font-medium text-white">
-              {{ room.availableRooms }}
-              {{ room.availableRooms === 1 ? "Room" : "Rooms" }} Left
-            </span>
-          </div>
-
-          <!-- Free Breakfast Badge -->
-          <div
-            class="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
-          >
-            <span class="text-xs font-medium text-white">Free Breakfast</span>
-          </div>
-
-          <!-- Free Self Parking Badge -->
-          <div
-            class="bg-gradient-to-r from-tertiary to-secondary/55 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
-          >
-            <span class="text-xs font-medium text-white"
-              >Free Self Parking</span
+        <div class="absolute font-secondary top-4 left-4 flex flex-col gap-2">
+          <div class="flex gap-2">
+            <div
+              class="bg-gradient-to-r from-emerald-500 to-emerald-700 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
             >
+              <span class="text-xs font-medium text-white">{{
+                room.type
+              }}</span>
+            </div>
+            <!-- Room Type Badge -->
+            <div
+              class="bg-gradient-to-r from-orange-500 to-orange-700 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
+            >
+              <span class="text-xs font-medium text-white">{{
+                room.discount
+              }}</span>
+            </div>
+
+            <!-- Available Rooms Badge -->
+            <div
+              v-if="room.availableRooms"
+              class="bg-gradient-to-r from-blue-500 to-blue-600 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
+            >
+              <span class="text-xs font-medium text-white">
+                {{ room.availableRooms }}
+                {{ room.availableRooms === 1 ? "Room" : "Rooms" }} Left
+              </span>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <!-- Free Breakfast Badge -->
+            <div
+              class="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
+            >
+              <span class="text-xs font-medium text-white">Free Breakfast</span>
+            </div>
+
+            <!-- Free Self Parking Badge -->
+            <div
+              class="bg-gradient-to-r from-tertiary to-secondary/55 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit"
+            >
+              <span class="text-xs font-medium text-white"
+                >Free Self Parking</span
+              >
+            </div>
           </div>
         </div>
 
@@ -76,7 +88,7 @@ const props = defineProps({
       <!-- Content Section -->
       <div class="p-6 flex-1 flex flex-col">
         <!-- Room Details Grid -->
-        <div class="grid grid-cols-3 gap-3 mb-4">
+        <div class="grid grid-cols-2 gap-3 mb-4">
           <div class="flex items-center gap-2 text-gray-600">
             <div
               class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center"
@@ -84,8 +96,8 @@ const props = defineProps({
               <Icon name="mdi:ruler-square" class="w-4 h-4 text-primary" />
             </div>
             <div>
-              <div class="text-xs text-gray-500">Size</div>
-              <div class="text-sm font-semibold">{{ room.size }}</div>
+              <div class="text-xs font-secondary text-gray-500">Size</div>
+              <div class="text-sm font-primary font-semibold">{{ room.size }}</div>
             </div>
           </div>
           <div class="flex items-center gap-2 text-gray-600">
@@ -95,8 +107,8 @@ const props = defineProps({
               <Icon name="mdi:account-group" class="w-4 h-4 text-primary" />
             </div>
             <div>
-              <div class="text-xs text-gray-500">Guests</div>
-              <div class="text-sm font-semibold">{{ room.guests }}</div>
+              <div class="text-xs font-secondary text-gray-500">Guests</div>
+              <div class="text-sm font-primary font-semibold">{{ room.guests }}</div>
             </div>
           </div>
           <div class="flex items-center gap-2 text-gray-600">
@@ -109,8 +121,8 @@ const props = defineProps({
               />
             </div>
             <div>
-              <div class="text-xs text-gray-500">Wifi</div>
-              <div class="text-sm font-semibold text-success">Free Wifi</div>
+              <div class="text-xs font-secondary text-gray-500">Wifi</div>
+              <div class="text-sm font-primary font-semibold text-success">Free Wifi</div>
             </div>
           </div>
           <div class="flex items-center gap-2 text-gray-600">
@@ -123,35 +135,22 @@ const props = defineProps({
               />
             </div>
             <div>
-              <div class="text-xs text-gray-500">Beds</div>
-              <div class="text-sm font-semibold">{{ room?.beds }}</div>
+              <div class="text-xs font-secondary text-gray-500">Beds</div>
+              <div class="text-sm font-primary font-semibold">{{ room?.beds }}</div>
             </div>
           </div>
-          <div class="flex items-center gap-2 text-gray-600">
-            <div
-              class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center"
-            >
-              <Icon
-                name="material-symbols:android-wifi-3-bar"
-                class="w-4 h-4 text-primary"
-              />
-            </div>
-            <div>
-              <div class="text-xs text-gray-500">View</div>
-              <div class="text-sm font-semibold">City View</div>
-            </div>
-          </div>
+          
         </div>
 
         <NuxtLink
           to="/room/show"
-          class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300"
+          class="text-xl font-bold  font-primary text-gray-900 group-hover:text-primary transition-colors duration-300"
         >
           {{ room.name }}
         </NuxtLink>
         <!-- Available Rooms Info -->
         <div v-if="room.availableRooms" class="mt-2">
-          <div class="flex items-center gap-2 text-sm">
+          <div class="flex font-secondary items-center gap-2 text-sm">
             <div
               :class="[
                 'w-2 h-2 rounded-full',
@@ -184,7 +183,7 @@ const props = defineProps({
         </div>
 
         <!-- Excerpt -->
-        <p class="text-gray-600 text-sm leading-relaxed max-w-xl mb-3 mt-2">
+        <p class="text-gray-600  font-secondary text-sm leading-relaxed max-w-xl mb-3 mt-2">
           {{ room.short_description }}
         </p>
 
@@ -192,25 +191,34 @@ const props = defineProps({
         <div class="flex mt-auto justify-between items-center">
           <div class="flex flex-col">
             <div class="flex flex-row items-center gap-1">
-              <div class="text-lg font-bold text-primary">
-                {{ room.price }}/
+              <div class="text-lg font-primary font-bold text-primary">
+                ${{ room.price }}/
               </div>
-              <div class="text-xs opacity-90">{{ room.period }}</div>
+              <div class="text-xs font-secondary opacity-90">{{ room.period }}</div>
             </div>
-            <div v-if="room.availableRooms" class="text-xs text-gray-500 mt-1">
+            <div v-if="room.availableRooms" class="text-xs font-secondary text-gray-500 mt-1">
               {{ room.availableRooms }}
               {{ room.availableRooms === 1 ? "room" : "rooms" }} available
             </div>
           </div>
-          <nuxtLink to="/checkout"
-            class="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-          >
-            <Icon
-              name="material-symbols:bookmark-sharp"
-              class="w-5 h-5 transition-transform group-hover:translate-x-1"
-            />
-            Book
-          </nuxtLink>
+          <div class="flex gap-2">
+            <nuxtLink
+              to="/room/show"
+              class="bg-gradient-to-r from-primary font-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+            >
+              Details
+            </nuxtLink>
+            <nuxtLink
+              to="/checkout"
+              class="bg-gradient-to-r from-primary font-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+            >
+              <Icon
+                name="material-symbols:bookmark-sharp"
+                class="w-5 h-5 transition-transform group-hover:translate-x-1"
+              />
+              Book
+            </nuxtLink>
+          </div>
         </div>
       </div>
     </div>

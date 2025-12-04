@@ -14,9 +14,9 @@
               name="material-symbols:add-call-rounded"
               class="text-xl text-white group-hover:scale-110 transition-transform"
             />
-            <span
+            <span class="font-primary"
               >Contact Us :
-              <span class="font-medium text-white">09613 787878</span></span
+              <span class="font-medium font-secondary text-white">09613 787878</span></span
             >
           </div>
           <div
@@ -26,7 +26,7 @@
               name="logos:whatsapp-icon"
               class="text-xl text-white group-hover:scale-110 transition-transform"
             />
-            <span>Chat With Us</span>
+            <span class="font-primary">Chat With Us</span>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@
         <div class="h-5 w-px bg-gray-100 mx-3"></div>
         <NuxtLink
           to="/auth/login"
-          class="flex items-center group space-x-1 px-2 py-1 bg-primary hover:bg-white border border-white text-white hover:text-primary font-medium hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+          class="flex items-center font-primary group space-x-1 px-2 py-1 bg-primary hover:bg-background border border-white text-white hover:text-primary font-medium hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           <Icon
             name="solar:login-3-bold-duotone"
@@ -88,7 +88,7 @@
         </NuxtLink>
         <NuxtLink
           to="/auth/register"
-          class="flex items-center group space-x-1 px-2 py-1 bg-white hover:bg-primary border border-white text-primary hover:text-white font-bold hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+          class="flex font-primary items-center group space-x-1 px-2 py-1 bg-background hover:bg-primary border border-white text-primary hover:text-white font-bold hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           <Icon
             name="carbon:join-node"

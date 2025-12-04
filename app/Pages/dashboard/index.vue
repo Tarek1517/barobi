@@ -136,21 +136,21 @@ const cancelBooking = (bookingId) => {
       <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
           <div>
-            <h1 class="text-2xl font-bold text-gray-900">Customer Dashboard</h1>
-            <p class="text-gray-600">
+            <h1 class="text-2xl font-bold font-primary text-gray-900">Customer Dashboard</h1>
+            <p class="text-gray-600 font-secondary">
               Manage your apartment bookings and preferences
             </p>
           </div>
           <div class="flex items-center gap-4">
             <button
-              class="bg-primary text-white px-6 py-2 hover:bg-primary/90 transition-colors"
+              class="bg-primary font-primary text-white px-6 py-2 hover:bg-primary/90 transition-colors"
             >
               Book New Stay
             </button>
             <div
               class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
             >
-              <span class="text-white font-semibold">SJ</span>
+              <span class="text-white font-primary font-semibold">SJ</span>
             </div>
           </div>
         </div>
@@ -167,11 +167,11 @@ const cancelBooking = (bookingId) => {
               <div
                 class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4"
               >
-                <span class="text-white text-2xl font-bold">SJ</span>
+                <span class="text-white font-primary text-2xl font-bold">SJ</span>
               </div>
-              <h3 class="font-semibold text-gray-900">{{ customer.name }}</h3>
-              <p class="text-gray-600 text-sm">{{ customer.email }}</p>
-              <p class="text-gray-500 text-xs mt-1">
+              <h3 class="font-semibold font-primary text-gray-900">{{ customer.name }}</h3>
+              <p class="text-gray-600 font-secondary text-sm">{{ customer.email }}</p>
+              <p class="text-gray-500 font-secondary text-xs mt-1">
                 Member since {{ formatDate(customer.memberSince) }}
               </p>
             </div>
@@ -183,8 +183,8 @@ const cancelBooking = (bookingId) => {
                 :class="[
                   'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
                   activeTab === 'overview'
-                    ? 'bg-primary/10 text-primary border-l-4 border-primary'
-                    : 'text-gray-600 hover:bg-gray-100',
+                    ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
+                    : 'text-gray-600 font-primary hover:bg-gray-100',
                 ]"
               >
                 <div class="flex items-center gap-3">
@@ -198,8 +198,8 @@ const cancelBooking = (bookingId) => {
                 :class="[
                   'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
                   activeTab === 'bookings'
-                    ? 'bg-primary/10 text-primary border-l-4 border-primary'
-                    : 'text-gray-600 hover:bg-gray-100',
+                    ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
+                    : 'text-gray-600 font-primary hover:bg-gray-100',
                 ]"
               >
                 <div class="flex items-center gap-3">
@@ -218,8 +218,8 @@ const cancelBooking = (bookingId) => {
                 :class="[
                   'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
                   activeTab === 'settings'
-                    ? 'bg-primary/10 text-primary border-l-4 border-primary'
-                    : 'text-gray-600 hover:bg-gray-100',
+                    ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
+                    : 'text-gray-600 font-primary hover:bg-gray-100',
                 ]"
               >
                 <div class="flex items-center gap-3">
@@ -243,15 +243,15 @@ const cancelBooking = (bookingId) => {
                 class="flex flex-col md:flex-row items-center justify-between"
               >
                 <div>
-                  <h2 class="text-3xl font-bold mb-2">
+                  <h2 class="text-3xl font-primary font-bold mb-2">
                     Welcome back, {{ customer.name }}! 👋
                   </h2>
-                  <p class="text-white/90 text-lg">
+                  <p class="text-white/90 font-secondary text-lg">
                     Ready for your next apartment stay?
                   </p>
                 </div>
                 <button
-                  class="bg-white text-primary px-8 py-3 font-semibold hover:bg-gray-100 transition-colors mt-4 md:mt-0"
+                  class="bg-white font-primary text-primary px-8 py-3 font-semibold hover:bg-gray-100 transition-colors mt-4 md:mt-0"
                 >
                   Book New Stay
                 </button>
@@ -271,8 +271,8 @@ const cancelBooking = (bookingId) => {
                     />
                   </div>
                   <div>
-                    <p class="text-gray-600 text-sm">Upcoming Stays</p>
-                    <p class="text-2xl font-bold text-gray-900">
+                    <p class="text-gray-600 font-primary text-sm">Upcoming Stays</p>
+                    <p class="text-2xl font-primary font-bold text-gray-900">
                       {{ upcomingStays.length }}
                     </p>
                   </div>
@@ -287,8 +287,8 @@ const cancelBooking = (bookingId) => {
                     <Icon name="mdi:history" class="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <p class="text-gray-600 text-sm">Past Stays</p>
-                    <p class="text-2xl font-bold text-gray-900">
+                    <p class="text-gray-600 font-primary text-sm">Past Stays</p>
+                    <p class="text-2xl font-primary font-bold text-gray-900">
                       {{ pastStays.length }}
                     </p>
                   </div>
@@ -303,8 +303,8 @@ const cancelBooking = (bookingId) => {
                     <Icon name="mdi:star" class="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <p class="text-gray-600 text-sm">Loyalty Points</p>
-                    <p class="text-2xl font-bold text-gray-900">1,250</p>
+                    <p class="text-gray-600 font-primary text-sm">Loyalty Points</p>
+                    <p class="text-2xl font-bold font-primary text-gray-900">1,250</p>
                   </div>
                 </div>
               </div>
@@ -314,7 +314,7 @@ const cancelBooking = (bookingId) => {
           <!-- Bookings Tab -->
           <div v-if="activeTab === 'bookings'" class="space-y-6">
             <div class="bg-white rounded-2xl shadow-sm p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-6">All Bookings</h3>
+              <h3 class="text-xl font-bold font-primary text-gray-900 mb-6">All Bookings</h3>
 
               <div class="space-y-4">
                 <div
@@ -332,12 +332,12 @@ const cancelBooking = (bookingId) => {
                       <div
                         class="flex flex-col md:flex-row md:items-center justify-between mb-4"
                       >
-                        <h4 class="text-lg font-semibold text-gray-900">
+                        <h4 class="text-lg font-primary font-semibold text-gray-900">
                           {{ booking.apartment.name }}
                         </h4>
                         <span
                           :class="[
-                            'px-3 py-1 rounded-full text-sm font-medium',
+                            'px-3 py-1 font-primary rounded-full text-sm font-medium',
                             booking.status === 'confirmed'
                               ? 'bg-green-100 text-green-800'
                               : 'bg-gray-100 text-gray-800',
@@ -350,10 +350,10 @@ const cancelBooking = (bookingId) => {
                         </span>
                       </div>
 
-                      <p class="text-gray-600 mb-2">
+                      <p class="text-gray-600 font-secondary mb-2">
                         {{ booking.apartment.location }}
                       </p>
-                      <p class="text-gray-500 text-sm mb-4">
+                      <p class="text-gray-500 font-secondary text-sm mb-4">
                         {{ booking.apartment.type }}
                       </p>
 
@@ -361,24 +361,24 @@ const cancelBooking = (bookingId) => {
                         class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm"
                       >
                         <div>
-                          <p class="text-gray-500">Check-in</p>
+                          <p class="text-gray-500 font-secondary">Check-in</p>
                           <p class="font-semibold">
                             {{ formatDate(booking.checkIn) }}
                           </p>
                         </div>
                         <div>
-                          <p class="text-gray-500">Check-out</p>
-                          <p class="font-semibold">
+                          <p class="text-gray-500 font-secondary">Check-out</p>
+                          <p class="font-semibold font-primary">
                             {{ formatDate(booking.checkOut) }}
                           </p>
                         </div>
                         <div>
-                          <p class="text-gray-500">Guests</p>
-                          <p class="font-semibold">{{ booking.guests }}</p>
+                          <p class="text-gray-500 font-secondary">Guests</p>
+                          <p class="font-semibold font-primary">{{ booking.guests }}</p>
                         </div>
                         <div>
-                          <p class="text-gray-500">Total</p>
-                          <p class="font-semibold text-primary">
+                          <p class="text-gray-500 font-secondary">Total</p>
+                          <p class="font-semibold font-primary text-primary">
                             {{ formatCurrency(booking.total) }}
                           </p>
                         </div>
@@ -386,7 +386,7 @@ const cancelBooking = (bookingId) => {
 
                       <div class="flex gap-3 mt-4">
                         <button
-                          class="bg-primary text-white px-4 py-2 text-sm hover:bg-primary/90 transition-colors"
+                          class="bg-primary font-primary text-white px-4 py-2 text-sm hover:bg-primary/90 transition-colors"
                         >
                           View Details
                         </button>
@@ -401,7 +401,7 @@ const cancelBooking = (bookingId) => {
                           Cancel
                         </button>
                         <button
-                          class="border border-gray-300 text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors"
+                          class="border border-gray-300 font-primary text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors"
                         >
                           Contact Support
                         </button>
@@ -416,55 +416,55 @@ const cancelBooking = (bookingId) => {
           <!-- Settings Tab -->
           <div v-if="activeTab === 'settings'" class="space-y-6">
             <div class="bg-white shadow-sm p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-6">
+              <h3 class="text-xl font-primary font-bold text-gray-900 mb-6">
                 Account Settings
               </h3>
 
               <div class="space-y-8">
                 <!-- Personal Information -->
                 <div>
-                  <h4 class="text-lg font-semibold text-gray-900 mb-4">
+                  <h4 class="text-lg font-primary font-semibold text-gray-900 mb-4">
                     Personal Information
                   </h4>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label
-                        class="block text-sm font-medium text-gray-700 mb-2"
+                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
                         >Full Name</label
                       >
                       <input
                         v-model="settingsForm.name"
                         type="text"
-                        class="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       />
                     </div>
                     <div>
                       <label
-                        class="block text-sm font-medium text-gray-700 mb-2"
+                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
                         >Email Address</label
                       >
                       <input
                         v-model="settingsForm.email"
                         type="email"
-                        class="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       />
                     </div>
                     <div>
                       <label
-                        class="block text-sm font-medium text-gray-700 mb-2"
+                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
                         >Phone Number</label
                       >
                       <input
                         v-model="settingsForm.phone"
                         type="tel"
-                        class="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                        class="w-full p-3 border font-secondary border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <h3 class="text-xl font-bold text-gray-900 my-6">
+              <h3 class="text-xl font-bold font-primary text-gray-900 my-6">
                 Password Settings
               </h3>
 
@@ -474,35 +474,35 @@ const cancelBooking = (bookingId) => {
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label
-                        class="block text-sm font-medium text-gray-700 mb-2"
+                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
                         >Current Password</label
                       >
                       <input
                         v-model="settingsForm.current_password"
                         type="password"
-                        class="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       />
                     </div>
                     <div>
                       <label
-                        class="block text-sm font-medium text-gray-700 mb-2"
+                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
                         >Old Password</label
                       >
                       <input
                         v-model="settingsForm.old_password"
                         type="password"
-                        class="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       />
                     </div>
                     <div>
                       <label
-                        class="block text-sm font-medium text-gray-700 mb-2"
+                        class="block font-secondary text-sm font-medium text-gray-700 mb-2"
                         >Confirm Password</label
                       >
                       <input
                         v-model="settingsForm.confirm_password"
                         type="password"
-                        class="w-full p-3 border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                       />
                     </div>
                   </div>
@@ -512,7 +512,7 @@ const cancelBooking = (bookingId) => {
                 <div class="flex justify-end">
                   <button
                     @click="saveSettings"
-                    class="bg-primary text-white px-8 py-3 font-semibold hover:bg-primary/90 transition-colors"
+                    class="bg-primary font-primary text-white px-8 py-3 font-semibold hover:bg-primary/90 transition-colors"
                   >
                     Save Changes
                   </button>

@@ -1,9 +1,9 @@
 <template>
   <div
-    class="bg-gradient-to-br from-indigo-50 via-white to-cyan-50 flex items-center justify-center p-4"
+    class="bg-background flex items-center justify-center p-4"
   >
     <div
-      class="w-full max-w-6xl bg-tertiary/15 my-20 shadow-2xl overflow-hidden flex flex-col lg:flex-row"
+      class="w-full max-w-6xl bg-white my-20 shadow-2xl overflow-hidden flex flex-col lg:flex-row"
     >
       <!-- Left Column - Register Form -->
       <div class="w-full lg:w-1/2 p-8 lg:p-12">
@@ -24,11 +24,11 @@
             </div>
           </div>
           <h1
-            class="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
+            class="text-3xl font-bold font-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
           >
             Create Your Account
           </h1>
-          <p class="text-gray-500">Join our community and start your journey</p>
+          <p class="text-gray-500 font-secondary">Join our community and start your journey</p>
         </div>
 
         <!-- Register Form -->
@@ -40,7 +40,7 @@
           @submit="onRegister"
         >
           <!-- Name Input -->
-          <UFormField label="Full Name" name="name" class="w-full">
+          <UFormField label="Full Name" name="name" class="w-full font-secondary">
             <div class="relative">
               <div
                 class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
@@ -50,7 +50,7 @@
               <UInput
                 placeholder="Enter your full name"
                 v-model="registerState.name"
-                class="w-full pl-10"
+                class="w-full font-secondary pl-10"
                 size="xl"
                 :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
@@ -60,7 +60,7 @@
           </UFormField>
 
           <!-- Phone Input -->
-          <UFormField label="Phone Number" name="phone" class="w-full">
+          <UFormField label="Phone Number" name="phone" class="w-full font-secondary">
             <div class="relative">
               <div
                 class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
@@ -70,20 +70,20 @@
               <UInput
                 placeholder="Enter your phone number"
                 v-model="registerState.phone"
-                class="w-full pl-10"
+                class="w-full font-secondary pl-10"
                 size="xl"
                 :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
                 }"
               />
             </div>
-            <p class="text-xs text-gray-500 mt-1">
+            <p class="text-xs font-secondary text-gray-500 mt-1">
               We'll never share your phone with anyone else.
             </p>
           </UFormField>
 
           <!-- Email Input -->
-          <UFormField label="Email Address" name="email" class="w-full">
+          <UFormField label="Email Address" name="email" class="w-full font-secondary">
             <div class="relative">
               <div
                 class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
@@ -93,7 +93,7 @@
               <UInput
                 placeholder="Enter your email address"
                 v-model="registerState.email"
-                class="w-full pl-10"
+                class="w-full font-secondary pl-10"
                 size="xl"
                 :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
@@ -106,7 +106,7 @@
           </UFormField>
 
           <!-- Password Input -->
-          <UFormField label="Password" name="password" class="w-full">
+          <UFormField label="Password" name="password" class="w-full font-secondary">
             <div class="relative">
               <div
                 class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
@@ -117,7 +117,7 @@
                 :type="show ? 'text' : 'password'"
                 v-model="registerState.password"
                 placeholder="Create a strong password"
-                class="w-full pl-10 pr-10"
+                class="w-full font-secondary pl-10 pr-10"
                 size="xl"
                 :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
@@ -141,7 +141,7 @@
           </UFormField>
 
           <!-- Terms and Conditions -->
-          <div class="flex items-center text-sm">
+          <div class="flex font-secondary items-center text-sm">
             <input
               id="terms"
               name="terms"
@@ -167,7 +167,7 @@
             size="xl"
             loading-auto
             :ui="{
-              base: 'w-full group relative bg-primary text-white py-4 px-6 font-bold text-lg transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-primary/30 overflow-hidden',
+              base: 'w-full group relative font-primary bg-primary text-white py-4 px-6 font-bold text-lg transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-primary/30 overflow-hidden',
             }"
           >
             <span class="flex items-center justify-center">
@@ -194,7 +194,7 @@
 
         
         <!-- Sign In Link -->
-        <p class="mt-8 text-center text-gray-500 text-sm">
+        <p class="mt-8 text-center font-secondary text-gray-500 text-sm">
           Already have an account?
           <NuxtLink
             to="/auth/login"
@@ -219,10 +219,10 @@
         <!-- Overlay Text -->
         <div class="absolute inset-0 flex items-center justify-center z-20 p-8">
           <div class="text-center text-white max-w-md">
-            <h2 class="text-3xl linear-wipe uppercase font-bold mb-4 drop-shadow-lg">
+            <h2 class="text-3xl font-primary linear-wipe uppercase font-bold mb-4 drop-shadow-lg">
               Start Your Journey
             </h2>
-            <p class="text-lg drop-shadow-md opacity-90">
+            <p class="text-lg font-secondary drop-shadow-md opacity-90">
               Join thousands of learners and unlock your potential with our
               platform.
             </p>

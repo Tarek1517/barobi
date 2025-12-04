@@ -1,12 +1,12 @@
 <script setup></script>
 <template>
   <HomeHeroSection />
-  <HomeSliderBannerSection />
-  <HomeProcessSection />
   <HomeAboutSection />
+  <HomeSliderBannerSection />
   <HomeBestRoomSection />
   <HomeServiceSection />
   <HomeTestimonialSection />
-  <HomeNearbySection />
-  <HomeBlogSection />
+  <HomeFAQsection />
+  <HomeExploreDhakaSection />
+  <HomeLocationSection />
 </template>

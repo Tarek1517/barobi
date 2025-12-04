@@ -2,20 +2,20 @@
 
 <template>
   <header
-    class="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-lg"
+    class="sticky top-0 z-40 bg-background backdrop-blur-xl border-b border-gray-100 shadow-lg"
   >
     <div class="container mx-auto">
       <NuxtLink class="flex items-center justify-between h-20">
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center">
           <img
-            class="object-contain rounded w-24 h-24"
+            class="object-contain rounded w-32 h-auto"
             src="/images/logo.png"
           />
         </NuxtLink>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-3">
+        <nav class="hidden font-primary text-lg lg:flex items-center gap-2">
           <!-- Home -->
 
           <!-- Apartments Dropdown -->
@@ -199,34 +199,41 @@
           </div>
 
           <!-- Hotels -->
-           <NuxtLink
-              to="/service"
+          <NuxtLink
+            to="/service"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
             <span>Facilities</span>
           </NuxtLink>
 
           <!-- Destinations -->
-          <a
-            href="/location"
+          <NuxtLink
+            to="/location"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
             <span>Location</span>
-          </a>
+          </NuxtLink>
 
           <NuxtLink
             to="/nearby"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
-            <span>Nearby</span>
+            <span>Explore Dhaka</span>
           </NuxtLink>
 
-          <a
-            href="/gallery"
+          <NuxtLink
+            to="/service"
+            class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
+          >
+            <span>Dinning</span>
+          </NuxtLink>
+
+          <NuxtLink
+            to="/gallery"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group"
           >
             <span>Gallery</span>
-          </a>
+          </NuxtLink>
 
           <NuxtLink
             to="/blog"
@@ -241,7 +248,31 @@
           >
             <span>Contact Us</span>
           </NuxtLink>
-
+          <!-- Offer Button -->
+          <!-- Offer Button with Badge -->
+          <NuxtLink
+            to="/"
+            class="relative px-4 py-1 bg-orange-200 hover:bg-orange-300 text-orange-700 font-medium transition-all duration-300 ml-2 group"
+          >
+            <span class="flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z"
+                  clip-rule="evenodd"
+                />
+                <path
+                  d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"
+                />
+              </svg>
+              Offers
+            </span>
+            <span
+              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse"
+            >
+              !
+            </span>
+          </NuxtLink>
         </nav>
 
         <!-- Right Actions -->
@@ -249,7 +280,7 @@
           <!-- Language Selector -->
           <div class="relative group">
             <button
-              class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
+              class="flex items-center font-primary space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -311,7 +342,7 @@
 
             <a
               href="/login"
-              class="flex items-center space-x-2 px-6 py-2.5 bg-primary text-white font-medium hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+              class="flex items-center font-primary space-x-2 px-6 py-2.5 bg-primary text-white font-medium hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />

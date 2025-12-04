@@ -46,7 +46,7 @@ const starRating = computed(() => {
 
 <template>
   <div
-    class="group bg-tertiary/10 shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border border-primary/10 h-full flex flex-col hover:-translate-y-2"
+    class="group bg-white shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl border border-primary/10 h-full flex flex-col hover:-translate-y-2"
   >
     <!-- Image Section -->
     <NuxtLink to="/blog/show" class="block relative overflow-hidden">
@@ -63,7 +63,7 @@ const starRating = computed(() => {
 
         <!-- Read time badge -->
         <div
-          class="absolute bottom-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm transition-transform duration-300 group-hover:scale-105"
+          class="absolute bottom-4 font-secondary right-4 bg-black/70 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm transition-transform duration-300 group-hover:scale-105"
         >
           {{ Math.ceil(blogs?.title?.length / 200) || 5 }} min read
         </div>
@@ -79,13 +79,13 @@ const starRating = computed(() => {
         <!-- Date and Comments -->
         <div class="flex items-center gap-3 text-sm text-gray-600">
           <span
-            class="flex items-center gap-1.5 bg-gray-50 px-2.5 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary/10"
+            class="flex items-center font-primary gap-1.5 bg-background px-2.5 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary/10"
           >
             <Icon name="uil:calendar" class="w-3.5 h-3.5 text-primary" />
             {{ formatDate(blogs?.publish_date) }}
           </span>
           <span
-            class="flex items-center gap-1.5 bg-gray-50 px-2.5 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary/10"
+            class="flex items-center font-primary gap-1.5 bg-background px-2.5 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary/10"
           >
             <Icon name="uil:comment" class="w-3.5 h-3.5 text-primary" />
             {{ blogs?.blog_reviews?.length || 0 }}
@@ -100,13 +100,13 @@ const starRating = computed(() => {
           <span class="text-yellow-400 text-sm font-bold">{{
             starRating
           }}</span>
-          <span class="text-xs text-gray-500">({{ averageRating }})</span>
+          <span class="text-xs font-primary text-gray-500">({{ averageRating }})</span>
         </div>
       </div>
 
       <!-- Title -->
       <h3
-        class="text-xl lg:text-2xl font-bold text-gray-900 mb-3 font-marcellus line-clamp-2 leading-tight transition-colors duration-300 group-hover:text-primary flex-1"
+        class="text-xl lg:text-2xl font-primary font-bold text-gray-900 mb-3 font-marcellus line-clamp-2 leading-tight transition-colors duration-300 group-hover:text-primary flex-1"
       >
         <NuxtLink to="/blog/show" class="hover:text-primary">
           {{ blogs?.title }}
@@ -114,7 +114,7 @@ const starRating = computed(() => {
       </h3>
 
       <!-- Short Description -->
-      <p class="text-gray-600 mb-6 leading-relaxed text-sm flex-1">
+      <p class="text-gray-600 font-secondary mb-6 leading-relaxed text-sm flex-1">
         {{ wordLimit(blogs?.short_description, 12) }}
       </p>
 
@@ -122,7 +122,7 @@ const starRating = computed(() => {
       <div class="mt-auto pt-4 border-t border-gray-100">
         <NuxtLink
           to="/blog/show"
-          class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all duration-300 group/btn"
+          class="inline-flex font-primary items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all duration-300 group/btn"
         >
           READ MORE
           <Icon

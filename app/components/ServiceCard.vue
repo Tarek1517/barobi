@@ -27,7 +27,7 @@ defineProps({
     </nuxt-link>
     <!-- Price Badge -->
     <div
-      class="absolute top-4 right-4 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 rounded-full px-3 py-1 shadow-lg w-fit backdrop-blur-sm rounded-full px-4 py-2 shadow-lg"
+      class="absolute font-primary top-4 right-4 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 rounded-full px-3 py-1 shadow-lg w-fit backdrop-blur-sm rounded-full px-4 py-2 shadow-lg"
     >
       <span class="text-xs font-bold text-white">{{ service.price }}</span>
     </div>
@@ -38,7 +38,7 @@ defineProps({
     >
       <!-- Service Name - Moves up with content -->
       <h3
-        class="text-2xl font-bold mb-2 text-center transition-all duration-500 group-hover:mb-4"
+        class="text-2xl font-primary font-bold mb-2 text-center transition-all duration-500 group-hover:mb-4"
       >
         {{ service.name }}
       </h3>
@@ -48,14 +48,14 @@ defineProps({
         class="flex flex-col opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200"
       >
         <!-- Short Description -->
-        <p class="text-gray-200 mb-4 line-clamp-2 text-center">
+        <p class="text-gray-200 mb-4 line-clamp-2  font-secondary text-center">
           {{ service.short_description }}
         </p>
 
         <!-- View Details Button -->
         <NuxtLink
           to="/service/show"
-          class="bg-gradient-to-r inline-block from-tertiary to-secondary/55 hover:from-secondary/55 hover:to-tertiary backdrop-blur-sm px-6 py-2 rounded-full font-semibold transition-colors duration-300 mx-auto shadow-lg"
+          class="bg-gradient-to-r font-primary inline-block from-tertiary to-secondary/55 hover:from-secondary/55 hover:to-tertiary backdrop-blur-sm px-6 py-2 rounded-full font-semibold transition-colors duration-300 mx-auto shadow-lg"
         >
           View Details
         </NuxtLink>

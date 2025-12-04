@@ -122,7 +122,7 @@ const relatedServices = [
 
 <template>
   <!-- Enhanced Banner -->
-  <section class="mb-16">
+  <section class="">
     <div class="relative h-[400px] lg:h-[500px] overflow-hidden">
       <div class="absolute inset-0">
         <img
@@ -138,7 +138,7 @@ const relatedServices = [
       <div class="absolute inset-0 flex items-center justify-start">
         <div class="text-white container mx-auto">
           <!-- Category Badge -->
-          <div class="flex items-center gap-3 mb-6">
+          <div class="flex font-secondary  items-center gap-3 mb-6">
             <span
               class="bg-primary/90 text-white px-4 py-2 text-sm font-medium backdrop-blur-sm"
             >
@@ -153,18 +153,18 @@ const relatedServices = [
           </div>
 
           <h1
-            class="text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight"
+            class="text-4xl lg:text-5xl font-primary  font-bold mb-6 leading-tight tracking-tight"
           >
             {{ ServiceDetails.name }}
           </h1>
-          <p class="text-lg text-gray-200 mb-8 leading-relaxed max-w-3xl">
+          <p class="text-lg text-gray-200 font-secondary mb-8 leading-relaxed max-w-3xl">
             {{ ServiceDetails.short_description }}
           </p>
 
           <!-- Price & CTA -->
           <div class="flex items-center gap-6 flex-wrap">
-            <div class="flex items-center gap-3">
-              <div class="text-3xl font-bold text-primary">
+            <div class="flex font-secondary items-center gap-3">
+              <div class="text-3xl font-primary font-bold text-primary">
                 {{ ServiceDetails.price }}
               </div>
               <div class="text-gray-300">
@@ -186,7 +186,7 @@ const relatedServices = [
   </section>
 
   <!-- Main Content -->
-  <section class="mb-20">
+  <section class="bg-background py-20">
     <div class="container mx-auto">
       <div class="flex flex-col lg:flex-row gap-12">
         <!-- Main Service Content -->
@@ -195,7 +195,7 @@ const relatedServices = [
             <!-- Content -->
             <div
               v-html="ServiceDetails.description"
-              class="prose prose-lg max-w-none mb-12"
+              class="prose font-secondary prose-lg max-w-none mb-12"
             ></div>
           </article>
         </div>
@@ -210,7 +210,7 @@ const relatedServices = [
               <div
                 class="w-2 h-8 bg-gradient-to-b from-tertiary to-secondary rounded-full"
               ></div>
-              <span>You Might Also Like</span>
+              <span class="font-primary">You Might Also Like</span>
             </h3>
             <div class="space-y-5">
               <div
@@ -228,14 +228,14 @@ const relatedServices = [
                   />
                   <div class="flex-1 min-w-0">
                     <h4
-                      class="font-semibold text-gray-900 group-hover:text-blue-600 line-clamp-2 transition-colors mb-2"
+                      class="font-semibold font-primary text-gray-900 group-hover:text-blue-600 line-clamp-2 transition-colors mb-2"
                     >
                       {{ service.name }}
                     </h4>
-                    <p class="text-primary font-medium text-sm mb-1">
+                    <p class="text-primary font-primary font-medium text-sm mb-1">
                       {{ service.price }}
                     </p>
-                    <p class="text-xs text-gray-500 line-clamp-2">
+                    <p class="text-xs font-secondary text-gray-500 line-clamp-2">
                       {{ service.short_description }}
                     </p>
                   </div>
@@ -253,19 +253,19 @@ const relatedServices = [
                 name="mdi:headset"
                 class="w-12 h-12 mx-auto mb-4 text-white/90"
               />
-              <h3 class="text-xl font-bold mb-2">Need Help?</h3>
-              <p class="text-white/80 mb-4">
+              <h3 class="text-xl font-primary font-bold mb-2">Need Help?</h3>
+              <p class="text-white/80 font-secondary mb-4">
                 Our concierge team is available 24/7 to assist with any service
                 requests.
               </p>
               <div class="space-y-3">
-                <div class="flex items-center justify-center gap-2">
+                <div class="flex font-secondary items-center justify-center gap-2">
                   <Icon name="mdi:phone" class="w-5 h-5" />
                   <span
                     >Front Desk: {{ ServiceDetails.contact.front_desk }}</span
                   >
                 </div>
-                <div class="flex items-center justify-center gap-2">
+                <div class="flex font-secondary items-center justify-center gap-2">
                   <Icon name="mdi:phone" class="w-5 h-5" />
                   <span
                     >Wellness:
@@ -273,7 +273,7 @@ const relatedServices = [
                   >
                 </div>
                 <button
-                  class="w-full bg-white text-primary font-semibold py-3 hover:bg-gray-100 transition-colors mt-4"
+                  class="w-full bg-white font-primary text-primary font-semibold py-3 hover:bg-gray-100 transition-colors mt-4"
                 >
                   Call Concierge
                 </button>

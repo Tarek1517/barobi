@@ -8,7 +8,7 @@ const testimonials = [
     image: "/images/avatar1.png",
     rating: 5,
     comment:
-      "Absolutely loved our stay! The staff was incredibly helpful and the rooms were spotless. Will definitely be returning on our next trip.",
+      "Absolutely loved our stay! The staff was incredibly helpful and the rooms were spotless. Will definitely be returning on our next trip. Will definitely be returning on our next trip",
     stayDuration: "3 nights",
   },
   {
@@ -28,7 +28,7 @@ const testimonials = [
     image: "/images/avatar3.png",
     rating: 4,
     comment:
-      "Beautiful property with amazing amenities. The location was perfect for exploring the city. Only minor issue was the Wi-Fi speed.",
+      "Beautiful property with amazing amenities. The location was perfect for exploring the city. Only minor issue was the Wi-Fi speed. Will definitely be returning on our next trip",
     stayDuration: "4 nights",
   },
   {
@@ -63,7 +63,7 @@ const generateStars = (rating) => {
 
 <template>
   <section
-    class="py-16 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden"
+    class="py-16 bg-background relative overflow-hidden"
   >
     <div class="container mx-auto px-6 relative z-10">
       <!-- Section Header -->
@@ -73,15 +73,15 @@ const generateStars = (rating) => {
         >
           <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
           <span
-            class="text-primary font-semibold text-sm uppercase tracking-wide"
+            class="text-primary  font-secondary font-semibold text-sm uppercase tracking-wide"
             >Testimonials</span
           >
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <h2 class="text-4xl font-primary md:text-5xl font-bold text-gray-900 mb-6">
           What Our
           <span class="linear-wipe animate-gradient"> Guests Say</span>
         </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-xl font-secondary text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Discover why our guests keep coming back. Read about their experiences
           and see how we've made their stays unforgettable.
         </p>
@@ -101,7 +101,7 @@ const generateStars = (rating) => {
         }"
       >
         <div
-          class="bg-tertiary/10 shadow-lg p-6 mx-4 h-full flex flex-col transition-all duration-300 hover:shadow-xl hover:scale-105"
+          class="bg-white shadow-lg p-6 mx-4 h-full flex flex-col transition-all duration-300 hover:shadow-xl hover:scale-105"
         >
           <!-- Rating -->
           <div class="mb-4">
@@ -111,7 +111,7 @@ const generateStars = (rating) => {
           </div>
 
           <!-- Comment -->
-          <p class="text-gray-600 mb-6 flex-grow leading-relaxed italic">
+          <p class="text-gray-600 font-secondary mb-6 flex-grow leading-relaxed italic">
             "{{ item.comment }}"
           </p>
 
@@ -123,11 +123,11 @@ const generateStars = (rating) => {
               class="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
             />
             <div class="flex-1">
-              <h4 class="font-semibold text-gray-900">{{ item.name }}</h4>
+              <h4 class="font-semibold font-primary text-gray-900">{{ item.name }}</h4>
               <div class="flex items-center justify-between">
-                <p class="text-sm text-gray-500">{{ item.location }}</p>
+                <p class="text-sm font-secondary text-gray-500">{{ item.location }}</p>
                 <span
-                  class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
+                  class="text-xs font-primary bg-primary/10 text-primary px-2 py-1 rounded-full"
                 >
                   {{ item.stayDuration }}
                 </span>

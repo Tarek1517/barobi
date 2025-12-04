@@ -3,32 +3,32 @@
 const services = [
   {
     id: 1,
-    name: "Infinity Gym",
-    image: "/images/gym.jpg",
+    name: "Fitness Centre",
+    image: "/images/Gym-4.webp",
     price: "Free",
     short_description:
       "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
   },
   {
     id: 2,
-    name: "House Caffee",
-    image: "/images/caffee.png",
+    name: "Garden Coffee Shop",
+    image: "/images/caffee-garden.jpg",
     price: "$189",
     short_description:
       "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
   },
   {
     id: 3,
-    name: "Baggage Storage",
-    image: "/images/baggage.png",
+    name: "Rooftop Café",
+    image: "/images/rooftop.jpg",
     price: "Free",
     short_description:
       "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
   },
   {
     id: 4,
-    name: "Laundry Service",
-    image: "/images/laoundry.png",
+    name: "Private Meeting Room",
+    image: "/images/meetingroom.jpg",
     price: "$259",
     short_description:
       "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
@@ -40,14 +40,11 @@ const services = [
   <!-- Hero Banner -->
   <section class="relative h-[400px] lg:h-[500px] overflow-hidden group">
     <!-- Background -->
-    <NuxtImg
+    <img
       src="/images/banner3.jpg"
       alt="Tech products banner"
       class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
       loading="eager"
-      preload
-      format="webp"
-      quality="80"
     />
     <!-- Gradient Overlay -->
     <div
@@ -60,7 +57,7 @@ const services = [
     >
       <div class="max-w-5xl space-y-4">
         <nav
-          class="flex items-center justify-center text-white/90 text-sm mb-6"
+          class="flex items-center font-secondary justify-center text-white/90 text-sm mb-6"
         >
           <NuxtLink
             to="/"
@@ -76,20 +73,20 @@ const services = [
         </nav>
 
         <h1
-          class="text-5xl md:text-7xl text-center font-bold text-white leading-tight tracking-tight"
+          class="text-5xl md:text-7xl font-primary text-center font-bold text-white leading-tight tracking-tight"
         >
-          Our 
+          Our
           <span class="linear-wipe drop-shadow-lg"> Facilities </span>
         </h1>
-        <p class="text-xl text-center text-gray-200 mt-4">
+        <p class="text-xl font-secondary text-center text-gray-200 mt-4">
           Discover insights, trends, and stories from our team of experts
         </p>
       </div>
     </div>
   </section>
 
-  <section class="container mx-auto mb-16 py-20">
-    <div class="flex flex-wrap lg:py-5">
+  <section class="bg-background py-20">
+    <div class="container mx-auto flex flex-wrap lg:py-5">
       <!-- Blog Posts Section -->
       <div class="w-full rounded-lg px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

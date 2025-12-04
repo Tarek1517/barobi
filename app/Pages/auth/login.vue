@@ -1,9 +1,9 @@
 <template>
   <div
-    class="bg-gradient-to-br from-indigo-50 via-white to-cyan-50 flex items-center justify-center p-4"
+    class="bg-background flex items-center justify-center p-4"
   >
     <div
-      class="w-full max-w-6xl bg-tertiary/15 shadow-2xl my-20 overflow-hidden flex flex-col lg:flex-row"
+      class="w-full max-w-6xl bg-white shadow-2xl my-20 overflow-hidden flex flex-col lg:flex-row"
     >
       <!-- Left Column - Login Form -->
       <div class="w-full lg:w-1/2 p-8 lg:p-12">
@@ -24,11 +24,11 @@
             </div>
           </div>
           <h1
-            class="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
+            class="text-3xl font-primary font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
           >
             Welcome Back
           </h1>
-          <p class="text-gray-500">Sign in to your account to continue</p>
+          <p class="text-gray-500 font-secondary">Sign in to your account to continue</p>
         </div>
 
         <!-- Login Form -->
@@ -50,14 +50,14 @@
               <UInput
                 placeholder="Enter your phone number"
                 v-model="state.phone"
-                class="w-full pl-10"
+                class="w-full font-secondary pl-10"
                 size="xl"
                 :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
                 }"
               />
             </div>
-            <p class="text-xs text-gray-500 mt-1">
+            <p class="text-xs font-secondary text-gray-500 mt-1">
               We'll never share your phone with anyone else.
             </p>
           </UFormField>
@@ -73,7 +73,7 @@
               <UInput
                 :type="show ? 'text' : 'password'"
                 v-model="state.password"
-                class="w-full pl-10 pr-10"
+                class="w-full font-secondary pl-10 pr-10"
                 size="xl"
                 :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
@@ -103,7 +103,7 @@
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                class="h-4 w-4 font-secondary text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
               />
               <label for="remember-me" class="ml-2 block text-gray-700">
                 Remember me
@@ -111,7 +111,7 @@
             </div>
             <a
               href="#"
-              class="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
+              class="font-medium font-secondary text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
             >
               Forgot password?
             </a>
@@ -124,7 +124,7 @@
             size="xl"
             loading-auto
             :ui="{
-              base: 'w-full group relative bg-primary text-white py-4 px-6 font-bold text-lg transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-primary/30 overflow-hidden',
+              base: 'w-full group font-primary relative bg-primary text-white py-4 px-6 font-bold text-lg transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-primary/30 overflow-hidden',
             }"
           >
             <span class="flex items-center justify-center">
@@ -150,7 +150,7 @@
         </div>
 
         <!-- Sign Up Link -->
-        <p class="mt-8 text-center text-gray-500 text-sm">
+        <p class="mt-8 font-secondary text-center text-gray-500 text-sm">
           Don't have an account?
           <NuxtLink
             to="/dashboard"
@@ -176,11 +176,11 @@
         <div class="absolute inset-0 flex items-center justify-center z-20 p-8">
           <div class="text-center max-w-md">
             <h2
-              class="text-3xl linear-wipe uppercase font-bold mb-4 drop-shadow-lg"
+              class="text-3xl font-primary linear-wipe uppercase font-bold mb-4 drop-shadow-lg"
             >
               Brobi Appartments
             </h2>
-            <p class="text-lg drop-shadow-md text-gray-500 opacity-90">
+            <p class="text-lg font-secondary drop-shadow-md text-gray-500 opacity-90">
               Discover amazing features and connect with like-minded people
               around the world.
             </p>

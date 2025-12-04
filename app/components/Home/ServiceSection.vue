@@ -3,32 +3,32 @@
 const services = [
   {
     id: 1,
-    name: "Infinity Gym",
-    image: "/images/gym.jpg",
+    name: "Fitness Centre",
+    image: "/images/Gym-4.webp",
     price: "Free",
     short_description:
       "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
   },
   {
     id: 2,
-    name: "House Caffee",
-    image: "/images/caffee.png",
+    name: "Garden Coffee Shop",
+    image: "/images/caffee-garden.jpg",
     price: "$189",
     short_description:
       "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
   },
   {
     id: 3,
-    name: "Baggage Storage",
-    image: "/images/baggage.png",
+    name: "Rooftop Café",
+    image: "/images/rooftop.jpg",
     price: "Free",
     short_description:
       "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
   },
   {
     id: 4,
-    name: "Laundry Service",
-    image: "/images/laoundry.png",
+    name: "Private Meeting Room",
+    image: "/images/meetingroom.jpg",
     price: "$259",
     short_description:
       "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
@@ -38,7 +38,7 @@ const services = [
 
 <template>
   <section
-    class="py-16 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden"
+    class="py-16 bg-background relative overflow-hidden"
   >
     <div class="container mx-auto px-6 relative z-10">
       <!-- Section Header -->
@@ -48,15 +48,15 @@ const services = [
         >
           <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
           <span
-            class="text-primary font-semibold text-sm uppercase tracking-wide"
+            class="text-primary font-secondary font-semibold text-sm uppercase tracking-wide"
             >Services</span
           >
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <h2 class="text-4xl font-primary md:text-5xl font-bold text-gray-900 mb-6">
           Around
-          <span class="linear-wipe animate-gradient"> The Hotel</span>
+          <span class="linear-wipe animate-gradient">The Apartment</span>
         </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-xl font-secondary text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Experience unparalleled comfort in our carefully designed rooms and
           apartments. Each space is crafted to provide the perfect blend of
           luxury and homely comfort.

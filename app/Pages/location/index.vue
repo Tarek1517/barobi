@@ -25,14 +25,11 @@ const mapLocation = {
   <!-- Hero Banner -->
   <section class="relative h-[400px] lg:h-[500px] overflow-hidden group">
     <!-- Background -->
-    <NuxtImg
+    <img
       src="/images/location2.png"
       alt="Location banner"
       class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
       loading="eager"
-      preload
-      format="webp"
-      quality="80"
     />
     <!-- Gradient Overlay -->
     <div
@@ -45,7 +42,7 @@ const mapLocation = {
     >
       <div class="max-w-5xl space-y-4">
         <nav
-          class="flex items-center justify-center text-white/90 text-sm mb-6"
+          class="flex items-center font-secondary justify-center text-white/90 text-sm mb-6"
         >
           <NuxtLink
             to="/"
@@ -61,12 +58,12 @@ const mapLocation = {
         </nav>
 
         <h1
-          class="text-5xl md:text-7xl text-center font-bold text-white leading-tight tracking-tight"
+          class="text-5xl md:text-7xl font-primary text-center font-bold text-white leading-tight tracking-tight"
         >
           Our
           <span class="linear-wipe drop-shadow-lg"> Location </span>
         </h1>
-        <p class="text-xl text-center text-gray-200 mt-4">
+        <p class="text-xl font-secondary text-center text-gray-200 mt-4">
           Find us easily and plan your visit to our premium apartment
         </p>
       </div>
@@ -74,13 +71,11 @@ const mapLocation = {
   </section>
 
   <!-- Location & Contact Section -->
-  <section class="container mx-auto mb-16 py-20">
-    <div class="flex flex-col lg:flex-row gap-12">
+  <section class="bg-background py-20">
+    <div class="container mx-auto flex flex-col lg:flex-row gap-12">
       <!-- Left Column - Map -->
       <div class="lg:w-1/2">
-        <div
-          class="bg-white shadow-xl overflow-hidden border border-gray-200"
-        >
+        <div class="bg-white shadow-xl overflow-hidden border border-gray-200">
           <!-- Map Container -->
           <div class="h-96 lg:h-[600px] bg-gray-100 relative">
             <div>
@@ -88,7 +83,7 @@ const mapLocation = {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093647!2d144.95605431531683!3d-37.81720997975137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577fcf9a83e2516!2sFederation%20Square!5e0!3m2!1sen!2sus!4v1609290348123!5m2!1sen!2sus"
                 width="100%"
                 height="600"
-                style="border: 0;"
+                style="border: 0"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
@@ -103,8 +98,8 @@ const mapLocation = {
                   class="w-3 h-3 bg-red-500 rounded-full animate-pulse"
                 ></div>
                 <div>
-                  <h3 class="font-semibold text-gray-900">Barobi Apartment</h3>
-                  <p class="text-sm text-gray-600">Uttara Model Town, Dhaka</p>
+                  <h3 class="font-semibold font-primary text-gray-900">Barobi Apartment</h3>
+                  <p class="text-sm font-secondary text-gray-600">Uttara Model Town, Dhaka</p>
                 </div>
               </div>
             </div>
@@ -123,7 +118,6 @@ const mapLocation = {
               </button>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -132,54 +126,43 @@ const mapLocation = {
         <div
           class="bg-white shadow-xl p-8 lg:p-12 border border-gray-200 h-full"
         >
-          <!-- Header -->
+          
+          <!-- Address -->
           <div class="mb-8">
-            <h2
-              class="text-2xl lg:text-3xl font-bold text-gray-900 uppercase tracking-wide mb-2"
-            >
-              {{ contactInfo.title }}
-            </h2>
-            <div
-              class="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-4"
-            ></div>
-            <h3 class="text-xl lg:text-2xl font-semibold text-gray-800 mb-4">
-              {{ contactInfo.subtitle }}
-            </h3>
+            <div class="flex flex-col items-center gap-1">
+              <Icon
+                name="ep:home-filled"
+                class="text-primary text-2xl flex-shrink-0"
+              />
+              <h3
+                class="text-xl lg:text-2xl font-primary font-semibold text-gray-800"
+              >
+                {{ contactInfo.subtitle }}
+              </h3>
+              <p
+                class="text-gray-700 text-center font-secondary w-full max-w-sm leading-relaxed"
+              >
+                {{ contactInfo.address }}
+              </p>
+            </div>
           </div>
 
           <!-- Address -->
           <div class="mb-8">
-            <div class="flex items-start gap-3">
+            <div class="flex flex-col items-center gap-1">
               <Icon
-                name="mdi:map-marker-outline"
-                class="text-blue-600 mt-1 text-xl flex-shrink-0"
+                name="material-symbols:call-sharp"
+                class="text-primary text-2xl flex-shrink-0"
               />
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-2">Address</h4>
-                <p class="text-gray-700 leading-relaxed">
-                  {{ contactInfo.address }}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phone Numbers -->
-          <div class="mb-8">
-            <h4 class="font-semibold text-gray-900 mb-4">Contact Numbers</h4>
-            <div class="space-y-3">
               <div
                 v-for="(phone, index) in contactInfo.phones"
                 :key="index"
-                class="flex items-center gap-3 group cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
+                class="flex items-center gap-1 font-secondary group cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
               >
-                <Icon
-                  name="mdi:phone-outline"
-                  class="text-green-600 text-lg flex-shrink-0"
-                />
-                <div>
+                <div class="text-center">
                   <span
                     v-if="phone.label"
-                    class="text-sm font-medium text-gray-600 block"
+                    class="text-base font-primary font-semibold text-gray-900 block"
                   >
                     {{ phone.label }}
                   </span>
@@ -195,46 +178,18 @@ const mapLocation = {
 
           <!-- Email -->
           <div class="mb-8">
-            <div class="flex items-start gap-3">
+            <div class="flex flex-col items-center gap-1">
               <Icon
-                name="mdi:email-outline"
-                class="text-red-500 mt-1 text-xl flex-shrink-0"
+                name="ic:sharp-alternate-email"
+                class="text-red-500 mt-1 text-2xl flex-shrink-0"
               />
               <div>
-                <h4 class="font-semibold text-gray-900 mb-2">Email</h4>
                 <a
                   :href="`mailto:${contactInfo.email}`"
-                  class="text-gray-900 font-medium hover:text-blue-600 transition-colors break-all"
+                  class="text-gray-900 font-primary font-medium hover:text-blue-600 transition-colors break-all"
                 >
                   {{ contactInfo.email }}
                 </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Additional Info -->
-          <div class="border-t border-gray-200 pt-8">
-            <h4 class="font-semibold text-gray-900 mb-4">Visit Us</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div class="flex items-center gap-3">
-                <Icon
-                  name="mdi:clock-outline"
-                  class="text-purple-600 text-xl flex-shrink-0"
-                />
-                <div>
-                  <p class="text-sm text-gray-600">Check-in Time</p>
-                  <p class="font-medium text-gray-900">2:00 PM</p>
-                </div>
-              </div>
-              <div class="flex items-center gap-3">
-                <Icon
-                  name="mdi:clock-outline"
-                  class="text-purple-600 text-xl flex-shrink-0"
-                />
-                <div>
-                  <p class="text-sm text-gray-600">Check-out Time</p>
-                  <p class="font-medium text-gray-900">12:00 PM</p>
-                </div>
               </div>
             </div>
           </div>

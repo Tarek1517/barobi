@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- Breadcrumb -->
-    <section class="bg-white border-b border-gray-200 py-4">
-      <div class="container mx-auto">
+    <section class="bg-background border-b border-gray-200 py-4">
+      <div class="container mx-auto font-primary">
         <nav class="flex items-center space-x-2 text-sm text-gray-600">
           <NuxtLink to="/" class="hover:text-primary transition-colors"
             >Home</NuxtLink
@@ -18,7 +18,7 @@
     </section>
 
     <!-- Main Content - Single Column -->
-    <section class="py-8 bg-white">
+    <section class="py-8 bg-background">
       <div class="container mx-auto">
         <!-- Image Gallery -->
         <div class="space-y-4 mb-8">
@@ -42,13 +42,13 @@
             </button>
             <div class="absolute top-4 left-4">
               <span
-                class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium"
+                class="bg-primary font-primary text-white px-3 py-1 rounded-full text-sm font-medium"
               >
                 {{ room.type }}
               </span>
             </div>
             <!-- Availability Badge -->
-            <div class="absolute bottom-4 left-4">
+            <div class="absolute font-primary bottom-4 left-4">
               <span
                 :class="[
                   'px-3 py-1 rounded-full text-sm font-medium',
@@ -107,7 +107,7 @@
           <div class="lg:col-span-2 space-y-2">
             <!-- Overview -->
             <div class="bg-white p-8 border border-gray-200">
-              <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">
                 Room Overview
               </h2>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -118,8 +118,8 @@
                     <Icon name="ph:ruler" class="text-primary text-xl" />
                   </div>
                   <div>
-                    <div class="text-sm text-gray-500">Size</div>
-                    <div class="font-semibold text-gray-900">
+                    <div class="text-sm font-secondary text-gray-500">Size</div>
+                    <div class="font-semibold font-primary text-gray-900">
                       {{ room.size }}
                     </div>
                   </div>
@@ -131,8 +131,8 @@
                     <Icon name="ph:users" class="text-primary text-xl" />
                   </div>
                   <div>
-                    <div class="text-sm text-gray-500">Max Guests</div>
-                    <div class="font-semibold text-gray-900">
+                    <div class="text-sm font-secondary text-gray-500">Max Guests</div>
+                    <div class="font-semibold font-primary text-gray-900">
                       {{ room.maxGuests }}
                     </div>
                   </div>
@@ -144,8 +144,8 @@
                     <Icon name="ph:bed" class="text-primary text-xl" />
                   </div>
                   <div>
-                    <div class="text-sm text-gray-500">Bed</div>
-                    <div class="font-semibold text-gray-900">
+                    <div class="text-sm font-secondary text-gray-500">Bed</div>
+                    <div class="font-semibold font-primary text-gray-900">
                       {{ room.beds }}
                     </div>
                   </div>
@@ -157,8 +157,8 @@
                     <Icon name="ph:eye" class="text-primary text-xl" />
                   </div>
                   <div>
-                    <div class="text-sm text-gray-500">View</div>
-                    <div class="font-semibold text-gray-900">
+                    <div class="text-sm font-secondary text-gray-500">View</div>
+                    <div class="font-semibold font-primary text-gray-900">
                       {{ room.view }}
                     </div>
                   </div>
@@ -168,33 +168,33 @@
 
             <!-- Room Statistics -->
             <div class="bg-white p-8 border border-gray-200">
-              <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">
                 Room Availability
               </h2>
               <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="text-center p-6 bg-gray-50">
-                  <div class="text-2xl font-bold text-gray-900">
+                  <div class="text-2xl font-primary font-bold text-gray-900">
                     {{ room.totalRooms }}
                   </div>
-                  <div class="text-sm text-gray-500">Total Rooms</div>
+                  <div class="text-sm font-secondary text-gray-500">Total Rooms</div>
                 </div>
                 <div class="text-center p-6 bg-green-50">
-                  <div class="text-2xl font-bold text-green-600">
+                  <div class="text-2xl font-primary font-bold text-green-600">
                     {{ room.availableCount }}
                   </div>
-                  <div class="text-sm text-green-600">Available Now</div>
+                  <div class="text-sm font-secondary text-green-600">Available Now</div>
                 </div>
                 <div class="text-center p-6 bg-red-50">
-                  <div class="text-2xl font-bold text-red-600">
+                  <div class="text-2xl font-primary font-bold text-red-600">
                     {{ room.bookedCount }}
                   </div>
-                  <div class="text-sm text-red-600">Currently Booked</div>
+                  <div class="text-sm font-secondary text-red-600">Currently Booked</div>
                 </div>
                 <div class="text-center p-6 bg-yellow-50">
-                  <div class="text-2xl font-bold text-yellow-600">
+                  <div class="text-2xl font-primary font-bold text-yellow-600">
                     {{ room.maintenanceCount }}
                   </div>
-                  <div class="text-sm text-yellow-600">Under Maintenance</div>
+                  <div class="text-sm font-secondary text-yellow-600">Under Maintenance</div>
                 </div>
               </div>
             </div>
@@ -202,10 +202,10 @@
 
           <!-- Right Column - Room Header & Book Button (1/3 width) -->
           <div class="lg:col-span-1 space-y-2">
-            <div class="bg-tertiary/15 p-8 border border-primary/25 sticky">
+            <div class="bg-white p-8 border border-primary/25 sticky">
               <!-- Room Header -->
               <div class="text-start mb-6">
-                <h1 class="text-3xl font-bold text-gray-900 mb-4">
+                <h1 class="text-3xl font-primary font-bold text-gray-900 mb-4">
                   {{ room.name }}
                 </h1>
                 <div
@@ -214,13 +214,13 @@
                   <div class="flex items-start gap-2">
                     <Icon name="ph:star-fill" class="text-yellow-400" />
                     <span class="font-semibold">{{ room.rating }}</span>
-                    <span class="text-gray-500"
+                    <span class="text-gray-500 font-primary"
                       >({{ room.reviewCount }} reviews)</span
                     >
                   </div>
-                  <div class="text-2xl font-bold text-primary">
+                  <div class="text-2xl font-primary font-bold text-primary">
                     {{ room.price
-                    }}<span class="text-sm font-normal text-gray-500"
+                    }}<span class="text-sm font-secondary font-normal text-gray-500"
                       >/{{ room.period }}</span
                     >
                   </div>
@@ -231,19 +231,19 @@
               <div class="text-center">
                 <nuxtLink
                   to="/checkout"
-                  class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold text-lg py-4 px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl w-full justify-center"
+                  class="inline-flex font-primary items-center gap-2 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold text-lg py-4 px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl w-full justify-center"
                 >
                   <Icon name="ph:calendar-check" class="text-xl" />
                   Book This Room
                 </nuxtLink>
               </div>
             </div>
-            <div class="bg-tertiary/15 p-7 border border-primary/25 sticky">
+            <div class="bg-white p-7 border border-primary/25 sticky">
               <!-- Secure Booking Info -->
               <div class="space-y-2 text-center">
-                <h2 class="text-xl font-bold text-gray-800">Secure Booking</h2>
+                <h2 class="text-xl font-primary font-bold text-gray-800">Secure Booking</h2>
                 <div
-                  class="flex items-center justify-center gap-2 text-green-600 font-semibold"
+                  class="flex items-center font-secondary justify-center gap-2 text-green-600 font-semibold"
                 >
                   <Icon name="ph:shield-check" class="text-2xl" />
                   100% Safe & Verified
@@ -258,7 +258,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
             <!-- Bed and Bedding -->
             <div class="bg-white p-8 border border-gray-200">
-              <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">
                 Bed & Bedding
               </h2>
               <div class="flex flex-wrap gap-8">
@@ -271,7 +271,7 @@
                     :name="getBeddingIcon(item)"
                     class="text-xl text-primary group-hover:scale-110 transition-transform duration-300"
                   />
-                  <span class="text-gray-700 font-medium text-sm">{{
+                  <span class="text-gray-700 font-secondary font-medium text-sm">{{
                     item
                   }}</span>
                 </div>
@@ -280,7 +280,7 @@
 
             <!-- Room Features -->
             <div class="bg-white p-8 border border-gray-200">
-              <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">
                 Room Features
               </h2>
               <div class="flex flex-wrap gap-8">
@@ -293,7 +293,7 @@
                     :name="getRoomFeatureIcon(feature)"
                     class="text-xl text-primary group-hover:scale-110 transition-transform duration-300"
                   />
-                  <span class="text-gray-700 font-medium text-sm">{{
+                  <span class="text-gray-700 font-secondary font-medium text-sm">{{
                     feature
                   }}</span>
                 </div>
@@ -302,7 +302,7 @@
 
             <!-- Bath & Bathroom Features -->
             <div class="bg-white p-8 border border-gray-200">
-              <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">
                 Bath & Bathroom Features
               </h2>
               <div class="flex flex-wrap gap-8">
@@ -315,7 +315,7 @@
                     :name="getBathroomIcon(feature)"
                     class="text-xl text-primary group-hover:scale-110 transition-transform duration-300"
                   />
-                  <span class="text-gray-700 font-medium text-sm">{{
+                  <span class="text-gray-700 font-secondary font-medium text-sm">{{
                     feature
                   }}</span>
                 </div>
@@ -324,7 +324,7 @@
 
             <!-- Furniture & Furnishings -->
             <div class="bg-white p-8 border border-gray-200">
-              <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">
                 Furniture & Furnishings
               </h2>
               <div class="flex flex-wrap gap-8">
@@ -337,7 +337,7 @@
                     :name="getFurnitureIcon(item)"
                     class="text-xl text-primary group-hover:scale-110 transition-transform duration-300"
                   />
-                  <span class="text-gray-700 font-medium text-sm">{{
+                  <span class="text-gray-700 font-secondary font-medium text-sm">{{
                     item
                   }}</span>
                 </div>
@@ -346,7 +346,7 @@
 
             <!-- Food & Beverage -->
             <div class="bg-white p-8 border border-gray-200">
-              <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">
                 Food & Beverage
               </h2>
               <div class="flex flex-wrap gap-8">
@@ -359,7 +359,7 @@
                     :name="getFoodIcon(item)"
                     class="text-xl text-primary group-hover:scale-110 transition-transform duration-300"
                   />
-                  <span class="text-gray-700 font-medium text-sm">{{
+                  <span class="text-gray-700 font-secondary font-medium text-sm">{{
                     item
                   }}</span>
                 </div>
@@ -368,14 +368,14 @@
           </div>
           <!-- Description -->
           <div class="bg-white p-8 border border-gray-200">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Description</h2>
-            <p class="text-gray-600 leading-relaxed text-lg">
+            <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">Description</h2>
+            <p class="text-gray-600 font-secondary leading-relaxed text-lg">
               {{ room.description }}
             </p>
           </div>
           <!-- Amenities -->
           <div class="bg-white p-8 border border-gray-200">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Amenities</h2>
+            <h2 class="text-3xl font-bold font-primary text-gray-900 mb-6">Amenities</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               <div
                 v-for="amenity in room.amenities"
@@ -390,7 +390,7 @@
                   />
                 </div>
                 <!-- Amenity name below -->
-                <span class="text-gray-700 font-medium text-sm">{{
+                <span class="text-gray-700 font-secondary font-medium text-sm">{{
                   amenity
                 }}</span>
               </div>
@@ -401,9 +401,9 @@
     </section>
 
     <!-- Related Rooms -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-background">
       <div class="container mx-auto px-4 sm:px-6">
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+        <h2 class="text-3xl font-primary font-bold text-gray-900 text-center mb-12">
           You Might Also Like
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">

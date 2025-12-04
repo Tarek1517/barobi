@@ -191,14 +191,11 @@ onUnmounted(() => {
   <!-- Gallery Hero Section -->
   <section class="relative h-[400px] lg:h-[500px] overflow-hidden group">
     <!-- Background -->
-    <NuxtImg
+    <img
       src="/images/banner3.jpg"
       alt="Hotel Gallery"
       class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
       loading="eager"
-      preload
-      format="webp"
-      quality="80"
     />
     <!-- Gradient Overlay -->
     <div
@@ -211,7 +208,7 @@ onUnmounted(() => {
     >
       <div class="max-w-5xl space-y-4 text-center">
         <nav
-          class="flex items-center justify-center text-white/90 text-sm mb-6"
+          class="flex items-center font-secondary justify-center text-white/90 text-sm mb-6"
         >
           <NuxtLink
             to="/"
@@ -227,12 +224,12 @@ onUnmounted(() => {
         </nav>
 
         <h1
-          class="text-5xl md:text-7xl text-center font-bold text-white leading-tight tracking-tight"
+          class="text-5xl md:text-7xl font-primary text-center font-bold text-white leading-tight tracking-tight"
         >
           Hotel
           <span class="linear-wipe drop-shadow-lg"> Gallery </span>
         </h1>
-        <p class="text-xl text-center text-gray-200 mt-4">
+        <p class="text-xl text-center font-secondary text-gray-200 mt-4">
           Explore our luxurious accommodations, amenities, and facilities
         </p>
       </div>
@@ -240,126 +237,104 @@ onUnmounted(() => {
   </section>
 
   <!-- Gallery Content Section -->
-  <section class="container mx-auto mb-16 py-20">
-    <!-- Filter Tabs -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
-      <button
-        v-for="category in categories"
-        :key="category.id"
-        @click="activeCategory = category.id"
-        :class="[
-          'px-6 py-3 font-medium transition-all duration-300 border-2',
-          activeCategory == category.id
-            ? 'bg-primary text-white border-primary/35 shadow-lg transform scale-105'
-            : 'bg-white text-primary border-primary/35 hover:shadow-md',
-        ]"
-      >
-        {{ category.name }}
-        <span
+  <section class="bg-background">
+    <div class="container mx-auto py-20">
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button
+          v-for="category in categories"
+          :key="category.id"
+          @click="activeCategory = category.id"
           :class="[
-            'ml-2 px-2 py-1 rounded-full text-xs',
-            activeCategory == category.id ? 'bg-white/35' : 'bg-gray-200',
+            'px-6 py-3 font-medium transition-all duration-300 border-2',
+            activeCategory == category.id
+              ? 'bg-primary font-primary text-white border-primary/35 shadow-lg transform scale-105'
+              : 'bg-white font-primary text-primary border-primary/35 hover:shadow-md',
           ]"
         >
-          {{ category.count }}
-        </span>
-      </button>
-    </div>
-
-    <!-- Gallery Grid -->
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-    >
-      <div
-        v-for="image in filteredImages"
-        :key="image.id"
-        class="group relative bg-white overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer"
-        @click="openLightbox(image)"
-      >
-        <!-- Image -->
-        <div class="aspect-square overflow-hidden">
-          <NuxtImg
-            :src="image.src"
-            :alt="image.alt"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            loading="lazy"
-            format="webp"
-            quality="85"
-          />
-        </div>
-
-        <!-- Overlay -->
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
-        >
-          <div
-            class="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+          {{ category.name }}
+          <span
+            :class="[
+              'ml-2 px-2 py-1 rounded-full text-xs',
+              activeCategory == category.id ? 'bg-white/35' : 'bg-gray-200',
+            ]"
           >
-            <h3 class="font-bold text-lg mb-2">{{ image.title }}</h3>
-            <p
-              class="text-sm text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"
-            >
-              {{ image.description }}
-            </p>
+            {{ category.count }}
+          </span>
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+      >
+        <div
+          v-for="image in filteredImages"
+          :key="image.id"
+          class="group relative bg-white overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer"
+          @click="openLightbox(image)"
+        >
+          <!-- Image -->
+          <div class="aspect-square overflow-hidden">
+            <img
+              :src="image.src"
+              :alt="image.alt"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+              format="webp"
+              quality="85"
+            />
+          </div>
+
+          <!-- Overlay -->
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
+          >
             <div
-              class="flex items-center mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200"
+              class="p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
             >
-              <Icon name="mdi:eye" class="mr-2" />
-              <span class="text-sm">Click to view</span>
+              <h3 class="font-bold text-lg mb-2">{{ image.title }}</h3>
+              <p
+                class="text-sm text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"
+              >
+                {{ image.description }}
+              </p>
+              <div
+                class="flex items-center mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200"
+              >
+                <Icon name="mdi:eye" class="mr-2" />
+                <span class="text-sm">Click to view</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Category Badge -->
-        <div class="absolute top-4 left-4">
-          <span
-            class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-700 capitalize"
-          >
-            {{ image.category }}
-          </span>
+          <!-- Category Badge -->
+          <div class="absolute top-4 left-4">
+            <span
+              class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-700 capitalize"
+            >
+              {{ image.category }}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Empty State -->
-    <div v-if="filteredImages.length === 0" class="text-center py-16">
-      <Icon name="mdi:image-off" class="text-gray-300 text-6xl mx-auto mb-4" />
-      <h3 class="text-xl font-semibold text-gray-600 mb-2">
-        No images found
-      </h3>
-      <p class="text-gray-500">
-        Try selecting a different category to view more photos
-      </p>
-    </div>
-  </section>
-
-  <!-- Call to Action Section -->
-  <section class="bg-gradient-to-r from-tertiary to-secondary/55 py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        Experience Our Luxury Firsthand
-      </h2>
-      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-        Book your stay and enjoy our premium accommodations, world-class
-        amenities, and exceptional service
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <NuxtLink
-          to="/rooms"
-          class="bg-white text-primary px-8 py-4 font-semibold hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
-        >
-          View Rooms & Suites
-        </NuxtLink>
-        <NuxtLink
-          to="/contact"
-          class="border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white hover:text-secondary transition-all duration-300 transform hover:scale-105"
-        >
-          Contact Us
-        </NuxtLink>
+      <!-- Empty State -->
+      <div v-if="filteredImages.length === 0" class="text-center py-16">
+        <Icon
+          name="mdi:image-off"
+          class="text-gray-300 text-6xl mx-auto mb-4"
+        />
+        <h3 class="text-xl font-semibold text-gray-600 mb-2">
+          No images found
+        </h3>
+        <p class="text-gray-500">
+          Try selecting a different category to view more photos
+        </p>
       </div>
     </div>
   </section>
-
+ 
   <!-- Lightbox Modal -->
   <div
     v-if="isLightboxOpen"
@@ -393,10 +368,10 @@ onUnmounted(() => {
     <div class="max-w-6xl max-h-full flex flex-col items-center" @click.stop>
       <!-- Image -->
       <div class="flex-1 flex items-center justify-center">
-        <NuxtImg
+        <img
           :src="selectedImage.src"
           :alt="selectedImage.alt"
-          class="max-w-full max-h-[80vh] object-contain rounded-lg"
+          class="max-w-full max-h-[80vh] object-contain"
           format="webp"
           quality="90"
         />
@@ -404,10 +379,10 @@ onUnmounted(() => {
 
       <!-- Image Info -->
       <div class="text-white text-center mt-6 max-w-2xl">
-        <h3 class="text-2xl font-bold mb-2">{{ selectedImage.title }}</h3>
-        <p class="text-gray-300">{{ selectedImage.description }}</p>
+        <h3 class="text-2xl font-primary font-bold mb-2">{{ selectedImage.title }}</h3>
+        <p class="text-gray-300 font-secondary">{{ selectedImage.description }}</p>
         <div
-          class="flex items-center justify-center gap-4 mt-4 text-sm text-gray-400"
+          class="flex items-center font-secondary justify-center gap-4 mt-4 text-sm text-gray-400"
         >
           <span class="capitalize px-3 py-1 bg-white/20 rounded-full">
             {{ selectedImage.category }}

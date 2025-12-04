@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-background">
     <!-- Hero Section -->
     <section
       class="relative h-[250px] sm:h-[300px] lg:h-[500px] overflow-hidden group"
@@ -51,7 +51,7 @@
     </section>
 
     <!-- Rooms Section -->
-    <section class="py-8 sm:py-12 lg:py-20 bg-white">
+    <section class="py-8 sm:py-12 lg:py-20 bg-background">
       <div class="container mx-auto px-4 sm:px-6">
         <div class="flex flex-col lg:flex-row gap-8">
           <!-- Filters Sidebar -->
@@ -76,7 +76,7 @@
               ]"
             >
               <!-- Search -->
-              <div>
+              <div class="p-6">
                 <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
                   <Icon name="ph:magnifying-glass" /> Search Rooms
                 </h3>
@@ -95,7 +95,7 @@
               </div>
 
               <!-- Room Types -->
-              <div>
+              <div class="p-6">
                 <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
                   <Icon name="ph:buildings" /> Room Types
                 </h3>
@@ -130,7 +130,7 @@
               </div>
 
               <!-- Price Range -->
-              <div>
+              <div class="p-6">
                 <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
                   <span class="text-base font-extrabold">$</span> Price Range
                 </h3>
@@ -159,7 +159,7 @@
               </div>
 
               <!-- Room Size -->
-              <div>
+              <div class="p-6">
                 <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
                   <Icon name="mdi:ruler" /> Room Size
                 </h3>
@@ -182,7 +182,7 @@
               </div>
 
               <!-- Amenities -->
-              <div>
+              <div class="p-6">
                 <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
                   <Icon name="ph:sparkle" /> Amenities
                 </h3>
@@ -344,11 +344,12 @@ const rooms = [
   {
     id: 1,
     type: "Suite",
-    name: "Luxury Suite",
-    size: "85 m²",
+    name: "Family Suite",
+    discount: "2% OFF",
+    size: "700 sq. ft",
     beds: "King Bed",
     image: "/images/room-10.jpg",
-    price: 299,
+    price: 180,
     period: "per night",
     guests: "2 Adults",
     availableRooms: 0,
@@ -359,11 +360,12 @@ const rooms = [
   {
     id: 2,
     type: "Deluxe",
-    name: "Deluxe Room",
+    name: "Executive Suite Large",
+    discount: "2% OFF",
     size: "45 m²",
     beds: "Queen Bed",
     image: "/images/room-11.jpg",
-    price: 189,
+    price: 160,
     period: "per night",
     guests: "2 Adults",
     availableRooms: 6,
@@ -374,11 +376,12 @@ const rooms = [
   {
     id: 3,
     type: "Family",
-    name: "Family Apartment",
+    name: "Executive Suite",
+    discount: "2% OFF",
     size: "120 m²",
     beds: "2 Queen Beds",
     image: "/images/room-12.jpg",
-    price: 399,
+    price: 150,
     period: "per night",
     guests: "4 Adults",
     availableRooms: 6,
@@ -395,11 +398,12 @@ const rooms = [
   {
     id: 4,
     type: "Executive",
-    name: "Executive Suite",
+    name: "Premium Deluxe",
+    discount: "2% OFF",
     size: "65 m²",
     beds: "King Bed",
     image: "/images/room-9.jpg",
-    price: 259,
+    price: 120,
     period: "per night",
     guests: "2 Adults",
     availableRooms: 8,
