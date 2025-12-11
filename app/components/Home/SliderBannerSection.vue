@@ -1,38 +1,10 @@
-<script setup>
-const slides = [
-  {
-    title: "Summer Special",
-    discount: "30% OFF",
-    price: "$99/night",
-    image: "/images/hotel-offer-1.jpg",
-    badge: "Popular",
-    features: ["Free Breakfast", "Pool", "Spa"],
-  },
-  {
-    title: "Luxury Suite",
-    discount: "25% OFF",
-    price: "$199/night",
-    image: "/images/hotel-offer-2.jpg",
-    badge: "Luxury",
-    features: ["Ocean View", "Balcony", "Spa"],
-  },
-  {
-    title: "Family Deal",
-    discount: "35% OFF",
-    price: "$149/night",
-    image: "/images/hotel-offer-3.jpg",
-    badge: "Family",
-    features: ["Kids Club", "Family Room", "Games"],
-  },
-  {
-    title: "Business Package",
-    discount: "20% OFF",
-    price: "$129/night",
-    image: "/images/hotel-offer-4.jpg",
-    badge: "Business",
-    features: ["Workspace", "Meeting", "WiFi"],
-  },
-];
+<script setup lang="ts">
+import type { Offer } from '~/types';
+
+type ApiResponse = {
+  data: Offer[];
+}
+const {data:offers} = await useAPI<ApiResponse>('/get-offers');
 </script>
 
 <template>
@@ -48,8 +20,8 @@ const slides = [
         
       </div>
       <UCarousel
-        v-slot="{ item: slide }"
-        :items="slides"
+        v-slot="{ item: offer }"
+        :items="offers?.data"
         loop
         arrows
         dots
@@ -65,8 +37,8 @@ const slides = [
           <!-- Image Section - Left -->
           <div class="lg:w-3/5 h-40 lg:h-auto relative overflow-hidden">
             <img
-              :src="slide.image"
-              :alt="slide.title"
+              :src="offer.image"
+              :alt="offer.title"
               class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
             />
             <!-- Discount Badge -->
@@ -74,7 +46,7 @@ const slides = [
               <span
                 class="bg-primary font-secondary text-white px-2 py-1 rounded text-sm font-bold"
               >
-                {{ slide.discount }}
+                {{ offer.offer }}
               </span>
             </div>
             <!-- Type Badge -->
@@ -82,7 +54,7 @@ const slides = [
               <span
                 class="bg-white/90 font-secondary text-gray-800 px-2 py-1 rounded text-xs font-semibold"
               >
-                {{ slide.badge }}
+                {{ offer.category }}
               </span>
             </div>
           </div>
@@ -92,17 +64,17 @@ const slides = [
             <!-- Text Content -->
             <div>
               <h3 class="text-lg font-primary font-bold text-gray-900 mb-1">
-                {{ slide.title }}
+                {{ offer.title }}
               </h3>
 
               <!-- Features -->
               <div class="flex flex-wrap gap-1 mb-3">
                 <span
-                  v-for="feature in slide.features"
-                  :key="feature"
+                  v-for="tagLine in offer.tag_line"
+                  :key="tagLine"
                   class="bg-primary/20 font-secondary text-primary px-2 py-1 rounded text-xs"
                 >
-                  {{ feature }}
+                  {{ tagLine }}
                 </span>
               </div>
             </div>
