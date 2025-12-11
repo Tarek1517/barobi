@@ -1,39 +1,12 @@
-<script setup>
+<script setup lang="ts">
 // Services data
-const services = [
-  {
-    id: 1,
-    name: "Fitness Centre",
-    image: "/images/Gym-4.webp",
-    price: "Free",
-    short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
-  },
-  {
-    id: 2,
-    name: "Garden Coffee Shop",
-    image: "/images/caffee-garden.jpg",
-    price: "$189",
-    short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
-  },
-  {
-    id: 3,
-    name: "Rooftop Café",
-    image: "/images/rooftop.jpg",
-    price: "Free",
-    short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
-  },
-  {
-    id: 4,
-    name: "Private Meeting Room",
-    image: "/images/meetingroom.jpg",
-    price: "$259",
-    short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
-  },
-];
+
+import type { Service } from '~/types';
+
+type ApiResponse = {
+  data: Service[];
+}
+const {data:services} = await useAPI<ApiResponse>('/get-home-services');
 </script>
 
 <template>
@@ -66,7 +39,7 @@ const services = [
       <!-- Services Carousel -->
       <UCarousel
         v-slot="{ item: services }"
-        :items="services"
+        :items="services?.data"
         loop
         arrows
         dots

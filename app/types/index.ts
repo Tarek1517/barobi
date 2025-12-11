@@ -59,26 +59,6 @@ export interface Car {
     created_at?: string;
     updated_at?: string;
   }
-  
-
-  export interface Brand {
-    id: number;
-    slug: string;
-    name: string;
-    logo?: string | null;
-  }
-
-  export interface Counter {
-    id: number;
-    title: string;
-    value: string;
-  }
-
-  export interface Slider {
-    id: number;
-    image: string;
-    title: string;
-  }
 
   export interface Picture {
     id: number;
@@ -120,4 +100,31 @@ export interface Car {
     start_date: string;
     expiry_date: string;
     tag_line: string[];
+  }
+
+  export interface Service{
+    id: number;
+    title: string;
+    image: string;
+    price: number;
+    price_note?: string;
+    hours: string;
+    short_description: string;
+  }
+
+  export interface Testimonial{
+    id: number;
+    name: string;
+    address: string;
+    image: string;
+    rating: number;
+    description: string;
+    total_stayed: string;
+  }
+
+  export interface Faqs{
+    id: number;
+    question: string;
+    answer: string;
+    open: boolean;
   }

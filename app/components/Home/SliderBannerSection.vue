@@ -4,7 +4,7 @@ import type { Offer } from '~/types';
 type ApiResponse = {
   data: Offer[];
 }
-const {data:offers} = await useAPI<ApiResponse>('/get-offers');
+const {data:offers} = await useAPI<ApiResponse>('/get-home-offers');
 </script>
 
 <template>
