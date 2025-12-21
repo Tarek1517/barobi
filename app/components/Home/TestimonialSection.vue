@@ -1,14 +1,10 @@
 <script setup lang="ts">
-// Testimonials data
-
 import type { Testimonial } from '~/types';
 
 type ApiResponse = {
   data: Testimonial[];
 }
 const { data: testimonials } = await useAPI < ApiResponse > ('/get-testimonials');
-
-// Function to generate star ratings
 const generateStars = (rating: number) => {
   return Array.from({ length: 5 }, (_, index) =>
     index < rating ? "★" : "☆"

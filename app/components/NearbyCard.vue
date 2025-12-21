@@ -1,35 +1,24 @@
 <template>
   <div
-    class="bg-white shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
-  >
+    class="bg-white shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
     <!-- Image Section (Top) -->
     <div class="relative">
-      <img
-        :src="item.image"
-        :alt="item.name"
-        class="w-full h-48 object-cover"
-        loading="lazy"
-        format="webp"
-        quality="80"
-      />
+      <img :src="item.image" :alt="item.name" class="w-full h-48 object-cover" loading="lazy" format="webp"
+        quality="80" />
       <!-- Category Badge -->
       <div class="absolute top-3 left-3">
-        <span
-          :class="[
-            'px-3 py-1 rounded-full font-primary text-xs font-medium',
-            type === 'restaurants'
-              ? 'bg-green-100 text-green-800'
-              : 'bg-blue-100 text-blue-800',
-          ]"
-        >
+        <span :class="[
+          'px-3 py-1 rounded-full font-primary text-xs font-medium',
+          type === 'restaurants'
+            ? 'bg-green-100 text-green-800'
+            : 'bg-blue-100 text-blue-800',
+        ]">
           {{ type === "restaurants" ? "Restaurant" : "Activity" }}
         </span>
       </div>
       <!-- Distance Badge -->
       <div class="absolute top-3 right-3">
-        <span
-          class="px-2 py-1 bg-black/70 text-white text-xs font-medium rounded-md"
-        >
+        <span class="px-2 py-1 bg-black/70 text-white text-xs font-medium rounded-md">
           {{ item.distance }}
         </span>
       </div>
@@ -39,17 +28,9 @@
     <div class="p-5">
       <!-- Header -->
       <div class="flex items-center justify-between b-3">
-        <h3
-          class="text-lg font-primary font-bold text-gray-900 mb-2 line-clamp-1"
-        >
+        <h3 class="text-lg font-primary font-bold text-gray-900 mb-2 line-clamp-1">
           {{ item.name }}
         </h3>
-        <!-- Rating/Cuisine/Meta Info -->
-
-        <span v-if="item.rating" class="flex items-center mr-4">
-          <Icon name="mdi:star" class="mr-1 text-yellow-500" />
-          {{ item.rating }}
-        </span>
       </div>
 
       <!-- Short Description -->
@@ -58,62 +39,27 @@
       </p>
 
       <!-- Details Grid -->
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-sm text-gray-600"
-      >
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-sm text-gray-600">
         <div class="flex items-center">
-          <Icon
-            name="mdi:map-marker-outline"
-            class="mr-2 text-red-500 flex-shrink-0"
-          />
+          <Icon name="mdi:map-marker-outline" class="mr-2 text-red-500 flex-shrink-0" />
           <span class="truncate text-xs">{{ item.address }}</span>
         </div>
         <div class="flex items-center">
-          <Icon
-            name="mdi:phone-outline"
-            class="mr-2 text-green-500 flex-shrink-0"
-          />
+          <Icon name="mdi:phone-outline" class="mr-2 text-green-500 flex-shrink-0" />
           <span class="text-xs">{{ item.phone }}</span>
-        </div>
-        <div v-if="item.hours" class="flex items-center sm:col-span-2">
-          <Icon
-            name="mdi:clock-time-four-outline"
-            class="mr-2 text-purple-500 flex-shrink-0"
-          />
-          <span class="text-xs">{{ item.hours }}</span>
         </div>
       </div>
 
-      <!-- Tags (Optional) -->
-      <div v-if="item.tags" class="border-t border-gray-100">
-        <div class="flex flex-wrap gap-1">
-          <span
-            v-for="tag in item.tags.slice(0, 3)"
-            :key="tag"
-            class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
-          >
-            {{ tag }}
-          </span>
-          <span
-            v-if="item.tags.length > 3"
-            class="px-2 py-1 text-gray-500 text-xs"
-          >
-            +{{ item.tags.length - 3 }} more
-          </span>
-        </div>
-      </div>
 
       <!-- Action Buttons -->
       <div class="flex gap-3 pt-3 border-t border-gray-100">
         <button
-          class="flex-1 flex items-center justify-center gap-1 px-4 py-2 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors text-sm font-medium"
-        >
+          class="flex-1 flex items-center justify-center gap-1 px-4 py-2 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors text-sm font-medium">
           <Icon name="mdi:directions" />
           Directions
         </button>
         <button
-          class="flex-1 flex items-center justify-center gap-1 px-4 py-2 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg transition-colors text-sm font-medium"
-        >
+          class="flex-1 flex items-center justify-center gap-1 px-4 py-2 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg transition-colors text-sm font-medium">
           <Icon name="mdi:phone" />
           Call Now
         </button>
