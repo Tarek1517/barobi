@@ -1,39 +1,11 @@
 <script setup>
 // Services data
-const services = [
-  {
-    id: 1,
-    name: "Fitness Centre",
-    image: "/images/Gym-4.webp",
-    price: "Free",
-    short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
-  },
-  {
-    id: 2,
-    name: "Garden Coffee Shop",
-    image: "/images/caffee-garden.jpg",
-    price: "$189",
-    short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
-  },
-  {
-    id: 3,
-    name: "Rooftop Café",
-    image: "/images/rooftop.jpg",
-    price: "Free",
-    short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
-  },
-  {
-    id: 4,
-    name: "Private Meeting Room",
-    image: "/images/meetingroom.jpg",
-    price: "$259",
-    short_description:
-      "Learn step-by-step how to import cars from Japan with minimal hassle and maximum savings.",
-  },
-];
+
+const { $api } = useNuxtApp();
+
+const { data: services } = await useAsyncData('services', () =>
+    $api('/get-services')
+  );
 </script>
 
 <template>
@@ -91,7 +63,7 @@ const services = [
       <div class="w-full rounded-lg px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
-            v-for="service in services"
+            v-for="service in services?.data"
             :key="service.id"
             :service="service"
           />
