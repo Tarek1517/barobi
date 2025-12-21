@@ -34,13 +34,14 @@
             </div>
             <span
               :class="[
-                'px-3 py-1 rounded-full  font-primary text-xs font-medium',
-                type === 'restaurants'
-                  ? 'bg-green-100 text-green-800'
-                  : 'bg-blue-100 text-blue-800',
+                'px-3 py-1 rounded-full font-primary text-xs font-medium',
+                item.category === 'Explore Dhaka' ? 'bg-purple-100 text-purple-800' :
+                item.category === 'Restaurants' ? 'bg-green-100 text-green-800' :
+                item.category === 'Shopping Malls' ? 'bg-amber-100 text-amber-800' :
+                'bg-blue-100 text-blue-800'
               ]"
             >
-              {{ type === "restaurants" ? "Restaurant" : "Activity" }}
+              {{ item.category }}
             </span>
           </div>
 
