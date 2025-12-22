@@ -150,7 +150,7 @@ const formatDate = (dateStr) => {
                 <div class="text-xs font-secondary text-gray-600 gap-3">
                   <span class="flex items-center gap-1">
                     <Icon name="mdi:calendar" class="w-3 h-3" />
-                    {{ formatDate(blogs?.publish_date) }}
+                    {{ formatDate(blogs?.published_date) }}
                   </span>
                   <span class="flex items-center gap-1">
                     <Icon name="mdi:star" class="w-3 h-3 text-yellow-500" />

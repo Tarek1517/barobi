@@ -76,7 +76,11 @@ export interface Car {
     id: number,
     thumbnail?: string,
     title: string,
-    content: string, 
+    short_description?: string,
+    content?: string, 
+    published_date?: string,
+    blog_review?: number,
+    total_comment?: number,
   }
 
   export interface Brand {

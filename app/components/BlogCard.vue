@@ -3,16 +3,6 @@ const props = defineProps({
   blogs: Object,
 });
 
-const formatDate = (dateStr) => {
-  if (!dateStr) return "";
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-};
-
 </script>
 
 <template>
@@ -45,7 +35,7 @@ const formatDate = (dateStr) => {
           <span
             class="flex items-center font-primary gap-1.5 bg-background px-2.5 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary/10">
             <Icon name="uil:calendar" class="w-3.5 h-3.5 text-primary" />
-            {{ formatDate(blogs?.published_date) }}
+            {{ new Date(blogs?.published_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) }}
           </span>
           <span
             class="flex items-center font-primary gap-1.5 bg-background px-2.5 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary/10">
@@ -62,7 +52,6 @@ const formatDate = (dateStr) => {
           </template>
           <span class="text-sm font-bold text-gray-900 ml-1">{{ blogs?.blog_review }}</span>
         </div>
-
       </div>
 
       <!-- Title -->
@@ -75,7 +64,7 @@ const formatDate = (dateStr) => {
 
       <!-- Short Description -->
       <p class="text-gray-600 font-secondary mb-6 leading-relaxed text-sm flex-1">
-        <span v-html="blogs?.content" class="line-clamp-3"></span>
+        {{ blogs?.short_description }}
       </p>
 
       <!-- CTA Button -->
