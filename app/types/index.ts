@@ -102,15 +102,6 @@ export interface Car {
     tag_line: string[];
   }
 
-  export interface Service{
-    id: number;
-    title: string;
-    image: string;
-    price: number;
-    price_note?: string;
-    hours: string;
-    short_description: string;
-  }
 
   export interface Testimonial{
     id: number;
@@ -127,4 +118,32 @@ export interface Car {
     question: string;
     answer: string;
     open: boolean;
+  }
+
+  export interface Service{
+    id: number;
+    title: string;
+    category: string;
+    slug: string;
+    image: string;
+    price: number;
+    price_note?: string;
+    hours: string;
+    short_description: string;
+    description: string;
+    latest_service: null|Service[];
+  }
+
+  export interface Dining{
+    id: number;
+    title: string;
+    category: string;
+    slug: string;
+    image: string;
+    price: number;
+    price_note?: string;
+    hours: string;
+    short_description: string;
+    description: string;
+    latest_dining: null|Dining[];
   }

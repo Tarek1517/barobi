@@ -1,76 +1,13 @@
 <script setup>
 // ✅ Static data instead of API
-const allBlogs = [
-  {
-    id: 1,
-    slug: "first-blog-post",
-    title: "First Blog Post Title",
-    blog_image_url: "/images/room-1.jpg",
-    publish_date: "2025-09-01",
-    blog_reviews: [{ rating: 4 }, { rating: 5 }],
-    short_description:
-      "Discover the latest trends in hospitality and how they're transforming guest experiences worldwide with innovative approaches.",
-  },
-  {
-    id: 2,
-    slug: "second-blog-post",
-    title: "Second Blog Post Title",
-    blog_image_url: "/images/room-3.jpg",
-    publish_date: "2025-09-05",
-    blog_reviews: [],
-    short_description:
-      "Explore sustainable tourism practices and eco-friendly hotel management that benefit both guests and the environment.",
-  },
-  {
-    id: 3,
-    slug: "third-blog-post",
-    title: "Third Blog Post Title",
-    blog_image_url: "/images/room-7.jpg",
-    publish_date: "2025-09-08",
-    blog_reviews: [{ rating: 3 }],
-    short_description:
-      "Learn about the psychology of comfort and how it influences guest satisfaction and return visits to luxury hotels.",
-  },
-  {
-    id: 4,
-    slug: "fourth-blog-post",
-    title: "Fourth Blog Post",
-    blog_image_url: "/images/room-6.jpg",
-    publish_date: "2025-09-12",
-    blog_reviews: [{ rating: 5 }, { rating: 4 }],
-    short_description:
-      "Dive into the future of hotel technology and how it's reshaping the hospitality industry with smart room automation.",
-  },
-];
 
-const latestBlogs = [
-  {
-    id: 7,
-    slug: "latest-blog-post",
-    title: "Latest Blog Post",
-    blog_image_url: "/images/room-7.jpg",
-    publish_date: "2025-09-10",
-    blog_reviews: [{ rating: 5 }, { rating: 5 }, { rating: 4 }],
-  },
+const { $api } = useNuxtApp();
 
-  {
-    id: 5,
-    slug: "latest-blog-post",
-    title: "Latest Blog Post",
-    blog_image_url: "/images/room-8.jpg",
-    publish_date: "2025-09-10",
-    blog_reviews: [{ rating: 5 }, { rating: 5 }, { rating: 4 }],
-  },
+const { data: blogs } = await useAsyncData('blogs', () =>
+    $api('/blogs')
+  );
 
-  {
-    id: 6,
-    slug: "latest-blog-post",
-    title: "Latest Blog Post",
-    blog_image_url: "/images/room-7.jpg",
-    publish_date: "2025-09-10",
-    blog_reviews: [{ rating: 5 }, { rating: 5 }, { rating: 4 }],
-  },
-];
+
 
 const topArticles = [
   {
@@ -166,7 +103,7 @@ const formatDate = (dateStr) => {
         <div class="w-full lg:w-3/4 rounded-lg px-4">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <BlogCard
-              v-for="blogs in allBlogs"
+              v-for="blogs in blogs.data"
               :key="blogs.id"
               :blogs="blogs"
             />
@@ -188,61 +125,6 @@ const formatDate = (dateStr) => {
 
             <div
               v-for="blogs in topArticles"
-              :key="blogs.id"
-              class="w-full my-5 flex items-center gap-4 group/item hover:bg-gray-50 p-3 rounded-xl transition-colors duration-300"
-            >
-              <div class="relative overflow-hidden w-20 h-16 flex-shrink-0">
-                <img
-                  class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500"
-                  :src="blogs?.blog_image_url"
-                  alt="Blog Image"
-                />
-                <div
-                  class="absolute inset-0 bg-black/20 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
-                ></div>
-              </div>
-              <div class="flex-1 min-w-0">
-                <p
-                  class="text-sm font-primary font-semibold text-gray-900 leading-tight mb-2 line-clamp-2 group-hover/item:text-primary transition-colors duration-300"
-                >
-                  <NuxtLink :to="`/blog-details/${blogs?.slug}`">
-                    {{ blogs?.title }}
-                  </NuxtLink>
-                </p>
-
-                <div class="text-xs font-secondary text-gray-600 gap-3">
-                  <span class="flex items-center gap-1">
-                    <Icon name="mdi:calendar" class="w-3 h-3" />
-                    {{ formatDate(blogs?.publish_date) }}
-                  </span>
-                  <span class="flex items-center gap-1">
-                    <Icon name="mdi:star" class="w-3 h-3 text-yellow-500" />
-                    {{
-                      blogs?.blog_reviews.length > 0
-                        ? `${blogs?.blog_reviews.length} review${
-                            blogs?.blog_reviews.length > 1 ? "s" : ""
-                          }`
-                        : "No reviews"
-                    }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Latest Articles -->
-          <div
-            class="bg-gradient-to-br from-gray-50 to-white p-6 shadow-lg border border-gray-100"
-          >
-            <h2
-              class="text-2xl font-primary bg-tertiary/15 font-bold text-gray-900 mb-6 pb-3 border-b border-gray-200 flex items-center gap-2"
-            >
-              <Icon name="mdi:clock-outline" class="text-primary" />
-              Latest Articles
-            </h2>
-
-            <div
-              v-for="blogs in latestBlogs"
               :key="blogs.id"
               class="w-full my-5 flex items-center gap-4 group/item hover:bg-gray-50 p-3 rounded-xl transition-colors duration-300"
             >
