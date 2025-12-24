@@ -76,11 +76,14 @@ export interface Car {
     id: number,
     thumbnail?: string,
     title: string,
+    category: string,
     short_description?: string,
     content?: string, 
     published_date?: string,
     blog_review?: number,
     total_comment?: number,
+    latest_blogs?: Blog[],
+    trending_blogs?: Blog[],
   }
 
   export interface Brand {

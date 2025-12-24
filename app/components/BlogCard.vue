@@ -40,7 +40,7 @@ const props = defineProps({
           <span
             class="flex items-center font-primary gap-1.5 bg-background px-2.5 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary/10">
             <Icon name="uil:comment" class="w-3.5 h-3.5 text-primary" />
-            {{ blogs?.total_comment }}
+            {{ blogs?.total_review }}
           </span>
         </div>
 

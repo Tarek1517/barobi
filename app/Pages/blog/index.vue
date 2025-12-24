@@ -9,32 +9,9 @@ const { data: blogs } = await useAsyncData('blogs', () =>
 
 
 
-const topArticles = [
-  {
-    id: 8,
-    slug: "top-article",
-    title: "Top Article Sample",
-    blog_image_url: "/images/room-1.jpg",
-    publish_date: "2025-08-28",
-    blog_reviews: [],
-  },
-  {
-    id: 9,
-    slug: "second-top-article",
-    title: "Second Top Article",
-    blog_image_url: "/images/room-3.jpg",
-    publish_date: "2025-08-20",
-    blog_reviews: [{ rating: 4 }],
-  },
-  {
-    id: 10,
-    slug: "second-top-article",
-    title: "Second Top Article",
-    blog_image_url: "/images/room-4.jpg",
-    publish_date: "2025-08-20",
-    blog_reviews: [{ rating: 4 }],
-  },
-];
+const { data: topblogs } = await useAsyncData('topblogs', () =>
+    $api('/get-top-blogs')
+  );
 
 // ✅ Utility
 const formatDate = (dateStr) => {
@@ -124,14 +101,14 @@ const formatDate = (dateStr) => {
             </h2>
 
             <div
-              v-for="blogs in topArticles"
-              :key="blogs.id"
+              v-for="blog in topblogs?.data"
+              :key="blog.id"
               class="w-full my-5 flex items-center gap-4 group/item hover:bg-gray-50 p-3 rounded-xl transition-colors duration-300"
             >
               <div class="relative overflow-hidden w-20 h-16 flex-shrink-0">
                 <img
                   class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500"
-                  :src="blogs?.blog_image_url"
+                  :src="blog?.thumbnail"
                   alt="Blog Image"
                 />
                 <div
@@ -142,22 +119,22 @@ const formatDate = (dateStr) => {
                 <p
                   class="text-sm font-primary font-semibold text-gray-900 leading-tight mb-2 line-clamp-2 group-hover/item:text-primary transition-colors duration-300"
                 >
-                  <NuxtLink :to="`/blog-details/${blogs?.slug}`">
-                    {{ blogs?.title }}
+                  <NuxtLink :to="`/blog/${blog?.slug}`">
+                    {{ blog?.title }}
                   </NuxtLink>
                 </p>
 
                 <div class="text-xs font-secondary text-gray-600 gap-3">
                   <span class="flex items-center gap-1">
                     <Icon name="mdi:calendar" class="w-3 h-3" />
-                    {{ formatDate(blogs?.published_date) }}
+                    {{ formatDate(blog?.published_date) }}
                   </span>
                   <span class="flex items-center gap-1">
                     <Icon name="mdi:star" class="w-3 h-3 text-yellow-500" />
                     {{
-                      blogs?.blog_reviews.length > 0
-                        ? `${blogs?.blog_reviews.length} review${
-                            blogs?.blog_reviews.length > 1 ? "s" : ""
+                      blog?.total_review > 0
+                        ? `${blog?.total_review} review${
+                            blog?.total_review > 1 ? "s" : ""
                           }`
                         : "No reviews"
                     }}

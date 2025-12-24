@@ -25,7 +25,7 @@ const { data: service } = useAPI < SingleServiceApiResponse > (`/get-service/${u
             </span>
             <span class="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
               <Icon name="mdi:clock-outline" class="w-4 h-4" />
-              24/7 Access
+              {{ service?.data?.hours }}
             </span>
           </div>
 
