@@ -69,7 +69,7 @@ const props = defineProps({
 
       <!-- CTA Button -->
       <div class="mt-auto pt-4 border-t border-gray-100">
-        <NuxtLink to="/blog/show"
+        <NuxtLink :to="`/blog/${blogs?.slug}`"
           class="inline-flex font-primary items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all duration-300 group/btn">
           READ MORE
           <Icon name="iconamoon:arrow-right-2"
