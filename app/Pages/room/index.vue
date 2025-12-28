@@ -339,121 +339,13 @@
 </template>
 
 <script setup lang="ts">
-// Rooms data
-const rooms = [
-  {
-    id: 1,
-    type: "Suite",
-    name: "Family Suite",
-    discount: "2% OFF",
-    size: "700 sq. ft",
-    beds: "King Bed",
-    image: "/images/room-10.jpg",
-    price: 180,
-    period: "per night",
-    guests: "2 Adults",
-    availableRooms: 0,
-    short_description:
-      "Spacious suite with panoramic city views and premium amenities for the ultimate luxury experience.",
-    amenities: ["Free WiFi", "Breakfast", "Parking", "City View", "Mini Bar"],
-  },
-  {
-    id: 2,
-    type: "Deluxe",
-    name: "Executive Suite Large",
-    discount: "2% OFF",
-    size: "45 m²",
-    beds: "Queen Bed",
-    image: "/images/room-11.jpg",
-    price: 160,
-    period: "per night",
-    guests: "2 Adults",
-    availableRooms: 6,
-    short_description:
-      "Elegant room with modern comforts and thoughtful touches for a perfect stay.",
-    amenities: ["Free WiFi", "Breakfast", "Parking", "Garden View"],
-  },
-  {
-    id: 3,
-    type: "Family",
-    name: "Executive Suite",
-    discount: "2% OFF",
-    size: "120 m²",
-    beds: "2 Queen Beds",
-    image: "/images/room-12.jpg",
-    price: 150,
-    period: "per night",
-    guests: "4 Adults",
-    availableRooms: 6,
-    short_description:
-      "Perfect for families with separate living area and all the comforts of home.",
-    amenities: [
-      "Free WiFi",
-      "Breakfast",
-      "Parking",
-      "Kitchen",
-      "Family Friendly",
-    ],
-  },
-  {
-    id: 4,
-    type: "Executive",
-    name: "Premium Deluxe",
-    discount: "2% OFF",
-    size: "65 m²",
-    beds: "King Bed",
-    image: "/images/room-9.jpg",
-    price: 120,
-    period: "per night",
-    guests: "2 Adults",
-    availableRooms: 8,
-    short_description:
-      "Sophisticated suite designed for business travelers with dedicated workspace.",
-    amenities: [
-      "Free WiFi",
-      "Breakfast",
-      "Parking",
-      "Workspace",
-      "Executive Lounge",
-    ],
-  },
-  {
-    id: 5,
-    type: "Premium",
-    name: "Premium Room",
-    size: "50 m²",
-    beds: "King Bed",
-    image: "/images/room-8.jpg",
-    price: 229,
-    period: "per night",
-    guests: "2 Adults",
-    availableRooms: 7,
-    short_description:
-      "Enhanced comfort with premium bedding and upgraded amenities.",
-    amenities: [
-      "Free WiFi",
-      "Breakfast",
-      "Parking",
-      "Premium Bedding",
-      "Bathrobes",
-    ],
-  },
-  {
-    id: 6,
-    type: "Studio",
-    name: "Studio Apartment",
-    size: "35 m²",
-    beds: "Queen Bed",
-    image: "/images/room-7.jpg",
-    price: 159,
-    period: "per night",
-    availableRooms: 4,
-    guests: "2 Adults",
-    short_description:
-      "Compact and efficient space perfect for short stays and budget-conscious travelers.",
-    amenities: ["Free WiFi", "Kitchenette", "City View"],
-  },
-];
+  
+const { $api } = useNuxtApp();
+
+const { data: rooms } = await useAsyncData('rooms', () =>
+    $api('/accommodations')
+  );
+
 
 // Reactive state
 const searchQuery = ref("");
