@@ -1,64 +1,50 @@
-export interface Car {
-    id: number;
-    category_id: number;
-    brand_id?: number | null;
-    car_model_id?: number | null;
-  
+export interface Accommodation {
+  id: number;
+  title: string;
+  slug: string;
+  category_name: string;
+  room_size_name: string;
+  max_guest: number;
+  bed: string;
+  view: string;
+  price: string; 
+  currency_symbol: string;
+  quantity: number;
+  available_rooms: number;
+  booked_rooms: number;
+  under_maintenance: number;
+  short_description?: string | null;
+  description?: string | null;
+  image: string;
+  gallery_images: { id: number; image: string }[];
+  related_accommodations?: {
     title: string;
     slug: string;
-    cover_image?: string;
-    hover_image?: string | null;
-
-    price?: number | null;
-    year?: number | null;
-    body?: number | null;
-    mileage?: number | null;
-  
-    car_model: any;
-    condition: 'used' | 'new' | string;
-    transmission?: string | null;
-    engine_capacity?: string | null;
-    fuel_type?: string | null;
-    color?: string | null;
-    drive_type?: string | null;
-    engine_size?: string | null;
-    doors?: string | null;
-    cylinder?: string | null;
-    seats?: string | null;
-    vin?: string | null;
-    manufacturer?: string | null;
-    chassis_no?: string | null;
-    package?: string | null;
-    auditor_grade?: string | null;
-  
-    length?: string | null;
-    width?: string | null;
-    height?: string | null;
-    width_including_mirrors?: string | null;
-    wheelbase?: string | null;
-    gross_vehicle_weight?: string | null;
-    height_including_roof_rails?: string | null;
-    max_loading_weight?: string | null;
-    luggage_capacity_seats_up?: string | null;
-    max_roof_load?: string | null;
-    luggage_capacity_seats_down?: string | null;
-    no_of_seats?: string | null;
-    fuel_tank_capacity?: string | null;
-    minimum_kerbweight?: string | null;
-    max_towing_weight_braked?: string | null;
-    turning_circle?: string | null;
-    max_towing_weight_unbraked?: string | null;
-  
+    cover_image: string;
+    category_name: string;
+    size_name: string;
+    currency: string;
     short_description?: string | null;
-    description?: string | null;
-    features?: string[] | null; // stored as JSON in DB
+    available_rooms: number;
+    max_guest: number;
+    quantity: number;
+    bed: string;
+    view: string;
+    price: string;
+  }[];
   
-    featured: boolean;
-    status: boolean;
-  
-    created_at?: string;
-    updated_at?: string;
-  }
+  bedding: { title: string; icon: string }[];
+  room_features: { title: string; icon: string }[];
+  bath_features: { title: string; icon: string }[];
+  furniture: { title: string; icon: string }[];
+  foods: { title: string; icon: string }[];
+  amenities: { title: string; icon: string }[];
+
+  // Optional timestamps (if you track creation/update)
+  created_at?: string;
+  updated_at?: string;
+}
+
 
   export interface Picture {
     id: number;

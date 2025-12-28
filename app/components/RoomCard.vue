@@ -33,35 +33,32 @@ const props = defineProps({
               }}</span>
             </div>
             <!-- Room Type Badge -->
-            <div
+            <!-- <div
               class="bg-gradient-to-r from-orange-500 to-orange-700 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit">
               <span class="text-xs font-medium text-white">{{
                 room.discount
               }}</span>
-            </div>
+            </div> -->
 
             <!-- Available Rooms Badge -->
-            <div v-if="room.availableRooms"
-              class="bg-gradient-to-r from-blue-500 to-blue-600 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit">
+            <div v-if="room.available_rooms"
+              class="bg-gradient-to-r from-orange-500 to-orange-700 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit">
               <span class="text-xs font-medium text-white">
-                {{ room.availableRooms }}
-                {{ room.availableRooms === 1 ? "Room" : "Rooms" }} Left
+                {{ room.available_rooms }}
+                {{ room.available_rooms === 1 ? "Room" : "Rooms" }} Left
               </span>
             </div>
           </div>
-          <div class="flex gap-2">
-            <!-- Free Breakfast Badge -->
+          <!-- <div class="flex gap-2">
             <div
               class="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit">
               <span class="text-xs font-medium text-white">Free Breakfast</span>
             </div>
-
-            <!-- Free Self Parking Badge -->
             <div
               class="bg-gradient-to-r from-tertiary to-secondary/55 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit">
               <span class="text-xs font-medium text-white">Free Self Parking</span>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- Favorite Button -->
@@ -167,11 +164,11 @@ const props = defineProps({
             </div>
           </div>
           <div class="flex gap-2">
-            <nuxtLink to="/room/show"
+            <nuxtLink :to="`/room/${room.slug}`"
               class="bg-gradient-to-r from-primary font-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
               Details
             </nuxtLink>
-            <nuxtLink to="/checkout"
+            <nuxtLink :to="`/room/${room.slug}`"
               class="bg-gradient-to-r from-primary font-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
               <Icon name="material-symbols:bookmark-sharp"
                 class="w-5 h-5 transition-transform group-hover:translate-x-1" />
