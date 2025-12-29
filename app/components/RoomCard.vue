@@ -14,7 +14,7 @@ const props = defineProps({
       <div class="relative h-68 overflow-hidden">
         <NuxtLink to="/room/show">
           <!-- Room Image -->
-          <img :src="room.cover_image" :alt="room.title"
+          <img :src="room.image" :alt="room.title"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
 
           <!-- Gradient Overlay -->

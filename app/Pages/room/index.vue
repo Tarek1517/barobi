@@ -113,18 +113,18 @@
                     <span>All Room Types</span>
                   </button>
                   <button
-                    v-for="type in roomTypes"
-                    :key="type"
-                    @click="toggleType(type)"
+                    v-for="category in category?.data"
+                    :key="category.id"
+                    @click="toggleType(category.id)"
                     :class="[
                       'w-full text-left px-3 py-2 transition-colors flex items-center gap-3',
-                      selectedType == type
+                      selectedType == category.id
                         ? 'bg-primary text-white font-medium'
                         : 'hover:bg-gray-100 text-gray-700',
                     ]"
                   >
                     <Icon name="ph:bed" class="text-lg" />
-                    {{ type }}
+                    {{ category.name }}
                   </button>
                 </div>
               </div>
@@ -165,18 +165,18 @@
                 </h3>
                 <div class="space-y-2">
                   <button
-                    v-for="size in roomSizes"
-                    :key="size"
-                    @click="toggleSize(size)"
+                    v-for="size in roomsize?.data"
+                    :key="size.id"
+                    @click="toggleSize(size.id)"
                     :class="[
                       'w-full text-left px-3 py-2 transition-colors',
-                      selectedSize == size
+                      selectedSize == size.id
                         ? 'bg-primary text-white font-medium'
                         : 'hover:bg-gray-100 text-gray-700',
                     ]"
                   >
                     <Icon name="mdi:pencil-ruler" class="text-lg" />
-                    <span class="px-3">{{ size }}</span>
+                    <span class="px-3">{{ size.name }}</span>
                   </button>
                 </div>
               </div>
@@ -188,8 +188,8 @@
                 </h3>
                 <div class="space-y-3">
                   <label
-                    v-for="amenity in amenities"
-                    :key="amenity"
+                    v-for="amenity in amenities?.data"
+                    :key="amenity.id"
                     class="flex items-center gap-3 cursor-pointer"
                   >
                     <input
@@ -198,7 +198,7 @@
                       v-model="selectedAmenities"
                       class="rounded border-gray-300 text-primary focus:ring-primary"
                     />
-                    <span class="text-sm text-gray-700">{{ amenity }}</span>
+                    <span class="text-sm text-gray-700">{{ amenity.title}}</span>
                   </label>
                 </div>
               </div>
@@ -356,26 +356,17 @@ const showMobileFilters = ref(false);
 const selectedAmenities = ref([]);
 
 // Constants
-const roomTypes = [
-  "Suite",
-  "Deluxe",
-  "Family",
-  "Executive",
-  "Premium",
-  "Studio",
-];
-const roomSizes = ["35 m²", "45 m²", "50 m²", "65 m²", "85 m²", "120 m²"];
-const amenities = [
-  "Free WiFi",
-  "Breakfast",
-  "Parking",
-  "City View",
-  "Garden View",
-  "Mini Bar",
-  "Kitchen",
-  "Workspace",
-  "Family Friendly",
-];
+const { data: category } = await  useAsyncData('category', () =>
+    $api('/get-room-category')
+  );
+
+const { data: amenities } = await  useAsyncData('amenities', () =>
+    $api('/get-amenities')
+  );
+
+  const { data: roomsize } = await  useAsyncData('roomsize', () =>
+    $api('/get-room-size')
+  );
 
 // Price range
 const minPrice = 0;
@@ -384,7 +375,7 @@ const priceRange = ref([minPrice, maxPrice]);
 
 // Computed properties
 const filteredRooms = computed(() => {
-  let filtered = [...rooms];
+  let filtered = [...rooms?.value?.data];
 
   // Search filter
   if (searchQuery.value) {
