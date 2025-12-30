@@ -10,13 +10,9 @@
               <h2 class="text-xl font-primary font-semibold mb-4">ROOM RESERVATION</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-secondary font-medium text-gray-700 mb-1"
-                    >Room Type</label
-                  >
-                  <select
-                    v-model="formData.roomType"
-                    class="w-full border font-secondary border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
+                  <label class="block text-sm font-secondary font-medium text-gray-700 mb-1">Room Type</label>
+                  <select v-model="formData.roomType"
+                    class="w-full border font-secondary border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select Room Type</option>
                     <option value="premium">Premium</option>
                     <option value="standard">Standard</option>
@@ -25,35 +21,21 @@
                   </select>
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >No. of rooms</label
-                  >
-                  <select
-                    v-model="formData.rooms"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of rooms</label>
+                  <select v-model="formData.rooms"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option v-for="n in 5" :key="n" :value="n">{{ n }}</option>
                   </select>
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >Check in date</label
-                  >
-                  <input
-                    type="date"
-                    v-model="formData.checkIn"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Check in date</label>
+                  <input type="date" v-model="formData.checkIn"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >Check out date</label
-                  >
-                  <input
-                    type="date"
-                    v-model="formData.checkOut"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Check out date</label>
+                  <input type="date" v-model="formData.checkOut"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
               </div>
             </section>
@@ -62,44 +44,24 @@
             <section class="mb-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >First Name</label
-                  >
-                  <input
-                    type="text"
-                    v-model="formData.firstName"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <input type="text" v-model="formData.firstName"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >Last Name</label
-                  >
-                  <input
-                    type="text"
-                    v-model="formData.lastName"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <input type="text" v-model="formData.lastName"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >Telephone</label
-                  >
-                  <input
-                    type="tel"
-                    v-model="formData.telephone"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Telephone</label>
+                  <input type="tel" v-model="formData.telephone"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    v-model="formData.email"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input type="email" v-model="formData.email"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
               </div>
             </section>
@@ -108,40 +70,25 @@
             <section class="mb-4">
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >No. of Adult</label
-                  >
-                  <select
-                    v-model="formData.adults"
-                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of Adult</label>
+                  <select v-model="formData.adults"
+                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option v-for="n in 6" :key="n" :value="n">{{ n }}</option>
                   </select>
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >No. of Children</label
-                  >
-                  <select
-                    v-model="formData.children"
-                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of Children</label>
+                  <select v-model="formData.children"
+                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option v-for="n in 5" :key="n" :value="n">{{ n }}</option>
                   </select>
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                    >Country</label
-                  >
-                  <select
-                    v-model="formData.country"
-                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Country</label>
+                  <select v-if="countries" v-model="formData.country"
+                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select Country</option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="AU">Australia</option>
+                    <option v-for="country in countries?.data" :key="country" :value="country">{{ country }}</option>
                   </select>
                 </div>
               </div>
@@ -154,11 +101,8 @@
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
                     Airport Pickup
                   </label>
-                  <select
-                    v-model="airportPickup"
-                    @change="handleAirportPickupChange"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
+                  <select v-model="airportPickup" @change="handleAirportPickupChange"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
@@ -168,11 +112,8 @@
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
                     Flight Number
                   </label>
-                  <input
-                    type="text"
-                    v-model="flightNumber"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                  <input type="text" v-model="flightNumber"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
               </div>
 
@@ -181,37 +122,19 @@
                 <!-- Pickup Type and Charge Section -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
-                      Pickup Type
-                    </label>
-                    <select
-                      v-model="pickupType"
-                      @change="updateCharges"
-                      class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
+                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Type</label>
+                    <select v-model="pickupTypeId" class="w-full font-secondary border border-gray-300 px-3 py-2">
                       <option value="">Select Type</option>
-                      <option value="one_way">One Way</option>
-                      <option value="two_way">Two Way</option>
+                      <option v-for="type in pickupTypes?.data" :key="type.id" :value="type.id">
+                        {{ type.name }}
+                      </option>
                     </select>
                   </div>
                   <div>
-                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
-                      Pickup Charge
-                    </label>
-                    <div
-                      class="border border-gray-300 px-3 py-2 bg-gray-50 min-h-[42px] flex items-center"
-                    >
-                      <span v-if="pickupType === 'one_way'" class="font-medium">
-                        $50.00
-                      </span>
-                      <span
-                        v-else-if="pickupType === 'two_way'"
-                        class="font-medium"
-                      >
-                        $90.00
-                      </span>
-                      <span v-else class="text-gray-500">
-                        Select pickup type to see charge
+                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Charge</label>
+                    <div class="border px-3 py-2 bg-gray-50 min-h-[42px] flex items-center">
+                      <span class="font-medium">
+                        {{ selectedPickupType ? `$${selectedPickupType.price}` : '$0' }}
                       </span>
                     </div>
                   </div>
@@ -219,63 +142,43 @@
 
                 <!-- Extra Services Section -->
                 <div class="pt-4">
-                  
+
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Extra Bed Option -->
                     <div>
-                      <label
-                        class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                      >
+                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
                         Extra Bed
                       </label>
-                      <select
-                        v-model="extraBed"
-                        @change="updateCharges"
-                        class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      >
-                        <option value="none">No Extra Bed</option>
-                        <option value="single">Single Bed (+$30.00)</option>
-                        <option value="double">Double Bed (+$50.00)</option>
-                      </select>
+
+                    <select v-model="extraBedId" class="w-full font-secondary border border-gray-300 px-3 py-2">
+                      <option value="">No Extra Bed</option>
+                      <option v-for="bed in bedCharges?.data" :key="bed.id" :value="bed.id">
+                        {{ bed.name }} (${{ bed.price }})
+                      </option>
+                    </select>
+
+
                     </div>
 
-                    <!-- Extra Bed Charge Display -->
                     <div>
-                      <label
-                        class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                      >
+                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
                         Extra Bed Charge
                       </label>
                       <div
-                        class="border font-secondary border-gray-300 px-3 py-2 bg-gray-50 min-h-[42px] flex items-center"
-                      >
-                        <span v-if="extraBed === 'single'" class="font-medium">
-                          $30.00
-                        </span>
-                        <span
-                          v-else-if="extraBed === 'double'"
-                          class="font-medium"
-                        >
-                          $50.00
-                        </span>
-                        <span v-else class="text-gray-500">
-                          No extra bed selected
+                        class="border font-secondary border-gray-300 px-3 py-2 bg-gray-50 min-h-[42px] flex items-center">
+                        <span class="font-medium">
+                          {{ selectedBedCharge ? `$${selectedBedCharge.price}` : '$0' }}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Notes/Requests Section -->
                   <div class="mt-4">
                     <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
                       Special Notes / Requests
                     </label>
-                    <textarea
-                      v-model="specialNotes"
-                      rows="3"
+                    <textarea v-model="specialNotes" rows="3"
                       placeholder="Any special requests or notes for your pickup..."
-                      class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    ></textarea>
+                      class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                   </div>
                 </div>
               </div>
@@ -293,30 +196,15 @@
                 <h3 class="font-medium font-secondary mb-2">Payment Method</h3>
                 <div class="flex flex-col space-y-4">
                   <label class="flex items-center">
-                    <input
-                      type="radio"
-                      value="affirm"
-                      v-model="formData.paymentMethod"
-                      class="mr-2"
-                    />
+                    <input type="radio" value="affirm" v-model="formData.paymentMethod" class="mr-2" />
                     Affirm
                   </label>
                   <label class="flex items-center">
-                    <input
-                      type="radio"
-                      value="paypal"
-                      v-model="formData.paymentMethod"
-                      class="mr-2"
-                    />
+                    <input type="radio" value="paypal" v-model="formData.paymentMethod" class="mr-2" />
                     PayPal
                   </label>
                   <label class="flex items-center">
-                    <input
-                      type="radio"
-                      value="card"
-                      v-model="formData.paymentMethod"
-                      class="mr-2"
-                    />
+                    <input type="radio" value="card" v-model="formData.paymentMethod" class="mr-2" />
                     Credit Card
                   </label>
                 </div>
@@ -326,65 +214,35 @@
                 <h3 class="font-medium mb-2">Card Details</h3>
                 <div class="space-y-4">
                   <div>
-                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                      >Name on card *</label
-                    >
-                    <input
-                      type="text"
-                      v-model="formData.cardName"
-                      class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Name on card *</label>
+                    <input type="text" v-model="formData.cardName"
+                      class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     <p class="text-xs font-secondary text-gray-500 mt-1">
                       Please enter the cardholders name exactly as it appears on
                       the card.
                     </p>
                   </div>
                   <div>
-                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                      >Card number *</label
-                    >
-                    <input
-                      type="text"
-                      v-model="formData.cardNumber"
-                      placeholder="0000 0000 0000 0000"
-                      class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Card number *</label>
+                    <input type="text" v-model="formData.cardNumber" placeholder="0000 0000 0000 0000"
+                      class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label
-                        class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                        >Expiration date *</label
-                      >
-                      <input
-                        type="text"
-                        v-model="formData.cardExpiry"
-                        placeholder="MM/YY"
-                        class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
+                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Expiration date
+                        *</label>
+                      <input type="text" v-model="formData.cardExpiry" placeholder="MM/YY"
+                        class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                     <div>
-                      <label
-                        class="block font-secondary text-sm font-medium text-gray-700 mb-1"
-                        >Security code *</label
-                      >
-                      <input
-                        type="text"
-                        v-model="formData.cardCvv"
-                        placeholder="CVV"
-                        class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
+                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Security code *</label>
+                      <input type="text" v-model="formData.cardCvv" placeholder="CVV"
+                        class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                     <div>
-                      <label
-                        class="block text-sm font-medium text-gray-700 mb-1"
-                        >Billing ZIP code *</label
-                      >
-                      <input
-                        type="text"
-                        v-model="formData.cardZip"
-                        class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
+                      <label class="block text-sm font-medium text-gray-700 mb-1">Billing ZIP code *</label>
+                      <input type="text" v-model="formData.cardZip"
+                        class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                   </div>
                 </div>
@@ -397,12 +255,9 @@
         <div class="lg:w-1/3 space-y-2 mt-1">
           <div class="bg-white rounded-lg shadow-md top-4">
             <div>
-              <img
-                src="/images/room-13.jpg"
-                alt="room-13"
+              <img src="/images/room-13.jpg" alt="room-13"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
+                loading="lazy" />
             </div>
             <div class="flex flex-col p-6">
               <!-- Room Details -->
@@ -410,9 +265,10 @@
                 <h3 class="font-bold font-primary text-xl">
                   <span v-if="formData.roomType" class="capitalize">{{ formData.roomType }}</span>
                   <span v-else>Deluxe King Room</span>
-                  , Guest room, 
+                  , Guest room,
                   <span v-if="formData.adults">{{ formData.adults }} Adult{{ formData.adults > 1 ? 's' : '' }}</span>
-                  <span v-if="formData.children">, {{ formData.children }} Child{{ formData.children > 1 ? 'ren' : '' }}</span>
+                  <span v-if="formData.children">, {{ formData.children }} Child{{ formData.children > 1 ? 'ren' : ''
+                  }}</span>
                 </h3>
                 <p class="text-sm font-secondary text-gray-600 mt-1">Room Details</p>
 
@@ -428,21 +284,21 @@
                 </div>
               </div>
 
-            
+
 
               <!-- Airport Pickup Summary -->
               <div v-if="airportPickup === 'yes'">
-               
                 <div class="text-sm font-secondary text-gray-600 space-y-1">
                   <p v-if="flightNumber">
                     <strong>Flight Number:</strong> {{ flightNumber }}
                   </p>
-                  <p v-if="pickupType">
-                    <strong>Pickup Type:</strong> {{ getPickupTypeName(pickupType) }}
+                  <p v-if="selectedPickupType">
+                    <strong>Pickup Type:</strong> {{ selectedPickupType.name }}
                   </p>
-                  <p v-if="extraBed && extraBed !== 'none'">
-                    <strong>Extra Bed:</strong> {{ getExtraBedName(extraBed) }}
+                  <p v-if="selectedBedCharge">
+                    <strong>Extra Bed:</strong> {{ selectedBedCharge.name }}
                   </p>
+
                 </div>
               </div>
 
@@ -465,24 +321,25 @@
                 <div class="space-y-2">
                   <div class="flex justify-between font-secondary">
                     <span>
-                      {{ nights }} night{{ nights > 1 ? 's' : '' }} × 
+                      {{ nights }} night{{ nights > 1 ? 's' : '' }} ×
                       {{ formData.rooms }} room{{ formData.rooms > 1 ? 's' : '' }}
                       × ${{ roomRate.toFixed(2) }}
                     </span>
                     <span>${{ calculateRoomTotal() }}</span>
                   </div>
-                  
+
                   <!-- Airport Pickup Charges -->
-                  <div v-if="airportPickup === 'yes' && pickupType" class="flex justify-between text-sm font-secondary">
+                  <div v-if="airportPickup === 'yes' && selectedPickupType"
+                    class="flex justify-between text-sm font-secondary">
                     <span>Airport Pickup</span>
                     <span>${{ totalCharge.toFixed(2) }}</span>
                   </div>
-                  
+
                   <div class="flex justify-between font-secondary">
                     <span>Taxes & fees</span>
                     <span>${{ calculateTaxes() }}</span>
                   </div>
-                  
+
                   <div class="flex justify-between font-secondary font-bold mt-2 text-lg border-t pt-2">
                     <span>Grand Total</span>
                     <span>${{ calculateGrandTotal() }}</span>
@@ -495,11 +352,8 @@
               </p>
 
               <!-- Confirm Button -->
-              <button
-                @click="handleSubmit"
-                :disabled="isSubmitting"
-                class="w-full bg-primary text-white font-primary py-3 font-medium mt-6 hover:bg-secondary transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-              >
+              <button @click="handleSubmit" :disabled="isSubmitting"
+                class="w-full bg-primary text-white font-primary py-3 font-medium mt-6 hover:bg-secondary transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed">
                 {{ isSubmitting ? "Processing..." : "Confirm Reservation" }}
               </button>
             </div>
@@ -563,21 +417,22 @@ const formData = reactive({
   cardZip: "",
 });
 
-const airportPickup = ref("");
-const flightNumber = ref("");
-const pickupType = ref("");
-const extraBed = ref("none");
-const specialNotes = ref("");
+const airportPickup = ref("")
+const flightNumber = ref("")
+const pickupTypeId = ref(null)
+const extraBedId = ref(null)
+const specialNotes = ref("")
 
 // Handle airport pickup change
 const handleAirportPickupChange = () => {
   if (airportPickup.value !== "yes") {
-    // Reset values if pickup is not selected
-    pickupType.value = "";
-    extraBed.value = "none";
-    specialNotes.value = "";
+    pickupTypeId.value = null
+    extraBedId.value = null
+    flightNumber.value = ""
+    specialNotes.value = ""
   }
 };
+
 
 // Update charges function
 const updateCharges = () => {
@@ -586,24 +441,12 @@ const updateCharges = () => {
 
 // Computed total charge for airport pickup
 const totalCharge = computed(() => {
-  let total = 0;
+  let total = 0
+  if (selectedPickupType.value) total += Number(selectedPickupType.value.price)
+  if (selectedBedCharge.value) total += Number(selectedBedCharge.value.price)
+  return total
+})
 
-  // Add pickup charge
-  if (pickupType.value === "one_way") {
-    total += 50;
-  } else if (pickupType.value === "two_way") {
-    total += 90;
-  }
-
-  // Add extra bed charge
-  if (extraBed.value === "single") {
-    total += 30;
-  } else if (extraBed.value === "double") {
-    total += 50;
-  }
-
-  return total;
-});
 
 // State
 const isSubmitting = ref(false);
@@ -625,24 +468,31 @@ const nights = computed(() => {
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 });
 
-// Helper methods
-const getCountryName = (code) => {
-  const countries = {
-    US: "United States",
-    CA: "Canada",
-    UK: "United Kingdom",
-    AU: "Australia"
-  };
-  return countries[code] || code;
-};
+const { $api } = useNuxtApp();
 
-const getPickupTypeName = (type) => {
-  return type === "one_way" ? "One Way" : "Two Way";
-};
+const { data: countries } = await useAsyncData('countries', () =>
+  $api('/get-countries')
+);
 
-const getExtraBedName = (type) => {
-  return type === "single" ? "Single Bed" : "Double Bed";
-};
+const { data: bedCharges } = await useAsyncData('bed-charges', () =>
+  $api('/get-bed-charges')
+);
+
+const { data: pickupTypes } = await useAsyncData('pickup-types', () =>
+  $api('/get-pickup-charges')
+);
+
+const selectedPickupType = computed(() => {
+  return pickupTypes.value?.data?.find(
+    p => p.id === Number(pickupTypeId.value)
+  )
+})
+
+const selectedBedCharge = computed(() => {
+  return bedCharges.value?.data?.find(
+    b => b.id === Number(extraBedId.value)
+  )
+})
 
 const getPaymentMethodName = (method) => {
   const methods = {
@@ -669,12 +519,12 @@ const calculateTaxes = () => {
 
 const calculateGrandTotal = () => {
   let total = parseFloat(calculateRoomTotal()) + parseFloat(calculateTaxes());
-  
+
   // Add airport pickup charges if selected
-  if (airportPickup.value === "yes" && pickupType.value) {
+  if (airportPickup.value === "yes" && selectedPickupType.value) {
     total += totalCharge.value;
   }
-  
+
   return total.toFixed(2);
 };
 
@@ -698,7 +548,7 @@ const handleSubmit = async () => {
     ...formData,
     airportPickup: airportPickup.value,
     flightNumber: flightNumber.value,
-    pickupType: pickupType.value,
+    selectedPickupType: selectedPickupType.value,
     extraBed: extraBed.value,
     specialNotes: specialNotes.value,
     totalCharge: totalCharge.value,

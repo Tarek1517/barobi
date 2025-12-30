@@ -300,7 +300,7 @@ async function onRegister(event: FormSubmitEvent<RegisterSchema>) {
   registerForm.value?.clear();
   try {
     await auth.register(event.data);
-    navigateTo("/student/dashboard");
+    navigateTo("/dashboard");
   } catch (err: any) {
     const error = useApiError(err);
     if (error.isValidationError) {

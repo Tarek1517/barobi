@@ -1,61 +1,36 @@
 <template>
-  <div
-    class="bg-background flex items-center justify-center p-4"
-  >
-    <div
-      class="w-full max-w-6xl bg-white shadow-2xl my-20 overflow-hidden flex flex-col lg:flex-row"
-    >
+  <div class="bg-background flex items-center justify-center p-4">
+    <div class="w-full max-w-6xl bg-white shadow-2xl my-20 overflow-hidden flex flex-col lg:flex-row">
       <!-- Left Column - Login Form -->
       <div class="w-full lg:w-1/2 p-8 lg:p-12">
         <!-- Logo and Header -->
         <div class="text-center mb-8">
           <div class="flex justify-center mb-6">
             <div class="relative">
-              <NuxtLink
-                to="/"
-                class="relative flex items-center justify-center group"
-              >
-                <img
-                  class="object-cover w-28 h-auto"
-                  src="/images/Logo.png"
-                  alt="Logo"
-                />
+              <NuxtLink to="/" class="relative flex items-center justify-center group">
+                <img class="object-cover w-28 h-auto" src="/images/Logo.png" alt="Logo" />
               </NuxtLink>
             </div>
           </div>
           <h1
-            class="text-3xl font-primary font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
-          >
+            class="text-3xl font-primary font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
             Welcome Back
           </h1>
           <p class="text-gray-500 font-secondary">Sign in to your account to continue</p>
         </div>
 
         <!-- Login Form -->
-        <UForm
-          ref="login-form"
-          :schema="schema"
-          :state="state"
-          class="space-y-6 mt-8"
-          @submit="onSubmit"
-        >
+        <UForm ref="login-form" :schema="schema" :state="state" class="space-y-6 mt-8" @submit="onSubmit">
           <!-- Phone Input -->
           <UFormField label="Phone Number" name="phone" class="w-full">
             <div class="relative">
-              <div
-                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
-              >
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <UIcon name="i-lucide-phone" class="text-blue-500" />
               </div>
-              <UInput
-                placeholder="Enter your phone number"
-                v-model="state.phone"
-                class="w-full font-secondary pl-10"
-                size="xl"
-                :ui="{
+              <UInput placeholder="Enter your phone number" v-model="state.phone" class="w-full font-secondary pl-10"
+                size="xl" :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
-                }"
-              />
+                }" />
             </div>
             <p class="text-xs font-secondary text-gray-500 mt-1">
               We'll never share your phone with anyone else.
@@ -65,32 +40,17 @@
           <!-- Password Input -->
           <UFormField label="Password" name="password" class="w-full">
             <div class="relative">
-              <div
-                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
-              >
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <UIcon name="i-lucide-lock" class="text-blue-500" />
               </div>
-              <UInput
-                :type="show ? 'text' : 'password'"
-                v-model="state.password"
-                class="w-full font-secondary pl-10 pr-10"
-                size="xl"
-                :ui="{
+              <UInput :type="show ? 'text' : 'password'" v-model="state.password"
+                class="w-full font-secondary pl-10 pr-10" size="xl" :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
-                }"
-              >
+                }">
                 <template #trailing>
-                  <UButton
-                    color="gray"
-                    variant="ghost"
-                    size="xs"
-                    :icon="show ? 'i-lucide-eye-off' : 'i-lucide-eye'"
-                    :aria-label="show ? 'Hide password' : 'Show password'"
-                    :aria-pressed="show"
-                    aria-controls="password"
-                    @click="show = !show"
-                    class="hover:bg-gray-100 rounded-lg"
-                  />
+                  <UButton color="gray" variant="ghost" size="xs" :icon="show ? 'i-lucide-eye-off' : 'i-lucide-eye'"
+                    :aria-label="show ? 'Hide password' : 'Show password'" :aria-pressed="show" aria-controls="password"
+                    @click="show = !show" class="hover:bg-gray-100 rounded-lg" />
                 </template>
               </UInput>
             </div>
@@ -99,41 +59,29 @@
           <!-- Remember Me & Forgot Password -->
           <div class="flex items-center justify-between text-sm">
             <div class="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                class="h-4 w-4 font-secondary text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
+              <input id="remember-me" name="remember-me" type="checkbox"
+                class="h-4 w-4 font-secondary text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
               <label for="remember-me" class="ml-2 block text-gray-700">
                 Remember me
               </label>
             </div>
-            <a
-              href="#"
-              class="font-medium font-secondary text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
-            >
+            <a href="#"
+              class="font-medium font-secondary text-indigo-600 hover:text-indigo-500 transition-colors duration-300">
               Forgot password?
             </a>
           </div>
 
           <!-- Submit Button -->
-          <UButton
-            type="submit"
-            block
-            size="xl"
-            loading-auto
-            :ui="{
-              base: 'w-full group font-primary relative bg-primary text-white py-4 px-6 font-bold text-lg transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-primary/30 overflow-hidden',
-            }"
-          >
+          <UButton type="submit" block size="xl" loading-auto :ui="{
+            base: 'w-full group font-primary relative bg-primary text-white py-4 px-6 font-bold text-lg transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-primary/30 overflow-hidden',
+          }">
             <span class="flex items-center justify-center">
               <UIcon name="i-lucide-log-in" class="mr-2" />
               Sign in to your account
             </span>
             <div
-              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
-            ></div>
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000">
+            </div>
           </UButton>
         </UForm>
 
@@ -152,10 +100,8 @@
         <!-- Sign Up Link -->
         <p class="mt-8 font-secondary text-center text-gray-500 text-sm">
           Don't have an account?
-          <NuxtLink
-            to="/dashboard"
-            class="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300"
-          >
+          <NuxtLink to="/dashboard"
+            class="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300">
             Create account
           </NuxtLink>
         </p>
@@ -163,21 +109,13 @@
 
       <!-- Right Column - Full Height Image -->
       <div class="w-full lg:w-1/2 relative hidden lg:block">
-        <div
-          class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 z-10"
-        ></div>
-        <img
-          src="/images/01.jpg"
-          alt="Modern workspace"
-          class="w-full h-auto object-cover"
-        />
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 z-10"></div>
+        <img src="/images/01.jpg" alt="Modern workspace" class="w-full h-auto object-cover" />
 
         <!-- Overlay Text -->
         <div class="absolute inset-0 flex items-center justify-center z-20 p-8">
           <div class="text-center max-w-md">
-            <h2
-              class="text-3xl font-primary linear-wipe uppercase font-bold mb-4 drop-shadow-lg"
-            >
+            <h2 class="text-3xl font-primary linear-wipe uppercase font-bold mb-4 drop-shadow-lg">
               Brobi Appartments
             </h2>
             <p class="text-lg font-secondary drop-shadow-md text-gray-500 opacity-90">
@@ -221,35 +159,33 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   form.value?.clear();
   try {
     await auth.login(event.data);
-    navigateTo("/student/dashboard");
+    navigateTo("/dashboard");
   } catch (err: any) {
-    const error = useApiError(err);
-    if (error.isValidationError) {
-      form.value?.setErrors(error.bag);
+    if (err.response?.status === 422) {
+      form.value?.setErrors(err.response.data.errors);
       return;
     }
 
     toast.add({
       title: "Something went wrong",
-      description: "Please try again later",
+      description: err.message || "Please try again later",
       icon: "i-lucide-triangle-alert",
       color: "red",
     });
   }
 }
+
 </script>
 
 <style scoped>
 /* Gradient Text Animation */
 .linear-wipe {
   text-align: center;
-  background: linear-gradient(
-    to right,
-    #7e1218 20%,
-    #cd986c 40%,
-    #cd986c 60%,
-    #fff 80%
-  );
+  background: linear-gradient(to right,
+      #7e1218 20%,
+      #cd986c 40%,
+      #cd986c 60%,
+      #fff 80%);
   background-size: 200% auto;
   color: #000;
   background-clip: text;

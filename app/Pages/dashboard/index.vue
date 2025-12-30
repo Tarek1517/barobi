@@ -1,18 +1,9 @@
-<script setup>
-// Customer data and bookings
-const customer = {
-  name: "Sarah Johnson",
-  email: "sarah.johnson@example.com",
-  phone: "+1 (555) 123-4567",
-  memberSince: "2023-03-15",
-  avatar: "/images/avatar-customer.jpg",
-  preferences: {
-    notifications: true,
-    newsletter: false,
-    smsAlerts: true,
-  },
-};
+<script setup lang="ts">
+definePageMeta({
+  middleware: 'auth' 
+})
 
+const user = useAuthStore().user
 // Apartment bookings data
 const bookings = [
   {
@@ -77,12 +68,9 @@ const pastStays = bookings.filter(
 // Settings form state
 import { ref } from "vue";
 const settingsForm = ref({
-  name: customer.name,
-  email: customer.email,
-  phone: customer.phone,
-  notifications: customer.preferences.notifications,
-  newsletter: customer.preferences.newsletter,
-  smsAlerts: customer.preferences.smsAlerts,
+  name: user.name,
+  email: user.email,
+  phone: user.phone,
 });
 
 // Active tab state
@@ -150,7 +138,7 @@ const cancelBooking = (bookingId) => {
             <div
               class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
             >
-              <span class="text-white font-primary font-semibold">SJ</span>
+              <span class="text-white font-primary font-semibold">{{ user.name.charAt(0) }}</span>
             </div>
           </div>
         </div>
@@ -167,12 +155,12 @@ const cancelBooking = (bookingId) => {
               <div
                 class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4"
               >
-                <span class="text-white font-primary text-2xl font-bold">SJ</span>
+                <span class="text-white font-primary text-2xl font-bold">{{ user.name.charAt(0) }}</span>
               </div>
-              <h3 class="font-semibold font-primary text-gray-900">{{ customer.name }}</h3>
-              <p class="text-gray-600 font-secondary text-sm">{{ customer.email }}</p>
+              <h3 class="font-semibold font-primary text-gray-900">{{ user.name }}</h3>
+              <p class="text-gray-600 font-secondary text-sm">{{ user.email }}</p>
               <p class="text-gray-500 font-secondary text-xs mt-1">
-                Member since {{ formatDate(customer.memberSince) }}
+                Member since {{ formatDate(user.created_at) }}
               </p>
             </div>
 
@@ -244,7 +232,7 @@ const cancelBooking = (bookingId) => {
               >
                 <div>
                   <h2 class="text-3xl font-primary font-bold mb-2">
-                    Welcome back, {{ customer.name }}! 👋
+                    Welcome back, {{ user.name }}! 👋
                   </h2>
                   <p class="text-white/90 font-secondary text-lg">
                     Ready for your next apartment stay?
