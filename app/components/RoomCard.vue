@@ -168,12 +168,12 @@ const props = defineProps({
               class="bg-gradient-to-r from-primary font-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
               Details
             </nuxtLink>
-            <nuxtLink :to="`/room/${room.slug}`"
+            <NuxtLink :to="`/checkout/${room.slug}`"
               class="bg-gradient-to-r from-primary font-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
               <Icon name="material-symbols:bookmark-sharp"
                 class="w-5 h-5 transition-transform group-hover:translate-x-1" />
               Book
-            </nuxtLink>
+            </NuxtLink>
           </div>
         </div>
       </div>
