@@ -1,3 +1,11 @@
+<script>
+  import { useAuthStore } from '@/stores/auth'
+const { $api } = useNuxtApp();
+
+const { data: settings } = await useAsyncData('settings', () =>
+    $api('/get-settings')
+  );
+</script>
 <template>
   <footer class="bg-primary text-white pt-20 pb-12">
     <div class="container mx-auto px-4">
@@ -21,17 +29,17 @@
             Experience luxury living with our premium apartment bookings. Unmatched comfort, exceptional service, and memorable stays await you.
           </p>
           <div class="flex gap-3">
-            <a href="#" class="p-3 bg-white/10  hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings.data?.facebook_link}`" target="_blank" class="p-3 bg-white/10  hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:facebook" class="text-xl text-blue-400" />
             </a>
-            <a href="#" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings.data?.instagram_link}`" target="_blank" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:instagram" class="text-xl text-pink-400" />
             </a>
-            <a href="#" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
-              <Icon name="mdi:twitter" class="text-xl text-cyan-400" />
-            </a>
-            <a href="#" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings.data?.linkedin_link}`" target="_blank" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:linkedin" class="text-xl text-blue-300" />
+            </a>
+            <a :href="`${settings.data?.youtube_link}`" target="_blank" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+              <Icon name="mdi:youtube" class="text-xl text-red-400" />
             </a>
           </div>
         </div>
@@ -42,19 +50,19 @@
           <div>
             <h3 class="text-white font-primary  font-bold text-lg mb-6 flex items-center gap-2">
               <div class="w-2 h-2 bg-gradient-to-r from-white to-primary rounded-full"></div>
-              Company
+              Useful Links
             </h3>
             <ul class="space-y-4">
               <li>
-                <NuxtLink to="/about" class="text-gray-300 font-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/room" class="text-gray-300 font-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-blue-500 transition-colors"></div>
-                  About Us
+                  Apartments
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/careers" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/contact" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-blue-500 transition-colors"></div>
-                  Careers
+                  Contact Us
                 </NuxtLink>
               </li>
               <li>
@@ -64,16 +72,16 @@
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/press" class="text-gray-300 font-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink to="/gallery" class="text-gray-300 font-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-blue-500 transition-colors"></div>
-                  Press
+                  Gallery
                 </NuxtLink>
               </li>
             </ul>
           </div>
 
           <!-- Support -->
-          <div>
+          <!-- <div>
             <h3 class="text-white font-bold font-primary  text-lg mb-6 flex items-center gap-2">
               <div class="w-2 h-2 bg-gradient-to-r from-white to-primary rounded-full"></div>
               Support
@@ -104,41 +112,7 @@
                 </NuxtLink>
               </li>
             </ul>
-          </div>
-
-          <!-- Apartments -->
-          <div>
-            <h3 class="text-white font-primary  font-bold text-lg mb-6 flex items-center gap-2">
-              <div class="w-2 h-2 bg-gradient-to-r from-white to-primary rounded-full"></div>
-              Apartments
-            </h3>
-            <ul class="space-y-4">
-              <li>
-                <NuxtLink to="/apartments/studio" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
-                  <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-purple-500 transition-colors"></div>
-                  Studio
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/apartments/1-bedroom" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
-                  <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-purple-500 transition-colors"></div>
-                  1-Bedroom
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/apartments/2-bedroom" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
-                  <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-purple-500 transition-colors"></div>
-                  2-Bedroom
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/apartments/luxury" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
-                  <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-purple-500 transition-colors"></div>
-                  Luxury
-                </NuxtLink>
-              </li>
-            </ul>
-          </div>
+          </div> -->
         </div>
 
         <!-- Newsletter & App Download -->

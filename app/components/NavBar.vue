@@ -133,7 +133,7 @@
           </NuxtLink>
 
           <NuxtLink to="/nearby"
-            class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group">
+            class="flex items-center space-x-2 px-1 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group">
             <span>Explore Dhaka</span>
           </NuxtLink>
 
@@ -158,7 +158,7 @@
           </NuxtLink>
           <!-- Offer Button -->
           <!-- Offer Button with Badge -->
-          <NuxtLink to="/"
+          <NuxtLink to="/#offers"
             class="relative px-4 py-1 bg-orange-200 hover:bg-orange-300 text-orange-700 font-medium transition-all duration-300 ml-2 group">
             <span class="flex items-center">
               <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -179,7 +179,7 @@
         <!-- Right Actions -->
         <div class="flex items-center">
           <!-- Language Selector -->
-          <div class="relative group">
+          <!-- <div class="relative group">
             <button
               class="flex items-center font-primary space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -207,7 +207,7 @@
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">Deutsch</a>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- User Actions -->
           <div class="flex items-center space-x-2">

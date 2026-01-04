@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
+const { $api } = useNuxtApp();
+
+const { data: settings } = await useAsyncData('settings', () =>
+    $api('/get-settings')
+  );
 
 const auth = useAuthStore()
 
@@ -20,11 +25,13 @@ function handleLogout() {
             <Icon name="material-symbols:add-call-rounded"
               class="text-xl text-white group-hover:scale-110 transition-transform" />
             <span class="font-primary">Contact Us :
-              <span class="font-medium font-secondary text-white">09613 787878</span></span>
+              <span class="font-medium font-secondary text-white">{{ settings.data?.hotline_number }}</span></span>
           </div>
           <div class="flex items-center gap-2 hover:text-gray-400 transition-colors group">
             <Icon name="logos:whatsapp-icon" class="text-xl text-white group-hover:scale-110 transition-transform" />
+            <a :href="`https://wa.me/${settings.data?.whatsapp_number}`" target="_blank">
             <span class="font-primary">Chat With Us</span>
+            </a>
           </div>
         </div>
       </div>
@@ -32,16 +39,16 @@ function handleLogout() {
       <!-- Right Side - Actions -->
       <div class="flex items-center gap-2">
         <div class="flex items-center space-x-4">
-          <a href="#" class="text-white hover:text-blue-400 transition-colors" aria-label="Facebook">
+          <a :href="`${settings.data?.facebook_link}`" target="_blank" class="text-white hover:text-blue-400 transition-colors" aria-label="Facebook">
             <Icon name="mdi:facebook" class="text-lg hover:scale-110 transition-transform" />
           </a>
-          <a href="#" class="text-white hover:text-pink-400 transition-colors" aria-label="Instagram">
+          <a :href="`${settings.data?.instagram_link}`" target="_blank" class="text-white hover:text-pink-400 transition-colors" aria-label="Instagram">
             <Icon name="mdi:instagram" class="text-lg hover:scale-110 transition-transform" />
           </a>
-          <a href="#" class="text-white hover:text-blue-400 transition-colors" aria-label="Twitter">
-            <Icon name="mdi:twitter" class="text-lg hover:scale-110 transition-transform" />
+          <a :href="`${settings.data?.linkedin_link}`" target="_blank" class="text-white hover:text-blue-400 transition-colors" aria-label="Twitter">
+            <Icon name="mdi:linkedin" class="text-lg hover:scale-110 transition-transform" />
           </a>
-          <a href="#" class="text-white hover:text-red-400 transition-colors" aria-label="YouTube">
+          <a :href="`${settings.data?.youtube_link}`" target="_blank" class="text-white hover:text-red-400 transition-colors" aria-label="YouTube">
             <Icon name="mdi:youtube" class="text-lg hover:scale-110 transition-transform" />
           </a>
         </div>

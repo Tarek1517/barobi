@@ -24,25 +24,19 @@ const toggleExpand = () => {
         <!-- Left Content - Image -->
         <div class="relative group">
           <div class="relative overflow-hidden shadow-2xl">
-            <img
-              src="/images/about-t1.jpg"
-              alt="Luxury Hotel Experience"
-              class="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-            />
+            <img src="/images/about-t1.jpg" alt="Luxury Hotel Experience"
+              class="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700" />
             <!-- Gradient Overlay -->
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            ></div>
+              class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
           </div>
 
           <!-- Floating Testimonial -->
-          <div
-            class="absolute -bottom-6 -right-6 bg-white shadow-2xl p-4 border border-primary/30"
-          >
+          <div class="absolute -bottom-6 -right-6 bg-white shadow-2xl p-4 border border-primary/30">
             <div class="flex items-center gap-4">
               <div
-                class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
-              >
+                class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
                 <Icon name="mdi:star" class="w-6 h-6 text-white" />
               </div>
               <div class="font-primary">
@@ -60,16 +54,12 @@ const toggleExpand = () => {
           <!-- Badge -->
           <div class="inline-flex items-center gap-3 bg-primary/10 px-4 py-2">
             <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-            <span
-              class="text-primary font-secondary font-semibold text-sm uppercase tracking-wide"
-              >Luxury Experience</span
-            >
+            <span class="text-primary font-secondary font-semibold text-sm uppercase tracking-wide">Luxury
+              Experience</span>
           </div>
 
           <!-- Heading -->
-          <h1
-            class="text-5xl font-primary font-bold text-gray-900 leading-tight"
-          >
+          <h1 class="text-5xl font-primary font-bold text-gray-900 leading-tight">
             Experience
             <span class="linear-wipe">Luxury</span>
             <br />Living
@@ -77,14 +67,9 @@ const toggleExpand = () => {
 
           <!-- Description -->
           <!-- Description -->
-          <p
-            class="font-secondary text-lg text-gray-600 leading-relaxed font-light"
-          >
+          <p class="font-secondary text-lg text-gray-600 leading-relaxed font-light">
             {{ displayText }}
-            <button
-              @click="toggleExpand"
-              class="text-secondary hover:text-primary font-medium ml-1 focus:outline-none"
-            >
+            <button @click="toggleExpand" class="text-secondary hover:text-primary font-medium ml-1 focus:outline-none">
               {{ isExpanded ? "Show Less" : "Read More" }}
             </button>
           </p>
@@ -92,42 +77,31 @@ const toggleExpand = () => {
           <!-- Features List -->
           <div class="grid grid-cols-2 gap-4 py-4">
             <div class="flex items-center gap-3">
-              <div
-                class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center"
-              >
+              <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
                 <Icon name="mdi:star" class="w-4 h-4 text-primary" />
               </div>
-              <span class="text-gray-700 font-secondary font-medium"
-                >5-Star Service</span
-              >
+              <span class="text-gray-700 font-secondary font-medium">5-Star Service</span>
             </div>
             <div class="flex items-center gap-3">
-              <div
-                class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center"
-              >
+              <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
                 <Icon name="mdi:shield-check" class="w-4 h-4 text-primary" />
               </div>
-              <span class="text-gray-700 font-secondary font-medium"
-                >Premium Security</span
-              >
+              <span class="text-gray-700 font-secondary font-medium">Premium Security</span>
             </div>
           </div>
 
           <!-- CTA Button -->
-          <button
-            class="group relative bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-4 px-10 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden"
-          >
+          <NuxtLink to="/room"
+            class="group relative bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-4 px-10 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl overflow-hidden inline-block">
             <span class="relative z-10 font-primary flex items-center gap-3">
-              <Icon
-                name="mdi:calendar-check"
-                class="w-5 h-5 group-hover:scale-110 transition-transform"
-              />
+              <Icon name="mdi:calendar-check" class="w-5 h-5 group-hover:scale-110 transition-transform" />
               Book Your Stay
             </span>
             <div
-              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
-            ></div>
-          </button>
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000">
+            </div>
+          </NuxtLink>
+
         </div>
       </div>
     </div>
@@ -138,13 +112,11 @@ const toggleExpand = () => {
 /* Gradient Text Animation */
 .linear-wipe {
   text-align: center;
-  background: linear-gradient(
-    to right,
-    #7e1218 20%,
-    #cd986c 40%,
-    #cd986c 60%,
-    #1f2d3e 80%
-  );
+  background: linear-gradient(to right,
+      #7e1218 20%,
+      #cd986c 40%,
+      #cd986c 60%,
+      #1f2d3e 80%);
   background-size: 200% auto;
   color: #000;
   background-clip: text;

@@ -8,5 +8,8 @@
       </div>
     </nav>
   </header>
+  <header class="lg:hidden">
+    <MobileNavbar />
+  </header>
 </template>
 <style scoped></style>

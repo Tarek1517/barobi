@@ -164,7 +164,7 @@
               </div>
               <div class="text-center">
                 <nuxtLink
-                  to="/checkout"
+                   :to="`/checkout/${room.slug}`"
                   class="inline-flex font-primary items-center gap-2 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold text-lg py-4 px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl w-full justify-center"
                 >
                   <Icon name="ph:calendar-check" class="text-xl" />
