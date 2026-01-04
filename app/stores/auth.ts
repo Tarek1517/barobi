@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { useNuxtApp } from '#app'
 
 export interface UserObject {
+  id: number
   name: string
   email: string
   phone: string

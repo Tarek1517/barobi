@@ -2,7 +2,9 @@
 import { reactive, ref, computed, onMounted, watch } from "vue";
 import type { Accommodation } from "~/types";
 import { useRoute } from "vue-router";
+import { useAuthStore } from '@/stores/auth'
 
+const auth = useAuthStore()
 type SingleAccommodationApiResponse = {
   data: Accommodation;
 };
@@ -21,8 +23,7 @@ const formData = reactive({
   rooms: 1,
   checkIn: "",
   checkOut: "",
-  firstName: "",
-  lastName: "",
+  fullName: "",
   telephone: "",
   email: "",
   adults: 1,
@@ -35,6 +36,13 @@ const formData = reactive({
   cardCvv: "",
   cardZip: "",
 });
+const isLoggedIn = auth.loggedIn
+
+if (isLoggedIn && auth.user) {
+  formData.fullName = auth.user.name;
+  formData.email = auth.user.email;
+  formData.telephone = auth.user.phone;
+}
 
 // Airport pickup & extras
 const airportPickup = ref("");
@@ -58,7 +66,6 @@ const handleAirportPickupChange = () => {
   if (airportPickup.value !== "yes") {
     pickupTypeId.value = null;
     flightNumber.value = "";
-    specialNotes.value = "";
   }
 };
 
@@ -81,7 +88,7 @@ const nights = computed(() => {
 // Charges
 const roomTotal = computed(() => (nights.value * formData.rooms * roomRate.value));
 const grandTotal = computed(
-  () => roomTotal.value + (airportPickup.value === "yes" ? pickupTypePrice.value : 0) + extraBedPrice.value
+  () => roomTotal.value + Number(extraBedPrice.value ? extraBedPrice.value : 0) + (airportPickup.value === "yes" ? Number(pickupTypePrice.value ? pickupTypePrice.value : 0) : 0)
 );
 // Payment helper
 const getPaymentMethodName = (method: string) => {
@@ -98,29 +105,91 @@ const formatDate = (date: Date) => {
     year: "numeric",
   });
 };
+const errors = reactive({
+  fullName: '',
+  telephone: '',
+  email: '',
+})
+
+const validateForm = () => {
+  let isValid = true
+
+  // reset errors
+  errors.fullName = ''
+  errors.telephone = ''
+  errors.email = ''
+
+  // Full name
+  if (!formData.fullName.trim()) {
+    errors.fullName = 'Full name is required'
+    isValid = false
+  }
+
+  // Phone
+  if (!formData.telephone.trim()) {
+    errors.telephone = 'Telephone number is required'
+    isValid = false
+  }
+
+  // Email
+  if (!formData.email.trim()) {
+    errors.email = 'Email is required'
+    isValid = false
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    errors.email = 'Enter a valid email address'
+    isValid = false
+  }
+
+  return isValid
+}
 
 // Submit
 const isSubmitting = ref(false);
+
 const handleSubmit = async () => {
-  isSubmitting.value = true;
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  if (!validateForm()) return
 
-  console.log("Form submitted:", {
-    ...formData,
-    airportPickup: airportPickup.value,
-    flightNumber: flightNumber.value,
-    pickupType: selectedPickupType.value,
-    extraBed: selectedBedCharge.value,
-    specialNotes: specialNotes.value,
-    roomTotal: roomTotal.value,
-    pickupCharge: pickupCharge.value,
-    bedCharge: bedCharge.value,
-    grandTotal: grandTotal.value,
-  });
+  isSubmitting.value = true
 
-  isSubmitting.value = false;
-  alert("Reservation confirmed successfully!");
-};
+  try {
+    await $api('/booking', {
+      method: 'POST',
+      body: {
+        accommodation_id: accommodation.value?.data?.id,
+
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.telephone,
+
+        rooms: formData.rooms,
+        adults: formData.adults,
+        children: formData.children,
+        country: formData.country,
+
+        bed_charge_id: extraBedId.value,
+        pickup_charge_id: pickupTypeId.value,
+
+        special_notes: specialNotes.value,
+        flight_number: flightNumber.value,
+
+        check_in: formData.checkIn,
+        check_out: formData.checkOut,
+        total_nights: nights.value,
+        total_amount: grandTotal.value,
+
+        payment_method: 'cash', 
+      }
+    })
+
+    alert('Reservation confirmed successfully!')
+  } catch (error: any) {
+    console.error(error)
+    alert(error?.data?.message || 'Booking failed')
+  } finally {
+    isSubmitting.value = false
+  }
+}
+
 
 // Default dates
 onMounted(() => {
@@ -167,25 +236,50 @@ onMounted(() => {
             <!-- Guest Information Section -->
             <section class="mb-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">First Name</label>
-                  <input type="text" v-model="formData.firstName"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                  <input type="text" v-model="formData.lastName"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <div class="col-span-2">
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <input
+                      type="text"
+                      v-model="formData.fullName"
+                      :readonly="isLoggedIn"
+                      :class="[
+                        'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                        isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
+                      ]"
+                    />
+                    <p v-if="errors.fullName" class="text-xs text-red-500 mt-1">
+                      {{ errors.fullName }}
+                    </p>
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Telephone</label>
-                  <input type="tel" v-model="formData.telephone"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <input
+                      type="text"
+                      v-model="formData.telephone"
+                      :readonly="isLoggedIn"
+                      :class="[
+                        'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                        isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
+                      ]"
+                    />
+                    <p v-if="errors.telephone" class="text-xs text-red-500 mt-1">
+                      {{ errors.telephone }}
+                    </p>
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input type="email" v-model="formData.email"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  <input
+                      type="email"
+                      v-model="formData.email"
+                      :readonly="isLoggedIn"
+                      :class="[
+                        'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                        isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
+                      ]"
+                    />
+                    <p v-if="errors.email" class="text-xs text-red-500 mt-1">
+                      {{ errors.email }}
+                    </p>
                 </div>
               </div>
             </section>
@@ -256,7 +350,6 @@ onMounted(() => {
                         {{ type.name }} (${{ type.price }})
                       </option>
                     </select>
-
                   </div>
                   <div>
                     <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Charge</label>
@@ -267,13 +360,11 @@ onMounted(() => {
 
                 <!-- Extra Services Section -->
                 <div class="pt-4">
-
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
                         Extra Bed
                       </label>
-
                       <select v-model="extraBedId"
                         @change="handleExtraBedChange($event.target.options[$event.target.selectedIndex].dataset.price)"
                         class="w-full font-secondary border border-gray-300 px-3 py-2">
@@ -282,7 +373,6 @@ onMounted(() => {
                           {{ bed.name }} (${{ bed.price }})
                         </option>
                       </select>
-
                     </div>
                     <div>
                       <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
@@ -313,8 +403,7 @@ onMounted(() => {
             <section>
               <h2 class="text-xl font-primary font-semibold mb-4">Payment details</h2>
               <p class="text-sm font-secondary text-gray-600 mb-4">
-                Safe, secure transactions. Your personal information is
-                protected.
+                Safe, secure transactions. Your personal information is protected.
               </p>
 
               <div class="mb-4">
@@ -449,16 +538,8 @@ onMounted(() => {
             <div class="mt-6">
               <h3 class="font-medium font-primary mb-2">Special check-in instructions</h3>
               <div class="text-sm font-secondary text-gray-600 space-y-2">
-                <p>
-                  This property offers digital check-in and contactless
-                  services. Please contact the property 24 hours prior to
-                  arrival using the contact information on the booking
-                  confirmation.
-                </p>
-                <p>
-                  Guests must provide a record of full COVID-19 vaccination if
-                  required by local regulations.
-                </p>
+                <p>This property offers digital check-in and contactless services. Please contact the property 24 hours prior to arrival using the contact information on the booking confirmation.</p>
+                <p>Guests must provide a record of full COVID-19 vaccination if required by local regulations.</p>
               </div>
             </div>
           </div>
