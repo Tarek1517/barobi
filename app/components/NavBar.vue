@@ -1,132 +1,100 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { $api } = useNuxtApp();
+
+const { data: categories } = await useAsyncData('room-categories', () =>
+    $api('/get-categories-with-room')
+  );
+
+</script>
 
 <template>
   <header class="sticky top-0 z-40 bg-background backdrop-blur-xl border-b border-gray-100 shadow-lg">
     <div class="container mx-auto">
       <NuxtLink class="flex items-center justify-between h-20">
-        <!-- Logo -->
         <NuxtLink to="/" class="flex items-center">
           <img class="object-contain rounded w-32 h-auto" src="/images/logo.png" />
         </NuxtLink>
-
-        <!-- Desktop Navigation -->
         <nav class="hidden font-primary text-lg lg:flex items-center gap-2">
-          <!-- Home -->
-
-          <!-- Apartments Dropdown -->
           <div class="relative group">
-            <NuxtLink to="/room"
-              class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-              </svg>
-              <span>Apartments</span>
-              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd" />
-              </svg>
-            </NuxtLink>
+  <!-- Apartments Button -->
+  <NuxtLink
+    to="/room"
+    class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300"
+  >
+    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+      />
+    </svg>
+    <span>Apartments</span>
+    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        fill-rule="evenodd"
+        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </NuxtLink>
 
-            <!-- Apartments Mega Menu -->
-            <div
-              class="absolute left-0 mt-2 w-96 bg-white shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
-              <div class="py-6">
-                <div class="grid grid-cols-2 gap-2">
-                  <!-- Apartment Types -->
-                  <div>
-                    <div class="space-y-3">
-                      <a href="/apartments/studio"
-                        class="flex items-center space-x-3 p-3 hover:bg-blue-50 transition-colors group">
-                        <div
-                          class="w-8 h-8 bg-blue-100 flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                          <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                              d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                          </svg>
-                        </div>
-                        <span class="text-sm font-medium text-gray-700">Studio A</span>
-                      </a>
-                      <a href="/apartments/1-bedroom"
-                        class="flex items-center space-x-3 p-3 hover:bg-blue-50 transition-colors group">
-                        <div
-                          class="w-8 h-8 bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                          <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                              d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                          </svg>
-                        </div>
-                        <span class="text-sm font-medium text-gray-700">1-Bedroom</span>
-                      </a>
-                      <a href="/apartments/2-bedroom"
-                        class="flex items-center space-x-3 p-3 hover:bg-blue-50 transition-colors group">
-                        <div
-                          class="w-8 h-8 bg-purple-100 flex items-center justify-center group-hover:bg-purple-200 transition-colors">
-                          <svg class="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                              d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                          </svg>
-                        </div>
-                        <span class="text-sm font-medium text-gray-700">2-Bedroom</span>
-                      </a>
-                    </div>
-                  </div>
+  <!-- Mega Menu -->
+  <div
+    class="absolute left-0 mt-4 w-[900px] bg-white shadow-2xl border border-gray-200
+           opacity-0 invisible group-hover:opacity-100 group-hover:visible
+           transition-all duration-300 translate-y-3 group-hover:translate-y-0 z-50"
+  >
+    <div class="p-6">
+      <div class="grid grid-cols-2 gap-6">
 
-                  <!-- Apartment Features -->
-                  <div>
-                    <div class="space-y-3">
-                      <a href="/apartments/luxury"
-                        class="flex items-center space-x-3 p-3 hover:bg-blue-50 transition-colors group">
-                        <div
-                          class="w-8 h-8 bg-yellow-100 flex items-center justify-center group-hover:bg-yellow-200 transition-colors">
-                          <svg class="w-4 h-4 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                              clip-rule="evenodd" />
-                          </svg>
-                        </div>
-                        <span class="text-sm font-medium text-gray-700">Luxury</span>
-                      </a>
-                      <a href="/apartments/pet-friendly"
-                        class="flex items-center space-x-3 p-3 hover:bg-blue-50 transition-colors group">
-                        <div
-                          class="w-8 h-8 bg-pink-100 flex items-center justify-center group-hover:bg-pink-200 transition-colors">
-                          <svg class="w-4 h-4 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z"
-                              clip-rule="evenodd" />
-                          </svg>
-                        </div>
-                        <span class="text-sm font-medium text-gray-700">Pet Friendly</span>
-                      </a>
-                      <a href="/apartments/pool"
-                        class="flex items-center space-x-3 p-3 hover:bg-blue-50 transition-colors group">
-                        <div
-                          class="w-8 h-8 bg-cyan-100 flex items-center justify-center group-hover:bg-cyan-200 transition-colors">
-                          <svg class="w-4 h-4 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                            <path fill-rule="evenodd"
-                              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                              clip-rule="evenodd" />
-                          </svg>
-                        </div>
-                        <span class="text-sm font-medium text-gray-700">With Pool</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+        <!-- Category Column -->
+        <div
+          v-for="category in categories?.data"
+          :key="category.id"
+          class="space-y-4"
+        >
+          <!-- Category Title -->
+          <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">
+            {{ category.name }}
+          </h3>
+
+          <!-- Rooms -->
+          <div class="space-y-3">
+            <NuxtLink
+              v-for="room in category.rooms"
+              :key="room.title"
+              :to="`/room/${room.slug}`"
+              class="flex items-center gap-4 p-3 rounded-lg hover:bg-blue-50 transition group"
+            >
+              <!-- Room Image -->
+              <img
+                :src="room.image"
+                class="w-20 h-16 object-cover rounded-md border"
+                alt=""
+              />
+
+              <!-- Room Info -->
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-800 group-hover:text-primary">
+                  {{ room.title }}
+                </p>
+                <p class="text-sm text-gray-500">
+                  <span class="font-semibold text-gray-700">{{ room.currency }} {{ room.price }}</span> / night
+                </p>
               </div>
-            </div>
+            </NuxtLink>
           </div>
+        </div>
 
-          <!-- Hotels -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
           <NuxtLink to="/service"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group">
             <span>Facilities</span>
           </NuxtLink>
 
-          <!-- Destinations -->
           <NuxtLink to="/location"
             class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300 group">
             <span>Location</span>

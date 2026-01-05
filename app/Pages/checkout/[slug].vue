@@ -35,11 +35,12 @@ const formData = reactive({
   cardZip: "",
 });
 const isLoggedIn = auth.loggedIn
-
+const member_id = ref<number | null>(null);
 if (isLoggedIn && auth.user) {
   formData.fullName = auth.user.name;
   formData.email = auth.user.email;
   formData.telephone = auth.user.phone;
+  member_id.value = auth.user.id;
 }
 
 const airportPickup = ref("");
@@ -150,6 +151,7 @@ const handleSubmit = async () => {
       method: 'POST',
       body: {
         accommodation_id: accommodation.value?.data?.id,
+        member_id: member_id.value ?? null,
         name: formData.fullName,
         email: formData.email,
         phone: formData.telephone,
