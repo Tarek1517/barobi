@@ -23,7 +23,7 @@ export interface Accommodation {
     cover_image: string;
     category_name: string;
     size_name: string;
-    currency: string;
+    currency_symbol: string;
     short_description?: string | null;
     available_rooms: number;
     max_guest: number;

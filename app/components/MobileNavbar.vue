@@ -6,31 +6,25 @@ const apartmentsOpen = ref(false)
 
 const toggleMobileMenu = () => mobileMenuOpen.value = !mobileMenuOpen.value
 const toggleApartments = () => apartmentsOpen.value = !apartmentsOpen.value
+
+
 </script>
 
 <template>
-    <!-- Mobile Header -->
     <header class="lg:hidden sticky top-0 z-50 bg-white shadow-md border-b border-gray-200">
         <div class="flex items-center justify-between h-16 px-4">
-            <!-- Logo -->
             <NuxtLink to="/" class="flex items-center">
                 <img src="/images/logo.png" alt="Logo" class="w-32 h-auto object-contain" />
             </NuxtLink>
 
-            <!-- Hamburger -->
             <button @click="toggleMobileMenu" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-                <!-- Hamburger -->
                 <Icon v-if="!mobileMenuOpen" name="heroicons-outline:menu" class="w-6 h-6" />
-
-                <!-- X icon -->
                 <Icon v-else name="heroicons-outline:x" class="w-6 h-6" />
             </button>
         </div>
 
-        <!-- Mobile Menu -->
         <transition name="slide-fade">
             <nav v-if="mobileMenuOpen" class="px-4 pb-4 space-y-2 font-primary text-base border-t border-gray-200">
-                <!-- Apartments Accordion -->
                 <div>
                     <button @click="toggleApartments"
                         class="flex justify-between w-full py-2 font-medium text-gray-700 hover:text-primary transition">
@@ -54,7 +48,6 @@ const toggleApartments = () => apartmentsOpen.value = !apartmentsOpen.value
                     </div>
                 </div>
 
-                <!-- Other Links -->
                 <NuxtLink @click="toggleMobileMenu" to="/service"
                     class="block py-2 text-gray-700 hover:text-primary transition">Facilities</NuxtLink>
                 <NuxtLink @click="toggleMobileMenu" to="/location"
@@ -70,7 +63,6 @@ const toggleApartments = () => apartmentsOpen.value = !apartmentsOpen.value
                 <NuxtLink @click="toggleMobileMenu" to="/contact"
                     class="block py-2 text-gray-700 hover:text-primary transition">Contact Us</NuxtLink>
 
-                <!-- Offers -->
                 <NuxtLink @click="toggleMobileMenu" to="/#offers"
                     class="block py-2 px-3 bg-orange-200 text-orange-700 font-medium rounded-md hover:bg-orange-300 transition relative">
                     Offers

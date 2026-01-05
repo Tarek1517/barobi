@@ -87,7 +87,7 @@ const props = defineProps({
             </div>
             <div>
               <div class="text-xs font-secondary text-gray-500">Guests</div>
-              <div class="text-sm font-primary font-semibold">{{ room.max_guest }}</div>
+              <div class="text-sm font-primary font-semibold">{{ room.guest_adult }}</div>
             </div>
           </div>
           <div class="flex items-center gap-2 text-gray-600">
@@ -154,7 +154,7 @@ const props = defineProps({
           <div class="flex flex-col">
             <div class="flex flex-row items-center gap-1">
               <div class="text-lg font-primary font-bold text-primary">
-                ${{ room.price }}
+                {{ room?.currency }} {{ room.price }}
               </div>
               <div class="text-xs font-secondary opacity-90">{{ room.period }}</div>
             </div>

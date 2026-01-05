@@ -157,7 +157,7 @@
                 <h1 class="text-3xl font-primary font-bold text-gray-900 mb-4">{{ room.title }}</h1>
                 <div class="flex flex-col items-start gap-4 text-lg text-gray-600">
                   <div class="text-2xl font-primary font-bold text-primary">
-                    {{ room.currency_symbol }}{{ room.price }}
+                    {{ room.currency_symbol }} {{ room.price }}
                     <span class="text-sm font-secondary font-normal text-gray-500">/per night</span>
                   </div>
                 </div>

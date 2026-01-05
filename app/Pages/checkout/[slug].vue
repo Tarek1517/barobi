@@ -12,12 +12,10 @@ type SingleAccommodationApiResponse = {
 const route = useRoute();
 const { $api } = useNuxtApp();
 
-// Fetch accommodation data
 const { data: accommodation, pending, error } = useAPI<SingleAccommodationApiResponse>(
   `/accommodations/${route.params.slug}`
 );
 
-// Form data
 const formData = reactive({
   roomType: "",
   rooms: 1,
@@ -44,7 +42,6 @@ if (isLoggedIn && auth.user) {
   formData.telephone = auth.user.phone;
 }
 
-// Airport pickup & extras
 const airportPickup = ref("");
 const flightNumber = ref("");
 const pickupTypePrice = ref(0);
@@ -53,31 +50,19 @@ const pickupTypeId = ref<number | null>(null);
 const extraBedId = ref<number | null>(null);
 const specialNotes = ref("");
 
-const handlePickupTypeChange = (price: number) => {
-  pickupTypePrice.value = price;
-};
-
-// Handle extra bed change
-const handleExtraBedChange = (price: number) => {
-  extraBedPrice.value = price;
-};
-// Reset airport pickup fields
 const handleAirportPickupChange = () => {
   if (airportPickup.value !== "yes") {
     pickupTypeId.value = null;
+    pickupTypePrice.value = 0;
     flightNumber.value = "";
   }
 };
 
-// Fetch supporting data
-const { data: countries } = await useAsyncData("countries", () => $api("/get-countries"));
 const { data: bedCharges } = await useAsyncData("bed-charges", () => $api("/get-bed-charges"));
 const { data: pickupTypes } = await useAsyncData("pickup-types", () => $api("/get-pickup-charges"));
 
-// Room rate reactive
 const roomRate = computed(() => Number(accommodation.value?.data?.price || 0));
 
-// Date calculations
 const checkInDate = computed(() => (formData.checkIn ? new Date(formData.checkIn) : new Date()));
 const checkOutDate = computed(() => (formData.checkOut ? new Date(formData.checkOut) : new Date(Date.now() + 86400000)));
 const nights = computed(() => {
@@ -85,18 +70,16 @@ const nights = computed(() => {
   const diffTime = checkOutDate.value.getTime() - checkInDate.value.getTime();
   return Math.max(Math.ceil(diffTime / (1000 * 60 * 60 * 24)), 1);
 });
-// Charges
+
 const roomTotal = computed(() => (nights.value * formData.rooms * roomRate.value));
 const grandTotal = computed(
-  () => roomTotal.value + Number(extraBedPrice.value ? extraBedPrice.value : 0) + (airportPickup.value === "yes" ? Number(pickupTypePrice.value ? pickupTypePrice.value : 0) : 0)
+  () => roomTotal.value + Number(extraBedPrice.value) + (airportPickup.value === 'yes' ? Number(pickupTypePrice.value) : 0)
 );
-// Payment helper
 const getPaymentMethodName = (method: string) => {
   const methods = { cash: "Cash" };
   return methods[method] || method;
 };
 
-// Format date
 const formatDate = (date: Date) => {
   return date.toLocaleDateString("en-US", {
     weekday: "short",
@@ -105,33 +88,46 @@ const formatDate = (date: Date) => {
     year: "numeric",
   });
 };
+
 const errors = reactive({
   fullName: '',
   telephone: '',
   email: '',
 })
 
+// Selected Extra Bed object - correctly finding the object from the API response
+const selectedBedCharge = computed(() => {
+  return bedCharges.value?.data?.find(bed => bed.id === extraBedId.value) || null;
+});
+
+// Selected Pickup Type object - correctly finding the object from the API response
+const selectedPickupType = computed(() => {
+  return pickupTypes.value?.data?.find(pickup => pickup.id === pickupTypeId.value) || null;
+});
+
+// Update the actual prices used in total calculation when selection changes
+watch(selectedBedCharge, (val) => {
+  extraBedPrice.value = val ? Number(val.price) : 0;
+});
+
+watch(selectedPickupType, (val) => {
+  pickupTypePrice.value = val ? Number(val.price) : 0;
+});
+
 const validateForm = () => {
   let isValid = true
-
-  // reset errors
   errors.fullName = ''
   errors.telephone = ''
   errors.email = ''
 
-  // Full name
   if (!formData.fullName.trim()) {
     errors.fullName = 'Full name is required'
     isValid = false
   }
-
-  // Phone
   if (!formData.telephone.trim()) {
     errors.telephone = 'Telephone number is required'
     isValid = false
   }
-
-  // Email
   if (!formData.email.trim()) {
     errors.email = 'Email is required'
     isValid = false
@@ -143,12 +139,10 @@ const validateForm = () => {
   return isValid
 }
 
-// Submit
 const isSubmitting = ref(false);
 
 const handleSubmit = async () => {
   if (!validateForm()) return
-
   isSubmitting.value = true
 
   try {
@@ -156,31 +150,24 @@ const handleSubmit = async () => {
       method: 'POST',
       body: {
         accommodation_id: accommodation.value?.data?.id,
-
         name: formData.fullName,
         email: formData.email,
         phone: formData.telephone,
-
         rooms: formData.rooms,
         adults: formData.adults,
         children: formData.children,
         country: formData.country,
-
         bed_charge_id: extraBedId.value,
         pickup_charge_id: pickupTypeId.value,
-
         special_notes: specialNotes.value,
         flight_number: flightNumber.value,
-
         check_in: formData.checkIn,
         check_out: formData.checkOut,
         total_nights: nights.value,
         total_amount: grandTotal.value,
-
-        payment_method: 'cash', 
+        payment_method: 'cash',
       }
     })
-
     alert('Reservation confirmed successfully!')
   } catch (error: any) {
     console.error(error)
@@ -190,8 +177,6 @@ const handleSubmit = async () => {
   }
 }
 
-
-// Default dates
 onMounted(() => {
   const today = new Date();
   const tomorrow = new Date(today);
@@ -206,10 +191,8 @@ onMounted(() => {
   <div class="min-h-screen bg-background py-10">
     <div class="container mx-auto px-2">
       <div class="flex flex-col lg:flex-row gap-8">
-        <!-- Left Column - Form (w-2/3) -->
         <div class="lg:w-2/3">
           <div class="bg-white rounded-lg shadow-md p-6">
-            <!-- Room Type Section -->
             <section class="mb-4">
               <h2 class="text-xl font-primary font-semibold mb-4">ROOM RESERVATION</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -233,58 +216,35 @@ onMounted(() => {
               </div>
             </section>
 
-            <!-- Guest Information Section -->
             <section class="mb-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="col-span-2">
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                  <input
-                      type="text"
-                      v-model="formData.fullName"
-                      :readonly="isLoggedIn"
-                      :class="[
-                        'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
-                        isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
-                      ]"
-                    />
-                    <p v-if="errors.fullName" class="text-xs text-red-500 mt-1">
-                      {{ errors.fullName }}
-                    </p>
+                  <input type="text" v-model="formData.fullName" :readonly="isLoggedIn" :class="[
+                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                    isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
+                  ]" />
+                  <p v-if="errors.fullName" class="text-xs text-red-500 mt-1">{{ errors.fullName }}</p>
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Telephone</label>
-                  <input
-                      type="text"
-                      v-model="formData.telephone"
-                      :readonly="isLoggedIn"
-                      :class="[
-                        'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
-                        isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
-                      ]"
-                    />
-                    <p v-if="errors.telephone" class="text-xs text-red-500 mt-1">
-                      {{ errors.telephone }}
-                    </p>
+                  <input type="text" v-model="formData.telephone" :readonly="isLoggedIn" :class="[
+                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                    isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
+                  ]" />
+                  <p v-if="errors.telephone" class="text-xs text-red-500 mt-1">{{ errors.telephone }}</p>
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input
-                      type="email"
-                      v-model="formData.email"
-                      :readonly="isLoggedIn"
-                      :class="[
-                        'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
-                        isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
-                      ]"
-                    />
-                    <p v-if="errors.email" class="text-xs text-red-500 mt-1">
-                      {{ errors.email }}
-                    </p>
+                  <input type="email" v-model="formData.email" :readonly="isLoggedIn" :class="[
+                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                    isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
+                  ]" />
+                  <p v-if="errors.email" class="text-xs text-red-500 mt-1">{{ errors.email }}</p>
                 </div>
               </div>
             </section>
 
-            <!-- Guest Count Section -->
             <section class="mb-4">
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
@@ -303,22 +263,31 @@ onMounted(() => {
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Country</label>
-                  <select v-if="countries" v-model="formData.country"
-                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">Select Country</option>
-                    <option v-for="country in countries?.data" :key="country" :value="country">{{ country }}</option>
-                  </select>
+                  <input type="text" v-model="formData.country"
+                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
               </div>
             </section>
 
-            <!-- Airport Pickup Section -->
             <section class="mb-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
-                    Airport Pickup
-                  </label>
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Extra Bed</label>
+                  <select v-model="extraBedId" class="w-full font-secondary border border-gray-300 px-3 py-2">
+                    <option :value="null">No Extra Bed</option>
+                    <option v-for="bed in bedCharges?.data" :key="bed.id" :value="bed.id">
+                      {{ bed.name }} ({{ bed.price }})
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Extra Bed Charge</label>
+                  <div class="border font-secondary border-gray-300 px-3 py-2 bg-gray-50 min-h-[42px] flex items-center">
+                    <span class="font-medium">{{ extraBedPrice || '0' }}</span>
+                  </div>
+                </div>
+                <div>
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Airport Pickup</label>
                   <select v-model="airportPickup" @change="handleAirportPickupChange"
                     class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select</option>
@@ -327,91 +296,45 @@ onMounted(() => {
                   </select>
                 </div>
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
-                    Flight Number
-                  </label>
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Flight Number</label>
                   <input type="text" v-model="flightNumber"
                     class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
               </div>
 
-              <!-- Show this section only when airportPickup is 'yes' -->
-              <div class="mt-4 space-y-4">
-                <!-- Pickup Type and Charge Section -->
-                <div v-if="airportPickup === 'yes'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Type</label>
-                    <select v-model="pickupTypeId"
-                      @change="handlePickupTypeChange($event.target.options[$event.target.selectedIndex].dataset.price)"
-                      class="w-full font-secondary border border-gray-300 px-3 py-2">
-                      <option value="">Select Type</option>
-                      <option v-for="type in pickupTypes?.data" :key="type.id" :value="type.id"
-                        :data-price="type.price">
-                        {{ type.name }} (${{ type.price }})
-                      </option>
-                    </select>
-                  </div>
-                  <div>
-                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Charge</label>
-                    <input type="text" v-model="pickupTypePrice" readonly
-                      class="w-full border border-gray-300 px-3 py-2 bg-gray-50 font-medium flex items-center" />
-                  </div>
+              <div v-if="airportPickup === 'yes'" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Type</label>
+                  <select v-model="pickupTypeId" class="w-full font-secondary border border-gray-300 px-3 py-2">
+                    <option :value="null">Select Type</option>
+                    <option v-for="type in pickupTypes?.data" :key="type.id" :value="type.id">
+                      {{ type.name }} ({{ accommodation?.data?.currency_symbol }} {{ type.price }})
+                    </option>
+                  </select>
                 </div>
-
-                <!-- Extra Services Section -->
-                <div class="pt-4">
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
-                        Extra Bed
-                      </label>
-                      <select v-model="extraBedId"
-                        @change="handleExtraBedChange($event.target.options[$event.target.selectedIndex].dataset.price)"
-                        class="w-full font-secondary border border-gray-300 px-3 py-2">
-                        <option value="">No Extra Bed</option>
-                        <option v-for="bed in bedCharges?.data" :key="bed.id" :value="bed.id" :data-price="bed.price">
-                          {{ bed.name }} (${{ bed.price }})
-                        </option>
-                      </select>
-                    </div>
-                    <div>
-                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
-                        Extra Bed Charge
-                      </label>
-                      <div
-                        class="border font-secondary border-gray-300 px-3 py-2 bg-gray-50 min-h-[42px] flex items-center">
-                        <span class="font-medium">
-                          {{ extraBedPrice ? `$${extraBedPrice}` : '$0' }}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="mt-4">
-                    <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">
-                      Special Notes / Requests
-                    </label>
-                    <textarea v-model="specialNotes" rows="3"
-                      placeholder="Any special requests or notes for your pickup..."
-                      class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                  </div>
+                <div>
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Charge</label>
+                  <input type="text" :value="pickupTypePrice" readonly
+                    class="w-full border border-gray-300 px-3 py-2 bg-gray-50 font-medium" />
                 </div>
+              </div>
+
+              <div class="mt-4">
+                <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Special Notes / Requests</label>
+                <textarea v-model="specialNotes" rows="3"
+                  placeholder="Any special requests or notes for your pickup..."
+                  class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
               </div>
             </section>
 
-            <!-- Payment Details Section -->
             <section>
               <h2 class="text-xl font-primary font-semibold mb-4">Payment details</h2>
-              <p class="text-sm font-secondary text-gray-600 mb-4">
-                Safe, secure transactions. Your personal information is protected.
-              </p>
-
+              <p class="text-sm font-secondary text-gray-600 mb-4">Safe, secure transactions. Your personal information is protected.</p>
               <div class="mb-4">
                 <h3 class="font-medium font-secondary mb-2">Payment Method</h3>
                 <div class="flex flex-col space-y-4">
                   <label class="flex items-center">
-                    <input type="radio" value="cash" v-model="formData.paymentMethod" class="mr-2" />
-                    Cash
+                    <input type="radio" value="cash" v-model="formData.paymentMethod" class="mr-2" /> Cash
                   </label>
                 </div>
               </div>
@@ -419,109 +342,61 @@ onMounted(() => {
           </div>
         </div>
 
-        <!-- Right Column - Summary (w-1/3) -->
         <div class="lg:w-1/3 space-y-2 mt-1">
-          <div class="bg-white rounded-lg shadow-md top-4">
-            <div>
-              <img :src="accommodation?.data?.image" alt="room-13"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy" />
-            </div>
+          <div class="bg-white rounded-lg shadow-md">
+            <img :src="accommodation?.data?.image" class="w-full h-full object-cover transition-transform duration-700" loading="lazy" />
             <div class="flex flex-col p-6">
-              <!-- Room Details -->
               <div class="mb-6">
                 <h3 class="font-bold font-primary text-xl">
-                  <span v-if="formData.roomType" class="capitalize">{{ formData.roomType }}</span>
-                  <span v-else>{{ accommodation?.data?.title }}</span>
-                  , Guest room,
-                  <span v-if="formData.adults">{{ formData.adults }} Adult{{ formData.adults > 1 ? 's' : '' }}</span>
-                  <span v-if="formData.children">, {{ formData.children }} Child{{ formData.children > 1 ? 'ren' : ''
-                  }}</span>
+                  {{ accommodation?.data?.title }}, Guest room,
+                  <span>{{ formData.adults }} Adult{{ formData.adults > 1 ? 's' : '' }}</span>
+                  <span v-if="formData.children">, {{ formData.children }} Child{{ formData.children > 1 ? 'ren' : '' }}</span>
                 </h3>
                 <p class="text-sm font-secondary text-gray-600 mt-1">Room Details</p>
-
                 <div class="mt-4">
-                  <p class="font-medium font-secondary">
-                    {{ formatDate(checkInDate) }} -
-                    {{ formatDate(checkOutDate) }}
-                  </p>
-                  <p class="text-sm text-gray-600 font-secondary mt-1">
-                    {{ nights }} night{{ nights > 1 ? 's' : '' }}
-                    · {{ formData.rooms }} room{{ formData.rooms > 1 ? 's' : '' }}
-                  </p>
+                  <p class="font-medium font-secondary">{{ formatDate(checkInDate) }} - {{ formatDate(checkOutDate) }}</p>
+                  <p class="text-sm text-gray-600 font-secondary mt-1">{{ nights }} night{{ nights > 1 ? 's' : '' }} · {{ formData.rooms }} room{{ formData.rooms > 1 ? 's' : '' }}</p>
                 </div>
               </div>
 
-
-
-              <!-- Airport Pickup Summary -->
-              <div v-if="airportPickup === 'yes'">
-                <div class="text-sm font-secondary text-gray-600 space-y-1">
-                  <p v-if="flightNumber">
-                    <strong>Flight Number:</strong> {{ flightNumber }}
-                  </p>
-                  <p v-if="selectedPickupType">
-                    <strong>Pickup Type:</strong> {{ selectedPickupType.name }}
-                  </p>
-                </div>
-                <p v-if="selectedBedCharge">
-                  <strong>Extra Bed:</strong> {{ selectedBedCharge.name }}
-                </p>
+              <div v-if="airportPickup === 'yes' || selectedBedCharge" class="mb-4 text-sm font-secondary text-gray-600 space-y-1">
+                <p v-if="flightNumber"><strong>Flight Number:</strong> {{ flightNumber }}</p>
+                <p v-if="selectedPickupType"><strong>Pickup Type:</strong> {{ selectedPickupType.name }}</p>
+                <p v-if="selectedBedCharge"><strong>Extra Bed:</strong> {{ selectedBedCharge.name }}</p>
               </div>
 
-              <!-- Payment Method Summary -->
-              <div class="mb-4 pt-4">
-                <h3 class="font-medium font-primary mb-2">Payment Method</h3>
-                <div class="text-sm font-secondary text-gray-600">
-                  <p>
-                    <strong>{{ getPaymentMethodName(formData.paymentMethod) }}</strong>
-                  </p>
-                  <p v-if="formData.paymentMethod === 'card' && formData.cardName" class="mt-1">
-                    Card: {{ formData.cardName }}
-                  </p>
-                </div>
-              </div>
-
-              <!-- Price Details -->
               <div class="border-t border-b border-primary py-4">
                 <h3 class="font-medium font-primary mb-2">Price details</h3>
                 <div class="space-y-2">
                   <div class="flex justify-between font-secondary">
-                    <span>
-                      {{ nights }} night{{ nights > 1 ? 's' : '' }} ×
-                      {{ formData.rooms }} room{{ formData.rooms > 1 ? 's' : '' }}
-                      × ${{ roomRate }}
-                    </span>
-                    <span>${{ roomTotal }}</span>
+                    <span>{{ nights }} nights × {{ formData.rooms }} rooms × {{ roomRate }}</span>
+                    <span>{{ roomTotal }}</span>
                   </div>
-
-                  <!-- Airport Pickup Charges -->
-                  <div v-if="airportPickup === 'yes' && selectedPickupType"
-                    class="flex justify-between text-sm font-secondary">
-                    <span>Airport Pickup</span>
-                    <span>${{ pickupCharge }}</span>
+                  <div v-if="selectedBedCharge" class="flex justify-between text-sm font-secondary">
+                    <span>Extra Bed ({{ selectedBedCharge.name }})</span>
+                    <span>{{ selectedBedCharge.price }}</span>
                   </div>
-
+                  <div v-if="airportPickup === 'yes' && selectedPickupType" class="flex justify-between text-sm font-secondary">
+                    <span>Airport Pickup ({{ selectedPickupType.name }})</span>
+                    <span>{{ selectedPickupType.price }}</span>
+                  </div>
                   <div class="flex justify-between font-secondary font-bold mt-2 text-lg border-t pt-2">
                     <span>Grand Total</span>
-                    <span>${{ grandTotal }}</span>
+                    <span>{{ accommodation?.data?.currency_symbol }} {{ grandTotal }}</span>
                   </div>
                 </div>
               </div>
 
-              <p class="text-sm text-gray-600 mt-4 font-secondary">
-                This price may increase if you book later.
-              </p>
+              <p class="text-sm text-gray-600 mt-4 font-secondary">This price may increase if you book later.</p>
 
-              <!-- Confirm Button -->
               <button @click="handleSubmit" :disabled="isSubmitting"
-                class="w-full bg-primary text-white font-primary py-3 font-medium mt-6 hover:bg-secondary transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed">
+                class="w-full bg-primary text-white font-primary py-3 font-medium mt-6 hover:bg-secondary transition-colors disabled:bg-gray-400">
                 {{ isSubmitting ? "Processing..." : "Confirm Reservation" }}
               </button>
             </div>
           </div>
+
           <div class="bg-white p-6 rounded-lg shadow-md">
-            <!-- Cancellation Policy -->
             <div>
               <h3 class="font-medium font-primary mb-2">Cancellation policy</h3>
               <div class="text-sm font-secondary text-gray-600 space-y-2">
@@ -534,11 +409,11 @@ onMounted(() => {
               </div>
             </div>
 
-            <!-- Special Check-in Instructions -->
             <div class="mt-6">
               <h3 class="font-medium font-primary mb-2">Special check-in instructions</h3>
               <div class="text-sm font-secondary text-gray-600 space-y-2">
-                <p>This property offers digital check-in and contactless services. Please contact the property 24 hours prior to arrival using the contact information on the booking confirmation.</p>
+                <p>This property offers digital check-in and contactless services. Please contact the property 24 hours
+                  prior to arrival using the contact information on the booking confirmation.</p>
                 <p>Guests must provide a record of full COVID-19 vaccination if required by local regulations.</p>
               </div>
             </div>
@@ -549,10 +424,7 @@ onMounted(() => {
   </div>
 </template>
 
-
-
 <style scoped>
-/* Additional custom styles */
 input:focus,
 select:focus {
   outline: none;
