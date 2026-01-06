@@ -6,7 +6,7 @@
         <nav class="flex items-center space-x-2 text-sm text-gray-600">
           <NuxtLink to="/" class="hover:text-primary transition-colors">Home</NuxtLink>
           <Icon name="ph:caret-right" class="text-gray-400" />
-          <NuxtLink to="/rooms" class="hover:text-primary transition-colors">Rooms & Suites</NuxtLink>
+          <NuxtLink to="/room" class="hover:text-primary transition-colors">Rooms & Suites</NuxtLink>
           <Icon name="ph:caret-right" class="text-gray-400" />
           <span class="text-gray-900 font-medium">{{ room?.title }}</span>
         </nav>
@@ -25,7 +25,7 @@
               class="w-full h-96 lg:h-[600px] object-cover cursor-zoom-in transition-transform duration-300"
               @click="openLightbox(selectedImage || room.image)"
             />
-            <button
+            <!-- <button
               @click="toggleFavorite"
               class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg"
             >
@@ -34,7 +34,7 @@
                 :class="isFavorite ? 'text-red-500' : 'text-gray-600'"
                 class="text-lg"
               />
-            </button>
+            </button> -->
             <div class="absolute top-4 left-4">
               <span class="bg-primary font-primary text-white px-3 py-1 rounded-full text-sm font-medium">
                 {{ room.category_name }}
@@ -93,13 +93,16 @@
                     <div class="font-semibold font-primary text-gray-900">{{ room.room_size_name }}</div>
                   </div>
                 </div>
-                <div class="flex items-center gap-3 p-4 bg-gray-50" v-if="room.max_guest">
+                <div class="flex items-center gap-3 p-4 bg-gray-50" v-if="room.guest_adult">
                   <div class="w-12 h-12 bg-primary/10 flex items-center justify-center">
                     <Icon name="ph:users" class="text-primary text-xl" />
                   </div>
                   <div>
                     <div class="text-sm font-secondary text-gray-500">Max Guests</div>
-                    <div class="font-semibold font-primary text-gray-900">{{ room.max_guest }}</div>
+                    <div class="font-semibold font-primary text-gray-900">
+                      {{ room.guest_adult }} <span class="text-[12px]">Adults</span>,
+                      {{ room.guest_child }} <span class="text-[12px]">Children</span>
+                    </div>
                   </div>
                 </div>
                 <div class="flex items-center gap-3 p-4 bg-gray-50" v-if="room.bed">

@@ -62,10 +62,10 @@ const props = defineProps({
         </div>
 
         <!-- Favorite Button -->
-        <button
+        <!-- <button
           class="absolute top-4 right-4 text-white hover:text-red-500 transition-colors p-2 bg-black/20 rounded-full backdrop-blur-sm">
           <Icon name="heroicons:heart" class="w-5 h-5 text-primary" />
-        </button>
+        </button> -->
       </div>
 
       <!-- Content Section -->

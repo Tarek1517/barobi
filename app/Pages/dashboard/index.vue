@@ -4,7 +4,6 @@ definePageMeta({
 })
 
 const user = useAuthStore().user
-// Apartment bookings data
 const bookings = [
   {
     id: 1,
@@ -130,11 +129,11 @@ const cancelBooking = (bookingId) => {
             </p>
           </div>
           <div class="flex items-center gap-4">
-            <button
+            <NuxtLink to="/room"
               class="bg-primary font-primary text-white px-6 py-2 hover:bg-primary/90 transition-colors"
             >
               Book New Stay
-            </button>
+            </NuxtLink>
             <div
               class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
             >
@@ -181,7 +180,7 @@ const cancelBooking = (bookingId) => {
                 </div>
               </button>
 
-              <button
+              <!-- <button
                 @click="activeTab = 'bookings'"
                 :class="[
                   'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
@@ -199,7 +198,7 @@ const cancelBooking = (bookingId) => {
                     {{ bookings.length }}
                   </span>
                 </div>
-              </button>
+              </button> -->
 
               <button
                 @click="activeTab = 'settings'"
@@ -238,11 +237,12 @@ const cancelBooking = (bookingId) => {
                     Ready for your next apartment stay?
                   </p>
                 </div>
-                <button
-                  class="bg-white font-primary text-primary px-8 py-3 font-semibold hover:bg-gray-100 transition-colors mt-4 md:mt-0"
+                <NuxtLink
+                  to="/room"
+                  class="bg-white font-primary text-primary px-8 py-3 font-semibold hover:bg-gray-100 transition-colors mt-4 md:mt-0 inline-block"
                 >
                   Book New Stay
-                </button>
+                </NuxtLink>
               </div>
             </div>
 
@@ -282,20 +282,6 @@ const cancelBooking = (bookingId) => {
                   </div>
                 </div>
               </div>
-
-              <div class="bg-white p-6 shadow-sm border">
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center"
-                  >
-                    <Icon name="mdi:star" class="w-6 h-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <p class="text-gray-600 font-primary text-sm">Loyalty Points</p>
-                    <p class="text-2xl font-bold font-primary text-gray-900">1,250</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -303,7 +289,6 @@ const cancelBooking = (bookingId) => {
           <div v-if="activeTab === 'bookings'" class="space-y-6">
             <div class="bg-white rounded-2xl shadow-sm p-6">
               <h3 class="text-xl font-bold font-primary text-gray-900 mb-6">All Bookings</h3>
-
               <div class="space-y-4">
                 <div
                   v-for="booking in bookings"

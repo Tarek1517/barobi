@@ -161,15 +161,15 @@ const { data: categories } = await useAsyncData('room-categories', () =>
 
           <!-- User Actions -->
           <div class="flex items-center space-x-2">
-            <button class="p-2 text-gray-600 hover:text-primary rounded-lg hover:bg-blue-50 transition-colors">
+            <!-- <button class="p-2 text-gray-600 hover:text-primary rounded-lg hover:bg-blue-50 transition-colors">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
                   d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
                   clip-rule="evenodd" />
               </svg>
-            </button>
+            </button> -->
 
-            <a href="/login"
+            <NuxtLink to="/room"
               class="flex items-center font-primary space-x-2 px-6 py-2.5 bg-primary text-white font-medium hover:from-primary hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
@@ -178,7 +178,7 @@ const { data: categories } = await useAsyncData('room-categories', () =>
                   clip-rule="evenodd" />
               </svg>
               <span>Book Now</span>
-            </a>
+            </NuxtLink>
           </div>
 
           <!-- Mobile Menu Button -->

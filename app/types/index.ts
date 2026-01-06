@@ -11,6 +11,8 @@ export interface Accommodation {
   currency_symbol: string;
   quantity: number;
   available_rooms: number;
+  guest_adult: number;
+  guest_child: number;
   booked_rooms: number;
   under_maintenance: number;
   short_description?: string | null;
