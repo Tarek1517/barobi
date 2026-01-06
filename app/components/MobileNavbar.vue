@@ -32,59 +32,35 @@ const { data: categories } = await useAsyncData('room-categories-mobile', () =>
     </div>
 
     <transition name="slide-fade">
-      <nav
-        v-if="mobileMenuOpen"
-        class="px-4 pb-6 space-y-3 font-primary text-base border-t border-gray-200"
-      >
+      <nav v-if="mobileMenuOpen" class="px-4 pb-6 space-y-3 font-primary text-base border-t border-gray-200">
 
         <!-- Apartments -->
         <div>
-          <button
-            @click="toggleApartments"
-            class="flex justify-between items-center w-full py-2 font-semibold text-gray-800"
-          >
+          <button @click="toggleApartments"
+            class="flex justify-between items-center w-full py-2 font-semibold text-gray-800">
             Apartments
-            <Icon
-              :name="apartmentsOpen ? 'heroicons-solid:chevron-up' : 'heroicons-solid:chevron-down'"
-              class="w-5 h-5"
-            />
+            <Icon :name="apartmentsOpen ? 'heroicons-solid:chevron-up' : 'heroicons-solid:chevron-down'"
+              class="w-5 h-5" />
           </button>
 
           <div v-if="apartmentsOpen" class="mt-2 space-y-3">
 
             <!-- Category -->
-            <div
-              v-for="category in categories?.data"
-              :key="category.id"
-              class="border border-gray-200 rounded-lg overflow-hidden"
-            >
-              <button
-                @click="toggleCategory(category.id)"
-                class="flex justify-between items-center w-full px-3 py-2 bg-gray-50 font-medium text-gray-700"
-              >
+            <div v-for="category in categories?.data" :key="category.id"
+              class="border border-gray-200 rounded-lg overflow-hidden">
+              <button @click="toggleCategory(category.id)"
+                class="flex justify-between items-center w-full px-3 py-2 bg-gray-50 font-medium text-gray-700">
                 {{ category.name }}
-                <Icon
-                  :name="openCategory === category.id
-                    ? 'heroicons-solid:minus'
-                    : 'heroicons-solid:plus'"
-                  class="w-4 h-4"
-                />
+                <Icon :name="openCategory === category.id
+                  ? 'heroicons-solid:minus'
+                  : 'heroicons-solid:plus'" class="w-4 h-4" />
               </button>
 
               <!-- Rooms -->
               <div v-if="openCategory === category.id" class="p-3 space-y-3 bg-white">
-                <NuxtLink
-                  v-for="room in category.rooms"
-                  :key="room.title"
-                  :to="`/room/${room.slug}`"
-                  @click="toggleMobileMenu"
-                  class="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 transition"
-                >
-                  <img
-                    :src="room.image"
-                    class="w-16 h-12 object-cover rounded-md border"
-                    alt=""
-                  />
+                <NuxtLink v-for="room in category.rooms" :key="room.title" :to="`/room/${room.slug}`"
+                  @click="toggleMobileMenu" class="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 transition">
+                  <img :src="room.image" class="w-16 h-12 object-cover rounded-md border" alt="" />
                   <div>
                     <p class="text-sm font-medium text-gray-800">
                       {{ room.title }}
@@ -110,16 +86,11 @@ const { data: categories } = await useAsyncData('room-categories-mobile', () =>
         <NuxtLink @click="toggleMobileMenu" to="/contact" class="block py-2 text-gray-700">Contact Us</NuxtLink>
 
         <!-- Offers -->
-        <NuxtLink
-          @click="toggleMobileMenu"
-          to="/#offers"
-          class="block py-2 px-3 bg-orange-200 text-orange-700 font-medium rounded-md relative"
-        >
+        <NuxtLink @click="toggleMobileMenu" to="/#offers"
+          class="block py-2 px-3 bg-orange-200 text-orange-700 font-medium rounded-md relative">
           Offers
-          <span
-            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full
-                   w-5 h-5 flex items-center justify-center animate-pulse"
-          >
+          <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full
+                   w-5 h-5 flex items-center justify-center animate-pulse">
             !
           </span>
         </NuxtLink>
@@ -131,30 +102,30 @@ const { data: categories } = await useAsyncData('room-categories-mobile', () =>
 
 <style>
 .slide-fade-enter-active {
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .slide-fade-leave-active {
-    transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .slide-fade-enter-from {
-    opacity: 0;
-    transform: translateY(-10px);
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 .slide-fade-enter-to {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .slide-fade-leave-from {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .slide-fade-leave-to {
-    opacity: 0;
-    transform: translateY(-10px);
+  opacity: 0;
+  transform: translateY(-10px);
 }
 </style>

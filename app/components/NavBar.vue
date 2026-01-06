@@ -2,8 +2,8 @@
 const { $api } = useNuxtApp();
 
 const { data: categories } = await useAsyncData('room-categories', () =>
-    $api('/get-categories-with-room')
-  );
+  $api('/get-categories-with-room')
+);
 
 </script>
 
@@ -16,78 +16,60 @@ const { data: categories } = await useAsyncData('room-categories', () =>
         </NuxtLink>
         <nav class="hidden font-primary text-lg lg:flex items-center gap-2">
           <div class="relative group">
-  <!-- Apartments Button -->
-  <NuxtLink
-    to="/room"
-    class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300"
-  >
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-      />
-    </svg>
-    <span>Apartments</span>
-    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </NuxtLink>
-
-  <!-- Mega Menu -->
-  <div
-    class="absolute left-0 mt-4 w-[900px] bg-white shadow-2xl border border-gray-200
-           opacity-0 invisible group-hover:opacity-100 group-hover:visible
-           transition-all duration-300 translate-y-3 group-hover:translate-y-0 z-50"
-  >
-    <div class="p-6">
-      <div class="grid grid-cols-2 gap-6">
-
-        <!-- Category Column -->
-        <div
-          v-for="category in categories?.data"
-          :key="category.id"
-          class="space-y-4"
-        >
-          <!-- Category Title -->
-          <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">
-            {{ category.name }}
-          </h3>
-
-          <!-- Rooms -->
-          <div class="space-y-3">
-            <NuxtLink
-              v-for="room in category.rooms"
-              :key="room.title"
-              :to="`/room/${room.slug}`"
-              class="flex items-center gap-4 p-3 rounded-lg hover:bg-blue-50 transition group"
-            >
-              <!-- Room Image -->
-              <img
-                :src="room.image"
-                class="w-20 h-16 object-cover rounded-md border"
-                alt=""
-              />
-
-              <!-- Room Info -->
-              <div class="flex-1">
-                <p class="text-sm font-medium text-gray-800 group-hover:text-primary">
-                  {{ room.title }}
-                </p>
-                <p class="text-sm text-gray-500">
-                  <span class="font-semibold text-gray-700">{{ room.currency }} {{ room.price }}</span> / night
-                </p>
-              </div>
+            <!-- Apartments Button -->
+            <NuxtLink to="/room"
+              class="flex items-center space-x-2 px-3 py-3 text-gray-700 hover:text-primary font-medium transition-all duration-300">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
+              <span>Apartments</span>
+              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
             </NuxtLink>
-          </div>
-        </div>
 
-      </div>
-    </div>
-  </div>
-</div>
+            <!-- Mega Menu -->
+            <div class="absolute left-0 mt-4 w-[900px] bg-white shadow-2xl border border-gray-200
+           opacity-0 invisible group-hover:opacity-100 group-hover:visible
+           transition-all duration-300 translate-y-3 group-hover:translate-y-0 z-50">
+              <div class="p-6">
+                <div class="grid grid-cols-2 gap-6">
+
+                  <!-- Category Column -->
+                  <div v-for="category in categories?.data" :key="category.id" class="space-y-4">
+                    <!-- Category Title -->
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">
+                      {{ category.name }}
+                    </h3>
+
+                    <!-- Rooms -->
+                    <div class="space-y-3">
+                      <NuxtLink v-for="room in category.rooms" :key="room.title" :to="`/room/${room.slug}`"
+                        class="flex items-center gap-4 p-3 rounded-lg hover:bg-blue-50 transition group">
+                        <!-- Room Image -->
+                        <img :src="room.image" class="w-20 h-16 object-cover rounded-md border" alt="" />
+
+                        <!-- Room Info -->
+                        <div class="flex-1">
+                          <p class="text-sm font-medium text-gray-800 group-hover:text-primary">
+                            {{ room.title }}
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            <span class="font-semibold text-gray-700">{{ room.currency }} {{ room.price }}</span> /
+                            night
+                          </p>
+                        </div>
+                      </NuxtLink>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
 
 
           <NuxtLink to="/service"
