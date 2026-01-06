@@ -4,8 +4,24 @@ const { $api } = useNuxtApp()
 /* =======================
    Async Data
 ======================= */
-const { data: rooms } = await useAsyncData('rooms', () =>
-  $api('/accommodations')
+
+const route = useRoute()
+
+const checkIn = computed(() => route.query.checkIn as string || '')
+const checkOut = computed(() => route.query.checkOut as string || '')
+
+const apiUrl = computed(() => {
+  const params: Record<string, string> = {}
+  if (checkIn.value) params.checkIn = checkIn.value
+  if (checkOut.value) params.checkOut = checkOut.value
+  return `/accommodations${Object.keys(params).length ? '?' + new URLSearchParams(params).toString() : ''}`
+})
+
+// watch apiUrl so rooms refetch when query changes
+const { data: rooms } = await useAsyncData(
+  () => `rooms-${apiUrl.value}`, // key depends on apiUrl
+  () => $api(apiUrl.value),
+  { watch: [apiUrl] } // <-- important!
 )
 
 const { data: category } = await useAsyncData('category', () =>
