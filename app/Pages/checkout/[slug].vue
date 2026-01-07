@@ -141,6 +141,35 @@ const validateForm = () => {
 }
 
 const isSubmitting = ref(false);
+const resetForm = () => {
+  formData.roomType = "";
+  formData.rooms = 1;
+  formData.checkIn = new Date().toISOString().split("T")[0];
+  formData.checkOut = new Date(Date.now() + 86400000).toISOString().split("T")[0];
+  formData.fullName = isLoggedIn && auth.user ? auth.user.name : "";
+  formData.telephone = isLoggedIn && auth.user ? auth.user.phone : "";
+  formData.email = isLoggedIn && auth.user ? auth.user.email : "";
+  formData.adults = 1;
+  formData.children = 0;
+  formData.country = "";
+  formData.paymentMethod = "cash";
+  formData.cardName = "";
+  formData.cardNumber = "";
+  formData.cardExpiry = "";
+  formData.cardCvv = "";
+  formData.cardZip = "";
+
+  airportPickup.value = "";
+  flightNumber.value = "";
+  pickupTypeId.value = null;
+  pickupTypePrice.value = 0;
+  extraBedId.value = null;
+  extraBedPrice.value = 0;
+  specialNotes.value = "";
+  errors.fullName = "";
+  errors.telephone = "";
+  errors.email = "";
+}
 
 const handleSubmit = async () => {
   if (!validateForm()) return
@@ -171,6 +200,7 @@ const handleSubmit = async () => {
       }
     })
     alert('Reservation confirmed successfully!')
+    resetForm();
   } catch (error: any) {
     console.error(error)
     alert(error?.data?.message || 'Booking failed')

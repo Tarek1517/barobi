@@ -24,6 +24,7 @@ const { data: rooms } = await useAsyncData(
   { watch: [apiUrl] } // <-- important!
 )
 
+
 const { data: category } = await useAsyncData('category', () =>
   $api('/get-room-category')
 )
@@ -47,7 +48,7 @@ const sortBy = ref('default')
 const showMobileFilters = ref(false)
 
 const minPrice = 0
-const maxPrice = 500
+const maxPrice = 50000
 const priceRange = ref<[number, number]>([minPrice, maxPrice])
 
 const updatePriceRange = () => {
@@ -100,6 +101,7 @@ const filteredRooms = computed<Room[]>(() => {
 
   return filtered
 })
+
 
 const hasActiveFilters = computed(() =>
   searchQuery.value ||
@@ -215,8 +217,8 @@ const clearFilters = () => {
                 </h3>
                 <div class="px-2">
                   <div class="flex justify-between text-sm text-gray-800 mb-2">
-                    <span>Min: ${{ priceRange[0] }}</span>
-                    <span>Max: ${{ priceRange[1] }}</span>
+                    <span>Min: {{ priceRange[0] }}</span>
+                    <span>Max: {{ priceRange[1] }}</span>
                   </div>
                   <input type="range" v-model.number="priceRange[0]" :min="minPrice" :max="maxPrice" class="w-full mb-4"
                     @input="updatePriceRange" />

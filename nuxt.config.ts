@@ -1,10 +1,17 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
+  ssr: false,   
+  
   devtools: { enabled: false },
-   runtimeConfig: {
+
+  app: {
+    baseURL: '/', 
+    buildAssetsDir: '/_nuxt/',
+  },
+
+  runtimeConfig: {
     public: {
       apiUrl: process.env.PUBLIC_API_URL,
     }
@@ -22,5 +29,4 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "pinia-plugin-persistedstate/nuxt",
   ],
-  ssr: false,
 });
