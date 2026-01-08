@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: 'auth' 
+  middleware: 'auth'
 })
 
 const user = useAuthStore().user
@@ -130,13 +130,11 @@ const cancelBooking = (bookingId) => {
           </div>
           <div class="flex items-center gap-4">
             <NuxtLink to="/room"
-              class="bg-primary font-primary text-white px-6 py-2 hover:bg-primary/90 transition-colors"
-            >
+              class="bg-primary font-primary text-white px-6 py-2 hover:bg-primary/90 transition-colors">
               Book New Stay
             </NuxtLink>
             <div
-              class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center"
-            >
+              class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
               <span class="text-white font-primary font-semibold">{{ user.name.charAt(0) }}</span>
             </div>
           </div>
@@ -152,8 +150,7 @@ const cancelBooking = (bookingId) => {
             <!-- Customer Profile Summary -->
             <div class="text-center mb-8">
               <div
-                class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4"
-              >
+                class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
                 <span class="text-white font-primary text-2xl font-bold">{{ user.name.charAt(0) }}</span>
               </div>
               <h3 class="font-semibold font-primary text-gray-900">{{ user.name }}</h3>
@@ -165,15 +162,12 @@ const cancelBooking = (bookingId) => {
 
             <!-- Navigation -->
             <nav class="space-y-2">
-              <button
-                @click="activeTab = 'overview'"
-                :class="[
-                  'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
-                  activeTab === 'overview'
-                    ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
-                    : 'text-gray-600 font-primary hover:bg-gray-100',
-                ]"
-              >
+              <button @click="activeTab = 'overview'" :class="[
+                'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
+                activeTab === 'overview'
+                  ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
+                  : 'text-gray-600 font-primary hover:bg-gray-100',
+              ]">
                 <div class="flex items-center gap-3">
                   <Icon name="mdi:view-dashboard" class="w-5 h-5" />
                   <span>Overview</span>
@@ -200,15 +194,12 @@ const cancelBooking = (bookingId) => {
                 </div>
               </button> -->
 
-              <button
-                @click="activeTab = 'settings'"
-                :class="[
-                  'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
-                  activeTab === 'settings'
-                    ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
-                    : 'text-gray-600 font-primary hover:bg-gray-100',
-                ]"
-              >
+              <button @click="activeTab = 'settings'" :class="[
+                'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
+                activeTab === 'settings'
+                  ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
+                  : 'text-gray-600 font-primary hover:bg-gray-100',
+              ]">
                 <div class="flex items-center gap-3">
                   <Icon name="mdi:cog-outline" class="w-5 h-5" />
                   <span>Account Settings</span>
@@ -223,12 +214,8 @@ const cancelBooking = (bookingId) => {
           <!-- Overview Tab -->
           <div v-if="activeTab === 'overview'" class="space-y-8">
             <!-- Welcome Card -->
-            <div
-              class="bg-gradient-to-r from-primary to-secondary text-white p-8"
-            >
-              <div
-                class="flex flex-col md:flex-row items-center justify-between"
-              >
+            <div class="bg-gradient-to-r from-primary to-secondary text-white p-8">
+              <div class="flex flex-col md:flex-row items-center justify-between">
                 <div>
                   <h2 class="text-3xl font-primary font-bold mb-2">
                     Welcome back, {{ user.name }}! 👋
@@ -237,10 +224,8 @@ const cancelBooking = (bookingId) => {
                     Ready for your next apartment stay?
                   </p>
                 </div>
-                <NuxtLink
-                  to="/room"
-                  class="bg-white font-primary text-primary px-8 py-3 font-semibold hover:bg-gray-100 transition-colors mt-4 md:mt-0 inline-block"
-                >
+                <NuxtLink to="/room"
+                  class="bg-white font-primary text-primary px-8 py-3 font-semibold hover:bg-gray-100 transition-colors mt-4 md:mt-0 inline-block">
                   Book New Stay
                 </NuxtLink>
               </div>
@@ -250,13 +235,8 @@ const cancelBooking = (bookingId) => {
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div class="bg-white p-6 shadow-sm border">
                 <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center"
-                  >
-                    <Icon
-                      name="mdi:calendar-check"
-                      class="w-6 h-6 text-blue-600"
-                    />
+                  <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                    <Icon name="mdi:calendar-check" class="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Upcoming Stays</p>
@@ -269,9 +249,7 @@ const cancelBooking = (bookingId) => {
 
               <div class="bg-white p-6 shadow-sm border">
                 <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center"
-                  >
+                  <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
                     <Icon name="mdi:history" class="w-6 h-6 text-green-600" />
                   </div>
                   <div>
@@ -290,32 +268,22 @@ const cancelBooking = (bookingId) => {
             <div class="bg-white rounded-2xl shadow-sm p-6">
               <h3 class="text-xl font-bold font-primary text-gray-900 mb-6">All Bookings</h3>
               <div class="space-y-4">
-                <div
-                  v-for="booking in bookings"
-                  :key="booking.id"
-                  class="border border-gray-200 p-6 hover:shadow-md transition-shadow"
-                >
+                <div v-for="booking in bookings" :key="booking.id"
+                  class="border border-gray-200 p-6 hover:shadow-md transition-shadow">
                   <div class="flex flex-col md:flex-row gap-6">
-                    <img
-                      :src="booking.apartment.image"
-                      :alt="booking.apartment.name"
-                      class="w-full md:w-32 h-32 object-cover"
-                    />
+                    <img :src="booking.apartment.image" :alt="booking.apartment.name"
+                      class="w-full md:w-32 h-32 object-cover" />
                     <div class="flex-1">
-                      <div
-                        class="flex flex-col md:flex-row md:items-center justify-between mb-4"
-                      >
+                      <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
                         <h4 class="text-lg font-primary font-semibold text-gray-900">
                           {{ booking.apartment.name }}
                         </h4>
-                        <span
-                          :class="[
-                            'px-3 py-1 font-primary rounded-full text-sm font-medium',
-                            booking.status === 'confirmed'
-                              ? 'bg-green-100 text-green-800'
-                              : 'bg-gray-100 text-gray-800',
-                          ]"
-                        >
+                        <span :class="[
+                          'px-3 py-1 font-primary rounded-full text-sm font-medium',
+                          booking.status === 'confirmed'
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-gray-100 text-gray-800',
+                        ]">
                           {{
                             booking.status.charAt(0).toUpperCase() +
                             booking.status.slice(1)
@@ -330,9 +298,7 @@ const cancelBooking = (bookingId) => {
                         {{ booking.apartment.type }}
                       </p>
 
-                      <div
-                        class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm"
-                      >
+                      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                         <div>
                           <p class="text-gray-500 font-secondary">Check-in</p>
                           <p class="font-semibold">
@@ -359,23 +325,18 @@ const cancelBooking = (bookingId) => {
 
                       <div class="flex gap-3 mt-4">
                         <button
-                          class="bg-primary font-primary text-white px-4 py-2 text-sm hover:bg-primary/90 transition-colors"
-                        >
+                          class="bg-primary font-primary text-white px-4 py-2 text-sm hover:bg-primary/90 transition-colors">
                           View Details
                         </button>
-                        <button
-                          v-if="
-                            booking.status === 'confirmed' &&
-                            new Date(booking.checkIn) > new Date()
-                          "
-                          @click="cancelBooking(booking.id)"
-                          class="border border-gray-300 text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors"
-                        >
+                        <button v-if="
+                          booking.status === 'confirmed' &&
+                          new Date(booking.checkIn) > new Date()
+                        " @click="cancelBooking(booking.id)"
+                          class="border border-gray-300 text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors">
                           Cancel
                         </button>
                         <button
-                          class="border border-gray-300 font-primary text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors"
-                        >
+                          class="border border-gray-300 font-primary text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors">
                           Contact Support
                         </button>
                       </div>
@@ -401,37 +362,19 @@ const cancelBooking = (bookingId) => {
                   </h4>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label
-                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
-                        >Full Name</label
-                      >
-                      <input
-                        v-model="settingsForm.name"
-                        type="text"
-                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      />
+                      <label class="block text-sm font-secondary font-medium text-gray-700 mb-2">Full Name</label>
+                      <input v-model="settingsForm.name" type="text"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                     <div>
-                      <label
-                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
-                        >Email Address</label
-                      >
-                      <input
-                        v-model="settingsForm.email"
-                        type="email"
-                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      />
+                      <label class="block text-sm font-secondary font-medium text-gray-700 mb-2">Email Address</label>
+                      <input v-model="settingsForm.email" type="email"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                     <div>
-                      <label
-                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
-                        >Phone Number</label
-                      >
-                      <input
-                        v-model="settingsForm.phone"
-                        type="tel"
-                        class="w-full p-3 border font-secondary border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      />
+                      <label class="block text-sm font-secondary font-medium text-gray-700 mb-2">Phone Number</label>
+                      <input v-model="settingsForm.phone" type="tel"
+                        class="w-full p-3 border font-secondary border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                   </div>
                 </div>
@@ -446,47 +389,29 @@ const cancelBooking = (bookingId) => {
                 <div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label
-                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
-                        >Current Password</label
-                      >
-                      <input
-                        v-model="settingsForm.current_password"
-                        type="password"
-                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      />
+                      <label class="block text-sm font-secondary font-medium text-gray-700 mb-2">Current
+                        Password</label>
+                      <input v-model="settingsForm.current_password" type="password"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                     <div>
-                      <label
-                        class="block text-sm font-secondary font-medium text-gray-700 mb-2"
-                        >Old Password</label
-                      >
-                      <input
-                        v-model="settingsForm.old_password"
-                        type="password"
-                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      />
+                      <label class="block text-sm font-secondary font-medium text-gray-700 mb-2">Old Password</label>
+                      <input v-model="settingsForm.old_password" type="password"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                     <div>
-                      <label
-                        class="block font-secondary text-sm font-medium text-gray-700 mb-2"
-                        >Confirm Password</label
-                      >
-                      <input
-                        v-model="settingsForm.confirm_password"
-                        type="password"
-                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
-                      />
+                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-2">Confirm
+                        Password</label>
+                      <input v-model="settingsForm.confirm_password" type="password"
+                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                   </div>
                 </div>
 
                 <!-- Save Button -->
                 <div class="flex justify-end">
-                  <button
-                    @click="saveSettings"
-                    class="bg-primary font-primary text-white px-8 py-3 font-semibold hover:bg-primary/90 transition-colors"
-                  >
+                  <button @click="saveSettings"
+                    class="bg-primary font-primary text-white px-8 py-3 font-semibold hover:bg-primary/90 transition-colors">
                     Save Changes
                   </button>
                 </div>
