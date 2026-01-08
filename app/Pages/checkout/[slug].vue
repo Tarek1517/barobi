@@ -50,6 +50,8 @@ const extraBedPrice = ref(0);
 const pickupTypeId = ref<number | null>(null);
 const extraBedId = ref<number | null>(null);
 const specialNotes = ref("");
+const availableRooms = ref<number>(0);
+const isCheckingAvailability = ref(false);
 
 const handleAirportPickupChange = () => {
   if (airportPickup.value !== "yes") {
@@ -81,6 +83,51 @@ const getPaymentMethodName = (method: string) => {
   return methods[method] || method;
 };
 
+const fetchAvailableRooms = async () => {
+  if (!formData.checkIn || !formData.checkOut || !accommodation.value?.data?.id) {
+    availableRooms.value = 0;
+    return;
+  }
+
+  isCheckingAvailability.value = true;
+
+  try {
+    const res = await $api('/get-available-room', {
+      params: {
+        accommodation_id: accommodation.value.data.id,
+        check_in: formData.checkIn,
+        check_out: formData.checkOut,
+      },
+    });
+
+    availableRooms.value = Number(res.data || 0);
+
+    if (formData.rooms > availableRooms.value) {
+      formData.rooms = availableRooms.value > 0 ? 1 : 0;
+    }
+
+  } catch (err) {
+    availableRooms.value = 0;
+    formData.rooms = 0;
+  } finally {
+    isCheckingAvailability.value = false;
+  }
+};
+
+watch(
+  () => [formData.checkIn, formData.checkOut],
+  ([checkIn, checkOut]) => {
+    if (checkIn && checkOut) {
+      fetchAvailableRooms();
+    } else {
+      availableRooms.value = 0;
+      formData.rooms = 0;
+    }
+  },
+  { immediate: true }
+);
+
+
 const formatDate = (date: Date) => {
   return date.toLocaleDateString("en-US", {
     weekday: "short",
@@ -94,19 +141,17 @@ const errors = reactive({
   fullName: '',
   telephone: '',
   email: '',
+  room_message: '',
 })
 
-// Selected Extra Bed object - correctly finding the object from the API response
 const selectedBedCharge = computed(() => {
   return bedCharges.value?.data?.find(bed => bed.id === extraBedId.value) || null;
 });
 
-// Selected Pickup Type object - correctly finding the object from the API response
 const selectedPickupType = computed(() => {
   return pickupTypes.value?.data?.find(pickup => pickup.id === pickupTypeId.value) || null;
 });
 
-// Update the actual prices used in total calculation when selection changes
 watch(selectedBedCharge, (val) => {
   extraBedPrice.value = val ? Number(val.price) : 0;
 });
@@ -120,7 +165,11 @@ const validateForm = () => {
   errors.fullName = ''
   errors.telephone = ''
   errors.email = ''
-
+  errors.room_message = ''
+  if(formData.rooms === 0){
+    isValid = false
+    errors.room_message = 'At least one room is required'
+  }
   if (!formData.fullName.trim()) {
     errors.fullName = 'Full name is required'
     isValid = false
@@ -143,7 +192,7 @@ const validateForm = () => {
 const isSubmitting = ref(false);
 const resetForm = () => {
   formData.roomType = "";
-  formData.rooms = 1;
+  formData.rooms = 0;
   formData.checkIn = new Date().toISOString().split("T")[0];
   formData.checkOut = new Date(Date.now() + 86400000).toISOString().split("T")[0];
   formData.fullName = isLoggedIn && auth.user ? auth.user.name : "";
@@ -229,13 +278,6 @@ onMounted(() => {
               <h2 class="text-xl font-primary font-semibold mb-4">ROOM RESERVATION</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of rooms</label>
-                  <select v-model="formData.rooms"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option v-for="n in 5" :key="n" :value="n">{{ n }}</option>
-                  </select>
-                </div>
-                <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Check in date</label>
                   <input type="date" v-model="formData.checkIn"
                     class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
@@ -244,6 +286,36 @@ onMounted(() => {
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Check out date</label>
                   <input type="date" v-model="formData.checkOut"
                     class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+                <div>
+                  <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of rooms</label>
+                  <select v-model="formData.rooms" :disabled="isCheckingAvailability || availableRooms === 0"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed">
+                    <option value="0" disabled>
+                      Select rooms
+                    </option>
+
+                    <option v-for="n in availableRooms" :key="n" :value="n">
+                      {{ n }}
+                    </option>
+                  </select>
+
+                  <p v-if="isCheckingAvailability" class="text-xs text-gray-500 mt-1">
+                    Checking availability...
+                  </p>
+
+                  <p v-else-if="availableRooms === 0" class="text-xs text-red-500 mt-1">
+                    No rooms available for selected dates
+                  </p>
+
+                  <p v-else-if="errors.room_message" class="text-xs text-red-500 mt-1">
+                    {{ errors.room_message }}
+                  </p>
+
+                  <p v-else class="text-xs text-gray-600 mt-1">
+                    {{ availableRooms }} room{{ availableRooms > 1 ? 's' : '' }} available
+                  </p>
+
                 </div>
               </div>
             </section>
@@ -283,14 +355,14 @@ onMounted(() => {
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of Adult</label>
                   <select v-model="formData.adults"
                     class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option v-for="n in 6" :key="n" :value="n">{{ n }}</option>
+                    <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
                   </select>
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of Children</label>
                   <select v-model="formData.children"
                     class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option v-for="n in 5" :key="n" :value="n">{{ n }}</option>
+                    <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
                   </select>
                 </div>
                 <div>
@@ -314,7 +386,8 @@ onMounted(() => {
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Extra Bed Charge</label>
-                  <div class="border font-secondary border-gray-300 px-3 py-2 bg-gray-50 min-h-[42px] flex items-center">
+                  <div
+                    class="border font-secondary border-gray-300 px-3 py-2 bg-gray-50 min-h-[42px] flex items-center">
                     <span class="font-medium">{{ extraBedPrice || '0' }}</span>
                   </div>
                 </div>
@@ -327,7 +400,7 @@ onMounted(() => {
                     <option value="no">No</option>
                   </select>
                 </div>
-                <div>
+                <div v-if="airportPickup === 'yes'">
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Flight Number</label>
                   <input type="text" v-model="flightNumber"
                     class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
@@ -352,16 +425,17 @@ onMounted(() => {
               </div>
 
               <div class="mt-4">
-                <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Special Notes / Requests</label>
-                <textarea v-model="specialNotes" rows="3"
-                  placeholder="Any special requests or notes for your pickup..."
+                <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Special Notes /
+                  Requests</label>
+                <textarea v-model="specialNotes" rows="3" placeholder="Any special requests or notes for your pickup..."
                   class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
               </div>
             </section>
 
             <section>
               <h2 class="text-xl font-primary font-semibold mb-4">Payment details</h2>
-              <p class="text-sm font-secondary text-gray-600 mb-4">Safe, secure transactions. Your personal information is protected.</p>
+              <p class="text-sm font-secondary text-gray-600 mb-4">Safe, secure transactions. Your personal information
+                is protected.</p>
               <div class="mb-4">
                 <h3 class="font-medium font-secondary mb-2">Payment Method</h3>
                 <div class="flex flex-col space-y-4">
@@ -376,22 +450,27 @@ onMounted(() => {
 
         <div class="lg:w-1/3 space-y-2 mt-1">
           <div class="bg-white rounded-lg shadow-md">
-            <img :src="accommodation?.data?.image" class="w-full h-full object-cover transition-transform duration-700" loading="lazy" />
+            <img :src="accommodation?.data?.image" class="w-full h-full object-cover transition-transform duration-700"
+              loading="lazy" />
             <div class="flex flex-col p-6">
               <div class="mb-6">
                 <h3 class="font-bold font-primary text-xl">
                   {{ accommodation?.data?.title }}, Guest room,
                   <span>{{ formData.adults }} Adult{{ formData.adults > 1 ? 's' : '' }}</span>
-                  <span v-if="formData.children">, {{ formData.children }} Child{{ formData.children > 1 ? 'ren' : '' }}</span>
+                  <span v-if="formData.children">, {{ formData.children }} Child{{ formData.children > 1 ? 'ren' : ''
+                    }}</span>
                 </h3>
                 <p class="text-sm font-secondary text-gray-600 mt-1">Room Details</p>
                 <div class="mt-4">
-                  <p class="font-medium font-secondary">{{ formatDate(checkInDate) }} - {{ formatDate(checkOutDate) }}</p>
-                  <p class="text-sm text-gray-600 font-secondary mt-1">{{ nights }} night{{ nights > 1 ? 's' : '' }} · {{ formData.rooms }} room{{ formData.rooms > 1 ? 's' : '' }}</p>
+                  <p class="font-medium font-secondary">{{ formatDate(checkInDate) }} - {{ formatDate(checkOutDate) }}
+                  </p>
+                  <p class="text-sm text-gray-600 font-secondary mt-1">{{ nights }} night{{ nights > 1 ? 's' : '' }} ·
+                    {{ formData.rooms }} room{{ formData.rooms > 1 ? 's' : '' }}</p>
                 </div>
               </div>
 
-              <div v-if="airportPickup === 'yes' || selectedBedCharge" class="mb-4 text-sm font-secondary text-gray-600 space-y-1">
+              <div v-if="airportPickup === 'yes' || selectedBedCharge"
+                class="mb-4 text-sm font-secondary text-gray-600 space-y-1">
                 <p v-if="flightNumber"><strong>Flight Number:</strong> {{ flightNumber }}</p>
                 <p v-if="selectedPickupType"><strong>Pickup Type:</strong> {{ selectedPickupType.name }}</p>
                 <p v-if="selectedBedCharge"><strong>Extra Bed:</strong> {{ selectedBedCharge.name }}</p>
@@ -408,7 +487,8 @@ onMounted(() => {
                     <span>Extra Bed ({{ selectedBedCharge.name }})</span>
                     <span>{{ selectedBedCharge.price }}</span>
                   </div>
-                  <div v-if="airportPickup === 'yes' && selectedPickupType" class="flex justify-between text-sm font-secondary">
+                  <div v-if="airportPickup === 'yes' && selectedPickupType"
+                    class="flex justify-between text-sm font-secondary">
                     <span>Airport Pickup ({{ selectedPickupType.name }})</span>
                     <span>{{ selectedPickupType.price }}</span>
                   </div>
