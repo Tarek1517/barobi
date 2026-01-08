@@ -8,7 +8,7 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: '/', 
-    buildAssetsDir: '/_nuxt/',
+    buildAssetsDir: '_nuxt/'
   },
 
   runtimeConfig: {
