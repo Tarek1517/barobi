@@ -83,12 +83,12 @@
               <Icon name="mdi:directions" class="mr-1" />
               Directions
             </button>
-            <button
+            <a :href="`tel:${item.phone}`"
               class="flex items-center font-secondary text-purple-600 hover:text-purple-700 transition-colors ml-auto"
             >
               <Icon name="mdi:phone" class="mr-1" />
               Call
-            </button>
+            </a>
           </div>
         </div>
       </div>
