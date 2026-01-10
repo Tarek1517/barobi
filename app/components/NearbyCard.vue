@@ -53,16 +53,16 @@
 
       <!-- Action Buttons -->
       <div class="flex gap-3 pt-3 border-t border-gray-100">
-        <button
+        <button :href="item.map_link"
           class="flex-1 flex items-center justify-center gap-1 px-4 py-2 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors text-sm font-medium">
           <Icon name="mdi:directions" />
           Directions
         </button>
-        <button
+        <a :href="`tel:${item.phone}`"
           class="flex-1 flex items-center justify-center gap-1 px-4 py-2 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg transition-colors text-sm font-medium">
           <Icon name="mdi:phone" />
           Call Now
-        </button>
+        </a>
       </div>
     </div>
   </div>
