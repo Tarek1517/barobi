@@ -37,19 +37,33 @@ const children = ref(0);
       <video v-if="hasVideo" autoplay muted loop playsinline class="w-full h-full object-cover">
         <source :src="video?.data?.video" type="video/mp4" />
       </video>
-      <div v-else class="w-full h-full">
-        <UCarousel v-slot="{ item }" :items="slider?.data" :ui="{
-          item: 'flex-[0_0_100%]',
-          container: 'w-full h-full',
-        }" class="w-full h-full" arrows indicators autoplay :autoplay-interval="5000">
-          <div class="relative w-full h-full">
-            <NuxtImg :src="item.image" :alt="item.title" class="w-full h-full object-cover" format="webp"
-              quality="80" />
-            <!-- Dark overlay for better text readability -->
-            <div class="absolute inset-0 bg-black/50"></div>
-          </div>
-        </UCarousel>
-      </div>
+    <div v-else class="w-full h-full">
+  <UCarousel 
+    v-slot="{ item }" 
+    :items="slider?.data" 
+    :ui="{
+      item: 'flex-[0_0_100%]',
+      container: 'w-full h-full',
+    }" 
+    class="w-full h-full" 
+    arrows 
+    indicators 
+    autoplay 
+    :autoplay-interval="5000"
+  >
+    <div class="relative w-full h-screen md:h-screen lg:h-screen">
+      <NuxtImg 
+        :src="item.image" 
+        :alt="item.title" 
+        class="w-full h-full object-cover" 
+        format="webp"
+        quality="80" 
+      />
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+  </UCarousel>
+</div>
+
     </div>
 
     <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-black/40 to-transparent z-0"></div>
