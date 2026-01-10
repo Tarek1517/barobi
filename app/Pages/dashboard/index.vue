@@ -3,84 +3,54 @@ definePageMeta({
   middleware: 'auth'
 })
 
+
 const user = useAuthStore().user
-const bookings = [
-  {
-    id: 1,
-    apartment: {
-      name: "Luxury Skyview Apartment",
-      image: "/images/room-8.jpg",
-      location: "Downtown, New York",
-      type: "2 Bedroom, 2 Bath",
-    },
-    checkIn: "2024-12-15",
-    checkOut: "2024-12-22",
-    guests: 2,
-    total: 1250,
-    status: "confirmed",
-    bookingDate: "2024-11-10",
-  },
-  {
-    id: 2,
-    apartment: {
-      name: "Modern City Loft",
-      image: "/images/room-2.jpg",
-      location: "Manhattan, NY",
-      type: "Studio Apartment",
-    },
-    checkIn: "2025-01-05",
-    checkOut: "2025-01-12",
-    guests: 1,
-    total: 850,
-    status: "confirmed",
-    bookingDate: "2024-11-28",
-  },
-  {
-    id: 3,
-    apartment: {
-      name: "Beachfront Paradise",
-      image: "/images/room-6.jpg",
-      location: "Miami Beach, FL",
-      type: "3 Bedroom, 2 Bath",
-    },
-    checkIn: "2024-11-20",
-    checkOut: "2024-11-25",
-    guests: 4,
-    total: 1800,
-    status: "completed",
-    bookingDate: "2024-10-15",
-  },
-];
+const { $api } = useNuxtApp();
 
-// Upcoming stays
-const upcomingStays = bookings.filter(
-  (booking) =>
-    new Date(booking.checkIn) > new Date() && booking.status === "confirmed"
+
+const { data: response } = await useAsyncData('bookings', () =>
+  $api(`/get-member-bookings?user_id=${user.id}`, {
+    method: 'GET',
+  })
 );
 
-// Past stays
-const pastStays = bookings.filter(
-  (booking) =>
-    new Date(booking.checkOut) < new Date() || booking.status === "completed"
-);
 
-// Settings form state
-import { ref } from "vue";
+const bookings = ref([]);
+
+if (response.value) {
+  bookings.value = response?.value?.data;
+}
+
 const settingsForm = ref({
-  name: user.name,
-  email: user.email,
-  phone: user.phone,
+  name: '',
+  email: '',
+  phone: '',
+  current_password: '',
+  old_password: '',
+  confirm_password: '',
 });
 
-// Active tab state
+if (user) {
+  settingsForm.value.name = user.name || '';
+  settingsForm.value.email = user.email || '';
+  settingsForm.value.phone = user.phone || '';
+}
+
 const activeTab = ref("overview");
 
-// Format currency
-const formatCurrency = (amount) => {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(amount);
+const updateSettings = async () => {
+  try {
+    const response = await $api(`/update-member/${user.id}`, {
+      method: "PUT",
+      data: settingsForm.value,
+    });
+    if (response.success) {
+      alert("Settings updated successfully!");
+    }
+  } catch (error) {
+    console.error("Error updating settings:", error);
+    alert("Failed to update settings. Please try again.");
+  }
 };
 
 // Format date
@@ -174,7 +144,7 @@ const cancelBooking = (bookingId) => {
                 </div>
               </button>
 
-              <!-- <button
+              <button
                 @click="activeTab = 'bookings'"
                 :class="[
                   'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
@@ -192,7 +162,7 @@ const cancelBooking = (bookingId) => {
                     {{ bookings.length }}
                   </span>
                 </div>
-              </button> -->
+              </button>
 
               <button @click="activeTab = 'settings'" :class="[
                 'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
@@ -241,7 +211,7 @@ const cancelBooking = (bookingId) => {
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Upcoming Stays</p>
                     <p class="text-2xl font-primary font-bold text-gray-900">
-                      {{ upcomingStays.length }}
+                      5
                     </p>
                   </div>
                 </div>
@@ -255,7 +225,7 @@ const cancelBooking = (bookingId) => {
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Past Stays</p>
                     <p class="text-2xl font-primary font-bold text-gray-900">
-                      {{ pastStays.length }}
+                      5
                     </p>
                   </div>
                 </div>
@@ -271,18 +241,19 @@ const cancelBooking = (bookingId) => {
                 <div v-for="booking in bookings" :key="booking.id"
                   class="border border-gray-200 p-6 hover:shadow-md transition-shadow">
                   <div class="flex flex-col md:flex-row gap-6">
-                    <img :src="booking.apartment.image" :alt="booking.apartment.name"
+                    <img :src="booking.accommodation?.image" :alt="booking.accommodation?.title"
                       class="w-full md:w-32 h-32 object-cover" />
                     <div class="flex-1">
                       <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
                         <h4 class="text-lg font-primary font-semibold text-gray-900">
-                          {{ booking.apartment.name }}
+                          {{ booking.accommodation?.title }}
                         </h4>
                         <span :class="[
                           'px-3 py-1 font-primary rounded-full text-sm font-medium',
-                          booking.status === 'confirmed'
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-gray-100 text-gray-800',
+                          booking.status === 'Confirmed' ? 'bg-green-100 text-green-800' :
+                          booking.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+                          booking.status === 'Cancelled' ? 'bg-red-100 text-red-800' :
+                          'bg-gray-100 text-gray-800'
                         ]">
                           {{
                             booking.status.charAt(0).toUpperCase() +
@@ -291,52 +262,36 @@ const cancelBooking = (bookingId) => {
                         </span>
                       </div>
 
-                      <p class="text-gray-600 font-secondary mb-2">
-                        {{ booking.apartment.location }}
-                      </p>
-                      <p class="text-gray-500 font-secondary text-sm mb-4">
-                        {{ booking.apartment.type }}
-                      </p>
-
                       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                         <div>
                           <p class="text-gray-500 font-secondary">Check-in</p>
                           <p class="font-semibold">
-                            {{ formatDate(booking.checkIn) }}
+                            {{ formatDate(booking.check_in) }}
                           </p>
                         </div>
                         <div>
                           <p class="text-gray-500 font-secondary">Check-out</p>
                           <p class="font-semibold font-primary">
-                            {{ formatDate(booking.checkOut) }}
+                            {{ formatDate(booking.check_out) }}
                           </p>
                         </div>
                         <div>
                           <p class="text-gray-500 font-secondary">Guests</p>
-                          <p class="font-semibold font-primary">{{ booking.guests }}</p>
+                          <p class="font-semibold font-primary">{{ booking.adults + booking.children }} ({{ booking.adults }} adults + {{ booking.children }} children)</p>
                         </div>
                         <div>
                           <p class="text-gray-500 font-secondary">Total</p>
                           <p class="font-semibold font-primary text-primary">
-                            {{ formatCurrency(booking.total) }}
+                            {{ booking.total_amount }}
                           </p>
                         </div>
                       </div>
 
                       <div class="flex gap-3 mt-4">
-                        <button
-                          class="bg-primary font-primary text-white px-4 py-2 text-sm hover:bg-primary/90 transition-colors">
+                        <!-- <button class="bg-primary font-primary text-white px-4 py-2 text-sm hover:bg-primary/90 transition-colors">
                           View Details
-                        </button>
-                        <button v-if="
-                          booking.status === 'confirmed' &&
-                          new Date(booking.checkIn) > new Date()
-                        " @click="cancelBooking(booking.id)"
-                          class="border border-gray-300 text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors">
-                          Cancel
-                        </button>
-                        <button
-                          class="border border-gray-300 font-primary text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors">
+                        </button> -->
+                        <button class="border border-gray-300 font-primary text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors">
                           Contact Support
                         </button>
                       </div>
