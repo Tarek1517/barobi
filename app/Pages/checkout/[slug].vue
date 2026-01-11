@@ -15,6 +15,9 @@ const { $api } = useNuxtApp();
 const { data: accommodation, pending, error } = useAPI<SingleAccommodationApiResponse>(
   `/accommodations/${route.params.slug}`
 );
+const queryCheckIn = computed(() => route.query.checkIn as string || '')
+const queryCheckOut = computed(() => route.query.checkOut as string || '')
+
 
 const formData = reactive({
   roomType: "",
@@ -68,6 +71,7 @@ const roomRate = computed(() => Number(accommodation.value?.data?.price || 0));
 
 const checkInDate = computed(() => (formData.checkIn ? new Date(formData.checkIn) : new Date()));
 const checkOutDate = computed(() => (formData.checkOut ? new Date(formData.checkOut) : new Date(Date.now() + 86400000)));
+
 const nights = computed(() => {
   if (!formData.checkIn || !formData.checkOut) return 1;
   const diffTime = checkOutDate.value.getTime() - checkInDate.value.getTime();
@@ -263,9 +267,15 @@ onMounted(() => {
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
 
-  formData.checkIn = today.toISOString().split("T")[0];
-  formData.checkOut = tomorrow.toISOString().split("T")[0];
+  formData.checkIn = queryCheckIn.value
+    ? queryCheckIn.value
+    : today.toISOString().split("T")[0];
+
+  formData.checkOut = queryCheckOut.value
+    ? queryCheckOut.value
+    : tomorrow.toISOString().split("T")[0];
 });
+
 </script>
 
 <template>

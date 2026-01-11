@@ -4,6 +4,14 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  checkIn: {
+    type: [String, Date],
+    required: false
+  },
+  checkOut: {
+    type: [String, Date],
+    required: false
+  }
 });
 </script>
 
@@ -41,13 +49,13 @@ const props = defineProps({
             </div> -->
 
             <!-- Available Rooms Badge -->
-            <!-- <div
+            <div
               class="bg-gradient-to-r from-orange-500 to-orange-700 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg w-fit">
               <span class="text-xs font-medium text-white">
                 {{ room.available_rooms }}
                 {{ room.available_rooms === 1 ? "Room" : "Rooms" }} Left
               </span>
-            </div> -->
+            </div>
           </div>
           <!-- <div class="flex gap-2">
             <div
@@ -88,8 +96,7 @@ const props = defineProps({
             <div>
               <div class="text-xs font-secondary text-gray-500">Guests</div>
               <div class="text-sm font-primary font-semibold">
-                {{ room.guest_adult }} <span class="text-xs font-normal text-gray-500">({{ room.guest_child }} Child
-                  Allowed)</span>
+                {{ room.guest_adult }} <span class="text-xs font-normal text-gray-500">({{ room.guest_child }} Child Allowd)</span>
               </div>
             </div>
           </div>
@@ -118,7 +125,7 @@ const props = defineProps({
           {{ room.title }}
         </NuxtLink>
         <!-- Available Rooms Info -->
-        <!-- <div class="mt-2">
+        <div class="mt-2">
           <div class="flex font-secondary items-center gap-2 text-sm">
             <div :class="[
               'w-2 h-2 rounded-full',
@@ -147,7 +154,7 @@ const props = defineProps({
               }}
             </span>
           </div>
-        </div> -->
+        </div>
 
         <!-- Excerpt -->
         <p class="text-gray-600  font-secondary text-sm leading-relaxed max-w-xl mb-3 mt-2">
@@ -163,17 +170,17 @@ const props = defineProps({
               </div>
               <div class="text-xs font-secondary opacity-90">{{ room.period }}</div>
             </div>
-            <!-- <div v-if="room.available_rooms" class="text-xs font-secondary text-gray-500 mt-1">
+            <div v-if="room.available_rooms" class="text-xs font-secondary text-gray-500 mt-1">
               {{ room.available_rooms }}
               {{ room.available_rooms === 1 ? "room" : "rooms" }} available
-            </div> -->
+            </div>
           </div>
           <div class="flex gap-2">
             <nuxtLink :to="`/room/${room.slug}`"
               class="bg-gradient-to-r from-primary font-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
               Details
             </nuxtLink>
-            <NuxtLink :to="`/checkout/${room.slug}`"
+            <NuxtLink :to="`/checkout/${room.slug}?checkIn=${checkIn}&checkOut=${checkOut}`"
               class="bg-gradient-to-r from-primary font-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold py-2 px-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
               <Icon name="material-symbols:bookmark-sharp"
                 class="w-5 h-5 transition-transform group-hover:translate-x-1" />

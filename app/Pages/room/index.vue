@@ -250,7 +250,10 @@ const clearFilters = () => {
           <div class="flex-1">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
               <div class="text-sm text-gray-600">
-                Showing {{ filteredRooms.length }} rooms
+                Showing <span v-if="checkIn && checkOut" class="font-medium text-gray-900">{{ filteredRooms.length }}</span> rooms
+                <span v-if="checkIn && checkOut">
+                  from <span class="font-medium text-gray-900">{{ checkIn }}</span> to <span class="font-medium text-gray-900">{{ checkOut }}</span>
+                </span>
               </div>
 
               <div class="flex items-center gap-4">
@@ -284,7 +287,11 @@ const clearFilters = () => {
             </div>
 
             <div v-if="filteredRooms.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <RoomCard v-for="room in filteredRooms" :key="room.id" :room="room" />
+              <template v-for="room in filteredRooms" :key="room.id">
+                <SearchRoomCard v-if="checkIn && checkOut" :room="room" :checkIn="checkIn"
+                  :checkOut="checkOut" />
+                <RoomCard v-else :room="room" />
+              </template>
             </div>
 
             <div v-else class="py-20 text-center">

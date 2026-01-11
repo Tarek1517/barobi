@@ -40,7 +40,7 @@
                 {{ room.category_name }}
               </span>
             </div>
-            <div class="absolute font-primary bottom-4 left-4">
+            <!-- <div class="absolute font-primary bottom-4 left-4">
               <span
                 :class="[
                   'px-3 py-1 rounded-full text-sm font-medium',
@@ -49,7 +49,7 @@
               >
                 {{ room.available_rooms > 0 ? `${room.available_rooms} Available` : 'Fully Booked' }}
               </span>
-            </div>
+            </div> -->
           </div>
 
           <!-- Thumbnail Carousel -->
@@ -100,8 +100,7 @@
                   <div>
                     <div class="text-sm font-secondary text-gray-500">Max Guests</div>
                     <div class="font-semibold font-primary text-gray-900">
-                      {{ room.guest_adult }} <span class="text-[12px]">Adults</span>,
-                      {{ room.guest_child }} <span class="text-[12px]">Children</span>
+                      {{ room.guest_adult }} <span class="text-gray-500 text-xs">({{ room.guest_child }} child allowed)</span>
                     </div>
                   </div>
                 </div>
@@ -135,7 +134,7 @@
                   <div class="text-sm font-secondary text-gray-500">Total Rooms</div>
                 </div>
 
-                  <div class="text-center p-6 bg-green-50">
+                  <!-- <div class="text-center p-6 bg-green-50">
                   <div class="text-2xl font-primary font-bold text-gray-900">{{ room.available_rooms }}</div>
                   <div class="text-sm font-secondary text-gray-500">Available Rooms</div>
                 </div>
@@ -143,7 +142,7 @@
                   <div class="text-center p-6 bg-red-50">
                   <div class="text-2xl font-primary font-bold text-gray-900">{{ room.booked_rooms }}</div>
                   <div class="text-sm font-secondary text-gray-500">Booked Rooms</div>
-                </div>
+                </div> -->
 
                   <div class="text-center p-6 bg-yellow-50">
                   <div class="text-2xl font-primary font-bold text-gray-900">{{ room.under_maintenance }}</div>
@@ -165,7 +164,7 @@
                   </div>
                 </div>
               </div>
-              <div v-if="room.available_rooms > 0" class="text-center">
+              <div class="text-center">
                 <nuxtLink
                    :to="`/checkout/${room.slug}`"
                   class="inline-flex font-primary items-center gap-2 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold text-lg py-4 px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-xl w-full justify-center"
@@ -173,12 +172,6 @@
                   <Icon name="ph:calendar-check" class="text-xl" />
                   Book This Room
                 </nuxtLink>
-              </div>
-              <div v-else class="text-center">
-                <div class="inline-flex font-primary items-center gap-2 bg-gray-100 text-gray-400 font-bold text-lg py-4 px-8 w-full justify-center border border-gray-200 cursor-not-allowed">
-                  <Icon name="ph:calendar-x" class="text-xl" />
-                  Fully Booked
-                </div>
               </div>
               
             </div>
