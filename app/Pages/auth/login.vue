@@ -100,7 +100,7 @@
         <!-- Sign Up Link -->
         <p class="mt-8 font-secondary text-center text-gray-500 text-sm">
           Don't have an account?
-          <NuxtLink to="/dashboard"
+          <NuxtLink to="/auth/register"
             class="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-300">
             Create account
           </NuxtLink>
@@ -157,23 +157,25 @@ const state = reactive({
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   form.value?.clear();
+
   try {
     await auth.login(event.data);
     navigateTo("/dashboard");
   } catch (err: any) {
-    if (err.response?.status === 422) {
-      form.value?.setErrors(err.response.data.errors);
+
+    if (err.type === 'validation') {
+      form.value?.setErrors(err.errors);
       return;
     }
 
     toast.add({
-      title: "Something went wrong",
-      description: err.message || "Please try again later",
+      title: "Login failed",
+      description: err.message || "Invalid phone or password",
       icon: "i-lucide-triangle-alert",
-      color: "red",
     });
   }
 }
+
 
 </script>
 

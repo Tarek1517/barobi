@@ -29,7 +29,7 @@ export const useAuthStore = defineStore('auth', {
     getStatus: (state) => state.loggedIn,
   },
   actions: {
-  async login(credentials: { phone: string; password: string }) {
+    async login(credentials: { phone: string; password: string }) {
       try {
         const { $api } = useNuxtApp()
         const response: any = await $api('/login', {
