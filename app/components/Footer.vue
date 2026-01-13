@@ -5,13 +5,17 @@ const { $api } = useNuxtApp();
 const { data: settings } = await useAsyncData('settings', () =>
     $api('/get-settings')
   );
+
+const { data: footers } = await useAsyncData('footers', () =>
+    $api('/get-footers')
+);
+
 </script>
 <template>
   <footer class="bg-primary text-white pt-20 pb-12">
     <div class="container mx-auto px-4">
       <!-- Main Footer Content -->
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-16">
-        
         <!-- Brand Section -->
         <div class="lg:col-span-1">
           <div class="flex items-center gap-4 mb-6">
@@ -80,39 +84,20 @@ const { data: settings } = await useAsyncData('settings', () =>
             </ul>
           </div>
 
-          <!-- Support -->
-          <!-- <div>
+          <div v-for="footerSection in footers?.data" :key="footerSection.id">
             <h3 class="text-white font-bold font-primary  text-lg mb-6 flex items-center gap-2">
               <div class="w-2 h-2 bg-gradient-to-r from-white to-primary rounded-full"></div>
-              Support
+              {{ footerSection.title }}
             </h3>
             <ul class="space-y-4">
-              <li>
-                <NuxtLink to="/help" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+              <li v-for="footer in footerSection?.pages" :key="footer.id">
+                <NuxtLink :to="footer.slug" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
-                  Help Center
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/faq" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
-                  <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
-                  FAQs
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/contact" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
-                  <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
-                  Contact
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/support" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
-                  <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
-                  24/7 Support
+                  {{ footer.title }}
                 </NuxtLink>
               </li>
             </ul>
-          </div> -->
+          </div>
         </div>
 
         <!-- Newsletter & App Download -->
