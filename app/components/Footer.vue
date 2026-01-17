@@ -33,16 +33,16 @@ const { data: footers } = await useAsyncData('footers', () =>
             Experience luxury living with our premium apartment bookings. Unmatched comfort, exceptional service, and memorable stays await you.
           </p>
           <div class="flex gap-3">
-            <a :href="`${settings.data?.facebook_link}`" target="_blank" class="p-3 bg-white/10  hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings.data?.facebook_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:facebook" class="text-xl text-blue-400" />
             </a>
-            <a :href="`${settings.data?.instagram_link}`" target="_blank" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings.data?.instagram_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:instagram" class="text-xl text-pink-400" />
             </a>
-            <a :href="`${settings.data?.linkedin_link}`" target="_blank" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings.data?.linkedin_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:linkedin" class="text-xl text-blue-300" />
             </a>
-            <a :href="`${settings.data?.youtube_link}`" target="_blank" class="p-3 bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings.data?.youtube_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:youtube" class="text-xl text-red-400" />
             </a>
           </div>
