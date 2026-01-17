@@ -12,7 +12,7 @@ const { data: categories } = await useAsyncData('room-categories', () =>
     <div class="container mx-auto">
       <NuxtLink class="flex items-center justify-between h-20">
         <NuxtLink to="/" class="flex items-center">
-          <img class="object-contain rounded w-32 h-auto" src="/images/logo.png" />
+          <img class="object-contain rounded w-35 h-auto" src="/images/logo.png" />
         </NuxtLink>
         <nav class="hidden font-primary text-lg lg:flex items-center gap-2">
           <div class="relative group">

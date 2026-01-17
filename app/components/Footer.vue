@@ -23,7 +23,7 @@ const { data: footers } = await useAsyncData('footers', () =>
               <img
                 src="/images/logo2.png"
                 alt="LuxStay Apartments"
-                class="h-auto w-24 object-cover"
+                class="h-auto w-35 object-cover"
               />
               <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-sm opacity-30 -z-10"></div>
             </div>

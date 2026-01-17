@@ -51,13 +51,6 @@ const toggleExpand = () => {
 
         <!-- Right Content - Text -->
         <div class="space-y-4 lg:pl-12">
-          <!-- Badge -->
-          <div class="inline-flex items-center gap-3 bg-primary/10 px-4 py-2">
-            <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-            <span class="text-primary font-secondary font-semibold text-sm uppercase tracking-wide">Luxury
-              Experience</span>
-          </div>
-
           <!-- Heading -->
           <h1 class="text-5xl font-primary font-bold text-gray-900 leading-tight">
             Experience
@@ -74,21 +67,6 @@ const toggleExpand = () => {
             </button>
           </p>
 
-          <!-- Features List -->
-          <div class="grid grid-cols-2 gap-4 py-4">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                <Icon name="mdi:star" class="w-4 h-4 text-primary" />
-              </div>
-              <span class="text-gray-700 font-secondary font-medium">5-Star Service</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                <Icon name="mdi:shield-check" class="w-4 h-4 text-primary" />
-              </div>
-              <span class="text-gray-700 font-secondary font-medium">Premium Security</span>
-            </div>
-          </div>
 
           <!-- CTA Button -->
           <NuxtLink to="/room"

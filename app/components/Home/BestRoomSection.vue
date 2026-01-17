@@ -13,13 +13,8 @@ const { data: rooms } = await useAsyncData('rooms', () =>
     <div class="container mx-auto px-6 relative z-10">
       <!-- Section Header -->
       <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-3 bg-primary/10 px-4 py-2 mb-4">
-          <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-          <span class="text-primary font-secondary font-semibold text-sm uppercase tracking-wide">Rooms & Suites</span>
-        </div>
         <h2 class="text-4xl font-primary md:text-5xl font-bold text-gray-900 mb-6">
-          Our Best
-          <span class="linear-wipe animate-gradient">Accommodations</span>
+          <span class="linear-wipe animate-gradient">Best Accommodations</span>
         </h2>
         <p class="text-xl font-secondary text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Experience unparalleled comfort in our carefully designed rooms and

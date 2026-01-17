@@ -95,6 +95,7 @@ const children = ref(0);
         <input 
           v-model="checkIn" 
           type="date"
+          :min="new Date().toISOString().split('T')[0]"
           class="w-full px-4 py-3 bg-white border border-primary/25 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base"
           required
         />
@@ -110,6 +111,7 @@ const children = ref(0);
         <input 
           v-model="checkOut" 
           type="date"
+          :min="new Date().toISOString().split('T')[0]"
           class="w-full px-4 py-3 bg-white border border-primary/25 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base"
           required
         />

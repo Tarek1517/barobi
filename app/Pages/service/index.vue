@@ -47,8 +47,7 @@ const { data: services } = await useAsyncData('services', () =>
         <h1
           class="text-5xl md:text-7xl font-primary text-center font-bold text-white leading-tight tracking-tight"
         >
-          Our
-          <span class="linear-wipe drop-shadow-lg"> Facilities </span>
+          <span class="linear-wipe drop-shadow-lg">Facilities </span>
         </h1>
         <p class="text-xl font-secondary text-center text-gray-200 mt-4">
           Discover insights, trends, and stories from our team of experts
