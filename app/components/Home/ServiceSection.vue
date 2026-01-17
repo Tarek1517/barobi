@@ -16,10 +16,10 @@ const {data:services} = await useAPI<ApiResponse>('/get-home-services');
     <div class="container mx-auto px-6 relative z-10">
       <!-- Section Header -->
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-primary md:text-5xl font-bold text-gray-900 mb-6">
+        <h2 class="text-4xl font-secondary md:text-5xl font-bold text-gray-900 mb-6">
           <span class="linear-wipe animate-gradient">Around The Apartment</span>
         </h2>
-        <p class="text-xl font-secondary text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-xl font-primary text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Experience unparalleled comfort in our carefully designed rooms and
           apartments. Each space is crafted to provide the perfect blend of
           luxury and homely comfort.

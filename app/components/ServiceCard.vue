@@ -36,7 +36,7 @@ defineProps({
       <div
         class="flex flex-col opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
         <!-- Short Description -->
-        <p class="text-gray-200 mb-4 line-clamp-2  font-secondary text-center">
+        <p class="text-gray-200 mb-4 line-clamp-2  font-primary text-center">
           {{ service.short_description }}
         </p>
 

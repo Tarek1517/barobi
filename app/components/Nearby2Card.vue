@@ -1,8 +1,6 @@
 <!-- components/Nearby2Card.vue -->
 <template>
-  <div
-    class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-300"
-  >
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-300">
     <div class="flex flex-col md:flex-row">
       <!-- Image Section -->
       <div class="md:w-2/5">
@@ -46,7 +44,7 @@
           </div>
 
           <!-- Description -->
-          <p class="text-gray-700 font-secondary line-clamp-2 flex-grow">
+          <p class="text-gray-700 font-primary line-clamp-2 flex-grow">
             {{ item.short_description }}
           </p>
 

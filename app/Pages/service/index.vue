@@ -45,7 +45,7 @@ const { data: services } = await useAsyncData('services', () =>
         </nav>
 
         <h1
-          class="text-5xl md:text-7xl font-primary text-center font-bold text-white leading-tight tracking-tight"
+          class="text-5xl md:text-7xl font-secondary text-center font-bold text-white leading-tight tracking-tight"
         >
           <span class="linear-wipe drop-shadow-lg">Facilities </span>
         </h1>

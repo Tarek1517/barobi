@@ -1,16 +1,14 @@
 <script setup lang="ts"></script>
 
 <template>
-  <section
-    class="w-full relative overflow-hidden py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100"
-  >
+  <section class="w-full relative overflow-hidden py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100">
     <!-- Animated background elements -->
     <div
-      class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -translate-y-1/3 translate-x-1/3 blur-3xl animate-pulse-slow"
-    ></div>
+      class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -translate-y-1/3 translate-x-1/3 blur-3xl animate-pulse-slow">
+    </div>
     <div
-      class="absolute bottom-0 left-0 w-[32rem] h-[32rem] bg-secondary/5 rounded-full translate-y-1/3 -translate-x-1/3 blur-3xl animate-pulse-slow delay-1000"
-    ></div>
+      class="absolute bottom-0 left-0 w-[32rem] h-[32rem] bg-secondary/5 rounded-full translate-y-1/3 -translate-x-1/3 blur-3xl animate-pulse-slow delay-1000">
+    </div>
 
     <!-- Geometric pattern overlay -->
     <div class="absolute inset-0 opacity-[0.03] bg-geometric-pattern"></div>
@@ -20,15 +18,11 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         <!-- Card 1: Luxury Accommodation -->
         <div
-          class="group text-start bg-white p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"
-          ></div>
+          class="group text-start bg-white p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"></div>
           <div class="flex justify-start mb-6 relative z-10">
             <div
-              class="p-4 bg-gradient-to-br from-primary/15 to-primary/10 rounded-xl transition-colors duration-500 shadow-sm"
-            >
+              class="p-4 bg-gradient-to-br from-primary/15 to-primary/10 rounded-xl transition-colors duration-500 shadow-sm">
               <Icon name="mdi:bed-king" class="w-8 h-8 text-primary text-3xl" />
             </div>
           </div>
@@ -41,35 +35,25 @@
           </p>
           <div class="flex items-center relative z-10">
             <div
-              class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10"
-            >
-              <Icon
-                name="mdi:arrow-right"
-                class="text-secondary transition-all duration-500 transform group-hover:text-primary group-hover:translate-x-1"
-              />
+              class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10">
+              <Icon name="mdi:arrow-right"
+                class="text-secondary transition-all duration-500 transform group-hover:text-primary group-hover:translate-x-1" />
             </div>
             <span
-              class="text-primary text-sm font-medium transition-all duration-300 ml-3 group-hover:opacity-0 opacity-100 hover:opacity-100"
-              >View Rooms</span
-            >
+              class="text-primary text-sm font-medium transition-all duration-300 ml-3 group-hover:opacity-0 opacity-100 hover:opacity-100">View
+              Rooms</span>
           </div>
         </div>
 
         <!-- Card 2: Fine Dining -->
         <div
-          class="group text-start bg-white p-8 transition-all duration-500 shadow-sm hover:shadow-2xl border border-gray-100 hover:border-secondary/30 hover:-translate-y-3 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-28 h-28 bg-secondary/10 rounded-bl-full transition-all duration-500"
-          ></div>
+          class="group text-start bg-white p-8 transition-all duration-500 shadow-sm hover:shadow-2xl border border-gray-100 hover:border-secondary/30 hover:-translate-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-secondary/10 rounded-bl-full transition-all duration-500">
+          </div>
           <div class="flex justify-start mb-6 relative z-10">
             <div
-              class="p-4 bg-gradient-to-br from-secondary/15 to-secondary/10 rounded-xl transition-colors duration-500 shadow-sm"
-            >
-              <Icon
-                name="mdi:silverware-fork-knife"
-                class="w-8 h-8 text-secondary text-3xl"
-              />
+              class="p-4 bg-gradient-to-br from-secondary/15 to-secondary/10 rounded-xl transition-colors duration-500 shadow-sm">
+              <Icon name="mdi:silverware-fork-knife" class="w-8 h-8 text-secondary text-3xl" />
             </div>
           </div>
           <h3 class="font-semibold text-xl text-gray-900 mb-4 relative z-10">
@@ -77,35 +61,27 @@
           </h3>
           <p class="text-gray-500 text-sm leading-relaxed mb-6 relative z-10">
             Experience exquisite culinary delights with our multiple restaurants
-           .
+            .
           </p>
           <div class="flex items-center relative z-10">
             <div
-              class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-secondary/10"
-            >
-              <Icon
-                name="mdi:arrow-right"
-                class="text-primary transition-all duration-500 transform group-hover:text-secondary group-hover:translate-x-1"
-              />
+              class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-secondary/10">
+              <Icon name="mdi:arrow-right"
+                class="text-primary transition-all duration-500 transform group-hover:text-secondary group-hover:translate-x-1" />
             </div>
             <span
-              class="text-secondary text-sm font-medium transition-all duration-300 ml-3 opacity-0 group-hover:opacity-100"
-              >View Menu</span
-            >
+              class="text-secondary text-sm font-medium transition-all duration-300 ml-3 opacity-0 group-hover:opacity-100">View
+              Menu</span>
           </div>
         </div>
 
         <!-- Card 3: Wellness Center -->
         <div
-          class="group text-start bg-white p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"
-          ></div>
+          class="group text-start bg-white p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"></div>
           <div class="flex justify-start mb-6 relative z-10">
             <div
-              class="p-4 bg-gradient-to-br from-primary/15 to-primary/10 rounded-xl transition-colors duration-500 shadow-sm"
-            >
+              class="p-4 bg-gradient-to-br from-primary/15 to-primary/10 rounded-xl transition-colors duration-500 shadow-sm">
               <Icon name="mdi:spa" class="w-8 h-8 text-primary text-3xl" />
             </div>
           </div>
@@ -118,31 +94,24 @@
           </p>
           <div class="flex items-center relative z-10">
             <div
-              class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10"
-            >
-              <Icon
-                name="mdi:arrow-right"
-                class="text-secondary transition-all duration-500 transform group-hover:text-primary group-hover:translate-x-1"
-              />
+              class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10">
+              <Icon name="mdi:arrow-right"
+                class="text-secondary transition-all duration-500 transform group-hover:text-primary group-hover:translate-x-1" />
             </div>
             <span
-              class="text-primary text-sm font-medium transition-all duration-300 ml-3 group-hover:opacity-0 opacity-100 hover:opacity-100"
-              >Book Treatment</span
-            >
+              class="text-primary text-sm font-medium transition-all duration-300 ml-3 group-hover:opacity-0 opacity-100 hover:opacity-100">Book
+              Treatment</span>
           </div>
         </div>
 
         <!-- Card 4: Swimming Pool -->
         <div
-          class="group text-start bg-white p-8 transition-all duration-500 shadow-sm hover:shadow-2xl border border-gray-100 hover:border-secondary/30 hover:-translate-y-3 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-28 h-28 bg-secondary/10 rounded-bl-full transition-all duration-500"
-          ></div>
+          class="group text-start bg-white p-8 transition-all duration-500 shadow-sm hover:shadow-2xl border border-gray-100 hover:border-secondary/30 hover:-translate-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-secondary/10 rounded-bl-full transition-all duration-500">
+          </div>
           <div class="flex justify-start mb-6 relative z-10">
             <div
-              class="p-4 bg-gradient-to-br from-secondary/15 to-secondary/10 rounded-xl transition-colors duration-500 shadow-sm"
-            >
+              class="p-4 bg-gradient-to-br from-secondary/15 to-secondary/10 rounded-xl transition-colors duration-500 shadow-sm">
               <Icon name="mdi:pool" class="w-8 h-8 text-secondary text-3xl" />
             </div>
           </div>
@@ -155,35 +124,25 @@
           </p>
           <div class="flex items-center relative z-10">
             <div
-              class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-secondary/10"
-            >
-              <Icon
-                name="mdi:arrow-right"
-                class="text-primary transition-all duration-500 transform group-hover:text-secondary group-hover:translate-x-1"
-              />
+              class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-secondary/10">
+              <Icon name="mdi:arrow-right"
+                class="text-primary transition-all duration-500 transform group-hover:text-secondary group-hover:translate-x-1" />
             </div>
             <span
-              class="text-secondary text-sm font-medium transition-all duration-300 ml-3 opacity-0 group-hover:opacity-100"
-              >View Pool</span
-            >
+              class="text-secondary text-sm font-medium transition-all duration-300 ml-3 opacity-0 group-hover:opacity-100">View
+              Pool</span>
           </div>
         </div>
 
         <!-- Card 5: free wifi -->
         <div
-          class="group text-start bg-white p-8 transition-all duration-500 shadow-sm hover:shadow-2xl border border-gray-100 hover:border-secondary/30 hover:-translate-y-3 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-28 h-28 bg-secondary/10 rounded-bl-full transition-all duration-500"
-          ></div>
+          class="group text-start bg-white p-8 transition-all duration-500 shadow-sm hover:shadow-2xl border border-gray-100 hover:border-secondary/30 hover:-translate-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-secondary/10 rounded-bl-full transition-all duration-500">
+          </div>
           <div class="flex justify-start mb-6 relative z-10">
             <div
-              class="p-4 bg-gradient-to-br from-secondary/15 to-secondary/10 rounded-xl transition-colors duration-500 shadow-sm"
-            >
-              <Icon
-                name="material-symbols:android-wifi-4-bar"
-                class="w-8 h-8 text-secondary text-3xl"
-              />
+              class="p-4 bg-gradient-to-br from-secondary/15 to-secondary/10 rounded-xl transition-colors duration-500 shadow-sm">
+              <Icon name="material-symbols:android-wifi-4-bar" class="w-8 h-8 text-secondary text-3xl" />
             </div>
           </div>
           <h3 class="font-semibold text-xl text-gray-900 mb-4 relative z-10">
@@ -191,35 +150,27 @@
           </h3>
           <p class="text-gray-500 text-sm leading-relaxed mb-6 relative z-10">
             Experience exquisite culinary delights with our multiple restaurants
-           .
+            .
           </p>
           <div class="flex items-center relative z-10">
             <div
-              class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-secondary/10"
-            >
-              <Icon
-                name="mdi:arrow-right"
-                class="text-primary transition-all duration-500 transform group-hover:text-secondary group-hover:translate-x-1"
-              />
+              class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-secondary/10">
+              <Icon name="mdi:arrow-right"
+                class="text-primary transition-all duration-500 transform group-hover:text-secondary group-hover:translate-x-1" />
             </div>
             <span
-              class="text-secondary text-sm font-medium transition-all duration-300 ml-3 opacity-0 group-hover:opacity-100"
-              >View Menu</span
-            >
+              class="text-secondary text-sm font-medium transition-all duration-300 ml-3 opacity-0 group-hover:opacity-100">View
+              Menu</span>
           </div>
         </div>
 
         <!-- Card 6: Car Parking -->
         <div
-          class="group text-start bg-white mt-3 p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"
-          ></div>
+          class="group text-start bg-white mt-3 p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"></div>
           <div class="flex justify-start mb-6 relative z-10">
             <div
-              class="p-4 bg-gradient-to-br from-primary/15 to-primary/10 rounded-xl transition-colors duration-500 shadow-sm"
-            >
+              class="p-4 bg-gradient-to-br from-primary/15 to-primary/10 rounded-xl transition-colors duration-500 shadow-sm">
               <Icon name="fluent:vehicle-car-parking-20-filled" class="w-8 h-8 text-primary text-3xl" />
             </div>
           </div>
@@ -232,31 +183,24 @@
           </p>
           <div class="flex items-center relative z-10">
             <div
-              class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10"
-            >
-              <Icon
-                name="mdi:arrow-right"
-                class="text-secondary transition-all duration-500 transform group-hover:text-primary group-hover:translate-x-1"
-              />
+              class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10">
+              <Icon name="mdi:arrow-right"
+                class="text-secondary transition-all duration-500 transform group-hover:text-primary group-hover:translate-x-1" />
             </div>
             <span
-              class="text-primary text-sm font-medium transition-all duration-300 ml-3 group-hover:opacity-0 opacity-100 hover:opacity-100"
-              >View Rooms</span
-            >
+              class="text-primary text-sm font-medium transition-all duration-300 ml-3 group-hover:opacity-0 opacity-100 hover:opacity-100">View
+              Rooms</span>
           </div>
         </div>
 
         <!-- Card 7: Smoke free -->
         <div
-          class="group text-start bg-white p-8 transition-all duration-500 shadow-sm hover:shadow-2xl border border-gray-100 hover:border-secondary/30 hover:-translate-y-3 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-28 h-28 bg-secondary/10 rounded-bl-full transition-all duration-500"
-          ></div>
+          class="group text-start bg-white p-8 transition-all duration-500 shadow-sm hover:shadow-2xl border border-gray-100 hover:border-secondary/30 hover:-translate-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-secondary/10 rounded-bl-full transition-all duration-500">
+          </div>
           <div class="flex justify-start mb-6 relative z-10">
             <div
-              class="p-4 bg-gradient-to-br from-secondary/15 to-secondary/10 rounded-xl transition-colors duration-500 shadow-sm"
-            >
+              class="p-4 bg-gradient-to-br from-secondary/15 to-secondary/10 rounded-xl transition-colors duration-500 shadow-sm">
               <Icon name="ic:outline-smoke-free" class="w-8 h-8 text-secondary text-3xl" />
             </div>
           </div>
@@ -269,31 +213,23 @@
           </p>
           <div class="flex items-center relative z-10">
             <div
-              class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-secondary/10"
-            >
-              <Icon
-                name="mdi:arrow-right"
-                class="text-primary transition-all duration-500 transform group-hover:text-secondary group-hover:translate-x-1"
-              />
+              class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-secondary/10">
+              <Icon name="mdi:arrow-right"
+                class="text-primary transition-all duration-500 transform group-hover:text-secondary group-hover:translate-x-1" />
             </div>
             <span
-              class="text-secondary text-sm font-medium transition-all duration-300 ml-3 opacity-0 group-hover:opacity-100"
-              >View Pool</span
-            >
+              class="text-secondary text-sm font-medium transition-all duration-300 ml-3 opacity-0 group-hover:opacity-100">View
+              Pool</span>
           </div>
         </div>
 
         <!-- Card 8: gym -->
         <div
-          class="group text-start bg-white mt-3 p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden"
-        >
-          <div
-            class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"
-          ></div>
+          class="group text-start bg-white mt-3 p-8 transition-all duration-500 hover:shadow-sm shadow-2xl border hover:border-gray-100 border-primary/30 hover:translate-y-1 -translate-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-primary/10 rounded-bl-full transition-all duration-500"></div>
           <div class="flex justify-start mb-6 relative z-10">
             <div
-              class="p-4 bg-gradient-to-br from-primary/15 to-primary/10 rounded-xl transition-colors duration-500 shadow-sm"
-            >
+              class="p-4 bg-gradient-to-br from-primary/15 to-primary/10 rounded-xl transition-colors duration-500 shadow-sm">
               <Icon name="streamline-block:entertainment-gym" class="w-8 h-8 text-primary text-3xl" />
             </div>
           </div>
@@ -306,17 +242,13 @@
           </p>
           <div class="flex items-center relative z-10">
             <div
-              class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10"
-            >
-              <Icon
-                name="mdi:arrow-right"
-                class="text-secondary transition-all duration-500 transform group-hover:text-primary group-hover:translate-x-1"
-              />
+              class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10">
+              <Icon name="mdi:arrow-right"
+                class="text-secondary transition-all duration-500 transform group-hover:text-primary group-hover:translate-x-1" />
             </div>
             <span
-              class="text-primary text-sm font-medium transition-all duration-300 ml-3 group-hover:opacity-0 opacity-100 hover:opacity-100"
-              >Book Treatment</span
-            >
+              class="text-primary text-sm font-medium transition-all duration-300 ml-3 group-hover:opacity-0 opacity-100 hover:opacity-100">Book
+              Treatment</span>
           </div>
         </div>
       </div>
@@ -326,10 +258,12 @@
 
 <style>
 @keyframes pulse-slow {
+
   0%,
   100% {
     opacity: 0.5;
   }
+
   50% {
     opacity: 0.8;
   }

@@ -11,7 +11,7 @@ const {data:offers} = await useAPI<ApiResponse>('/get-home-offers');
   <div class="bg-background" id="offers">
     <div class="container mx-auto py-20 overflow-hidden relative">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-primary md:text-5xl font-bold text-gray-900 mb-6">
+        <h2 class="text-4xl font-secondary md:text-5xl font-bold text-gray-900 mb-6">
           <span class="linear-wipe animate-gradient">Ongoing Offers</span>
         </h2>
         

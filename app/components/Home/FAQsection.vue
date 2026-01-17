@@ -31,7 +31,7 @@ const toggleFAQ = (faq: (Faqs & { open: boolean })) => {
     <div class="container mx-auto px-6 relative z-10">
 
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-primary md:text-5xl font-bold text-gray-900 mb-6">
+        <h2 class="text-4xl font-secondary md:text-5xl font-bold text-gray-900 mb-6">
           <span class="linear-wipe">FAQ's For Barobi Appartment</span>
         </h2>
       </div>
@@ -67,7 +67,7 @@ const toggleFAQ = (faq: (Faqs & { open: boolean })) => {
                 <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
                   <span class="text-secondary font-bold">A</span>
                 </div>
-                <p class="text-gray-700 text-lg leading-relaxed">
+                <p class="text-gray-700 text-lg leading-relaxed font-primary">
                   {{ faq.answer }}
                 </p>
               </div>
@@ -76,7 +76,7 @@ const toggleFAQ = (faq: (Faqs & { open: boolean })) => {
         </div>
 
         <div v-if="items.length > INITIAL_COUNT" class="text-center mt-12">
-          <NuxtLink to="/faqs"
+          <NuxtLink to="/contact#faqs"
             class="inline-block px-10 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 transition shadow-md hover:shadow-lg">
             More FAQs
           </NuxtLink>

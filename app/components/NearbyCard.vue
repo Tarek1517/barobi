@@ -3,8 +3,10 @@
     class="bg-white shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
     <!-- Image Section (Top) -->
     <div class="relative">
+      <NuxtLink :to="`/nearby`">
       <img :src="item.image" :alt="item.name" class="w-full h-48 object-cover" loading="lazy" format="webp"
         quality="80" />
+      </NuxtLink>
       <!-- Category Badge -->
       <div class="absolute top-3 left-3">
         <span :class="[
@@ -34,7 +36,7 @@
       </div>
 
       <!-- Short Description -->
-      <p class="text-gray-700 font-secondary text-sm mb-4 line-clamp-2">
+      <p class="text-gray-700 font-primary text-sm mb-4 line-clamp-2">
         {{ item.short_description }}
       </p>
 

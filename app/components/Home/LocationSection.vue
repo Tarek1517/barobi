@@ -1,92 +1,74 @@
 <script setup lang="ts">
 
-  const { $api } = useNuxtApp();
+const { $api } = useNuxtApp();
 
 const { data: settings } = await useAsyncData('settings', () =>
     $api('/get-settings')
-  );
+);
 </script>
 
 <template>
-  <!-- Location & Contact Section -->
   <section class="bg-background py-20">
     <div class="container mx-auto text-center mb-8 px-6">
       <h2 class="text-2xl bg-primary font-primary font-semibold text-white py-3">
         Click Here to get Directions Via google map on your Devices
       </h2>
     </div>
-    <div class="container mx-auto flex flex-col lg:flex-row gap-8 px-6">
-      <!-- Left Column - Map -->
-      <div class="lg:w-1/2">
-        <div class="bg-white shadow-xl overflow-hidden border border-gray-200">
-          <!-- Map Container -->
-          <div class="h-96 lg:h-[540px] bg-gray-100 border-18 border-primary relative">
-            <div>
-              <iframe
-                :src="settings.data?.google_link"
-                width="100%" height="500" style="border: 0" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
 
-            <!-- Map Controls -->
-            <div class="absolute top-4 right-4 flex flex-col gap-2">
-              <button
-                class="w-10 h-10 bg-white rounded-lg shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors">
-                <Icon name="mdi:plus" class="text-gray-700" />
-              </button>
-              <button
-                class="w-10 h-10 bg-white rounded-lg shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors">
-                <Icon name="mdi:minus" class="text-gray-700" />
-              </button>
+    <div class="container mx-auto flex flex-col lg:flex-row items-stretch gap-8 px-6">
+      
+      <div class="lg:w-1/2 flex">
+        <div class="bg-white shadow-xl overflow-hidden border border-gray-200 w-full flex flex-col">
+          <div class="flex-grow min-h-[400px] lg:min-h-full bg-gray-100 border-[18px] border-primary relative">
+            <iframe
+              :src="settings.data?.google_link"
+              width="100%" 
+              height="100%" 
+              style="border: 0; " 
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="absolute inset-0 w-full h-full"
+            ></iframe>
+            
             </div>
-          </div>
         </div>
       </div>
 
-      <!-- Right Column - Contact Information -->
-      <div class="lg:w-1/2">
-        <div class="bg-white py-12">
-          <!-- Address -->
-          <div class="mb-8">
-            <div class="flex flex-col items-center gap-1">
-              <Icon name="ep:home-filled" class="text-primary text-2xl flex-shrink-0" />
+      <div class="lg:w-1/2 flex">
+        <div class="bg-white py-12 px-6 border border-gray-100 shadow-xl w-full flex flex-col justify-center">
+          <div class="mb-8 text-center">
+            <div class="flex flex-col items-center gap-2">
+              <Icon name="ep:home-filled" class="text-primary text-3xl flex-shrink-0" />
               <h3 class="text-xl lg:text-2xl font-primary font-semibold text-gray-800">
                 BAROBI APARTMENT
               </h3>
-              <p class="text-gray-700 text-center font-secondary w-full max-w-sm leading-relaxed">
+              <p class="text-gray-700 font-secondary w-full max-w-sm leading-relaxed">
                 {{ settings.data?.address }}
               </p>
             </div>
           </div>
 
-          <!-- Address -->
-          <div class="mb-8">
-            <div class="flex flex-col items-center gap-1">
-              <Icon name="material-symbols:call-sharp" class="text-primary text-2xl flex-shrink-0" />
-              <div 
-                class="flex items-center gap-1 font-secondary group cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors">
-                <div class="text-center">
-                  <span class="text-base font-primary font-semibold text-gray-900 block">
-                    Reservations
-                  </span>
-                  <span class="text-gray-900 font-medium group-hover:text-blue-600 transition-colors">
-                    {{ settings.data?.phone_number }}
-                  </span>
-                </div>
+          <div class="mb-8 text-center">
+            <div class="flex flex-col items-center gap-2">
+              <Icon name="material-symbols:call-sharp" class="text-primary text-3xl flex-shrink-0" />
+              <div class="font-secondary group cursor-pointer p-2 rounded-lg transition-colors">
+                <span class="text-base font-primary font-semibold text-gray-900 block">
+                  Reservations
+                </span>
+                <span class="text-gray-900 font-medium group-hover:text-blue-600 transition-colors">
+                  {{ settings.data?.phone_number }}
+                </span>
               </div>
             </div>
           </div>
 
-          <!-- Email -->
-          <div class="mb-8">
-            <div class="flex flex-col items-center gap-1">
-              <Icon name="ic:sharp-alternate-email" class="text-red-500 mt-1 text-2xl flex-shrink-0" />
-              <div>
-                <a :href="`mailto:${settings.data?.email}`"
-                  class="text-gray-900 font-primary font-medium hover:text-blue-600 transition-colors break-all">
-                  {{ settings.data?.email }}
-                </a>
-              </div>
+          <div class="text-center">
+            <div class="flex flex-col items-center gap-2">
+              <Icon name="ic:sharp-alternate-email" class="text-red-500 text-3xl flex-shrink-0" />
+              <a :href="`mailto:${settings.data?.email}`"
+                class="text-gray-900 font-primary font-medium hover:text-blue-600 transition-colors break-all">
+                {{ settings.data?.email }}
+              </a>
             </div>
           </div>
         </div>

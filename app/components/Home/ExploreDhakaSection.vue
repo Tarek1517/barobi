@@ -20,10 +20,10 @@ const slides = computed(() => {
     <div class="container mx-auto px-4 sm:px-6 relative z-10">
       <!-- Section Header -->
       <div class="text-center pb-8">
-        <h2 class="text-4xl md:text-5xl font-primary font-bold text-gray-900 mb-6">
+        <h2 class="text-4xl md:text-5xl font-secondary font-bold text-gray-900 mb-6">
           <span class="linear-wipe animate-gradient">Discover Dhaka</span>
         </h2>
-        <p class="text-xl text-gray-600 font-secondary max-w-3xl mx-auto leading-relaxed">
+        <p class="text-xl font-primary text-gray-600 font-secondary max-w-3xl mx-auto leading-relaxed">
           Explore the most iconic and must-visit attractions in Dhaka, from
           historic landmarks to cultural centers.
         </p>

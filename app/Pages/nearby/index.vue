@@ -132,7 +132,7 @@ const getCurrentCategoryType = () => {
         </div>
 
         <!-- Items Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-1 gap-8">
           <Nearby2Card v-for="item in activeItems" :key="item.id" :item="item" :type="getCurrentCategoryType()" />
         </div>
 

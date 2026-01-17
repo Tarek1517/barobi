@@ -52,15 +52,12 @@ const toggleExpand = () => {
         <!-- Right Content - Text -->
         <div class="space-y-4 lg:pl-12">
           <!-- Heading -->
-          <h1 class="text-5xl font-primary font-bold text-gray-900 leading-tight">
-            Experience
-            <span class="linear-wipe">Luxury</span>
-            <br />Living
+          <h1 class="text-5xl font-secondary font-bold text-gray-900 leading-tight">
+            <span class="linear-wipe">Experience Luxury <br> Living</span>
           </h1>
 
           <!-- Description -->
-          <!-- Description -->
-          <p class="font-secondary text-lg text-gray-600 leading-relaxed font-light">
+          <p class="font-primary text-lg text-gray-600 leading-relaxed font-light">
             {{ displayText }}
             <button @click="toggleExpand" class="text-secondary hover:text-primary font-medium ml-1 focus:outline-none">
               {{ isExpanded ? "Show Less" : "Read More" }}
