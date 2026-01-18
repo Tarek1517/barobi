@@ -45,7 +45,7 @@ const children = ref(0);
           <div class="relative w-full h-screen md:h-screen lg:h-screen">
             <NuxtImg :src="item.image" :alt="item.title" class="w-full h-full object-cover" format="webp"
               quality="80" />
-            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="absolute inset-0"></div>
           </div>
         </UCarousel>
       </div>
@@ -80,7 +80,7 @@ const children = ref(0);
               <div class="relative">
                 <input v-model="checkIn" type="date" :min="new Date().toISOString().split('T')[0]"
                   class="w-full px-4 py-3 bg-white border border-primary/25 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base"
-                  required />
+                  style="color-scheme: light" required />
               </div>
             </div>
 
@@ -92,7 +92,7 @@ const children = ref(0);
               <div class="relative">
                 <input v-model="checkOut" type="date" :min="new Date().toISOString().split('T')[0]"
                   class="w-full px-4 py-3 bg-white border border-primary/25 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-base"
-                  required />
+                  style="color-scheme: light" required />
               </div>
             </div>
 

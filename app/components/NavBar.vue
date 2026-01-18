@@ -54,7 +54,7 @@ const { data: categories } = await useAsyncData('room-categories', () =>
 
                         <!-- Room Info -->
                         <div class="flex-1">
-                          <p class="text-sm font-medium text-gray-800 group-hover:text-primary">
+                          <p class="text-sm font-bold text-gray-800 group-hover:text-primary">
                             {{ room.title }}
                           </p>
                           <p class="text-sm text-gray-500">
