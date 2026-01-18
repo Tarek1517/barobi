@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-background flex items-center justify-center p-4">
+  <div class="light flex items-center justify-center p-4">
     <div class="w-full max-w-6xl bg-white my-20 shadow-2xl overflow-hidden flex flex-col lg:flex-row">
       <div class="w-full lg:w-1/2 p-8 lg:p-12">
         <div class="text-center mb-8">
@@ -10,7 +10,8 @@
               </NuxtLink>
             </div>
           </div>
-          <h1 class="text-3xl font-bold font-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+          <h1
+            class="text-3xl font-bold font-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
             Join Barobi Privilege Club
           </h1>
           <p class="text-gray-500 font-secondary">{{ settings?.data?.club_description }}</p>
@@ -19,50 +20,31 @@
         <UForm ref="clubFormRef" :schema="clubSchema" :state="clubState" class="space-y-5 mt-8" @submit="onSubmit">
           <UFormField label="Full Name" name="name" class="w-full font-secondary">
             <div class="relative w-full">
-              <UInput 
-                placeholder="Enter your full name" 
-                v-model="clubState.name" 
-                class="w-full"
-                size="xl" 
-                :ui="{ base: 'pl-10 p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition-all duration-300' }" 
-              />
+              <UInput placeholder="Enter your full name" v-model="clubState.name" class="w-full" size="xl"
+                :ui="{ base: 'pl-10 p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition-all duration-300' }" />
             </div>
           </UFormField>
 
           <UFormField label="Email Address" name="email" class="w-full font-secondary">
             <div class="relative w-full">
-              <UInput 
-                placeholder="Enter your email address" 
-                v-model="clubState.email"
-                class="w-full" 
-                size="xl" 
-                :ui="{ base: 'pl-10 p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition-all duration-300' }" 
-              />
+              <UInput placeholder="Enter your email address" v-model="clubState.email" class="w-full" size="xl"
+                :ui="{ base: 'pl-10 p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition-all duration-300' }" />
             </div>
             <p class="text-xs text-gray-500 mt-1">We'll never share your email with anyone else.</p>
           </UFormField>
 
           <UFormField label="Phone Number" name="phone" class="w-full font-secondary">
             <div class="relative w-full">
-              <UInput 
-                placeholder="Enter your phone number" 
-                v-model="clubState.phone"
-                class="w-full" 
-                size="xl" 
-                :ui="{ base: 'pl-10 p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition-all duration-300' }" 
-              />
+              <UInput placeholder="Enter your phone number" v-model="clubState.phone" class="w-full" size="xl"
+                :ui="{ base: 'pl-10 p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition-all duration-300' }" />
             </div>
           </UFormField>
 
           <UFormField label="Reservation Number" name="reservation_number" class="w-full font-secondary">
             <div class="relative w-full">
-              <UInput 
-                placeholder="Enter your reservation number" 
-                v-model="clubState.reservation_number"
-                class="w-full" 
-                size="xl" 
-                :ui="{ base: 'pl-10 p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition-all duration-300' }" 
-              />
+              <UInput placeholder="Enter your reservation number" v-model="clubState.reservation_number" class="w-full"
+                size="xl"
+                :ui="{ base: 'pl-10 p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition-all duration-300' }" />
             </div>
           </UFormField>
 
@@ -79,14 +61,17 @@
               <UIcon name="i-lucide-user-plus" class="mr-2" />
               Join Club
             </span>
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000">
+            </div>
           </UButton>
         </UForm>
       </div>
 
       <div class="w-full lg:w-1/2 relative hidden lg:block">
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 z-10"></div>
-        <img :src="settings?.data?.club_image || '/images/placeholder.jpg'" alt="Club Privileges" class="w-full h-full object-cover" />
+        <img :src="settings?.data?.club_image || '/images/placeholder.jpg'" alt="Club Privileges"
+          class="w-full h-full object-cover" />
       </div>
     </div>
   </div>
@@ -143,10 +128,10 @@ async function onSubmit(event: FormSubmitEvent<ClubSchema>) {
       reservation_number: undefined,
       terms: false
     });
-    
+
   } catch (error: any) {
-    const errorMsg = error?.data?.errors 
-      ? Object.values(error.data.errors).flat()[0] 
+    const errorMsg = error?.data?.errors
+      ? Object.values(error.data.errors).flat()[0]
       : (error?.data?.message || "Something went wrong");
 
     toast.add({
