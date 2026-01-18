@@ -30,7 +30,7 @@ const { data: footers } = await useAsyncData('footers', () =>
           
           </div>
           <p class="text-gray-300 mb-6 font-secondary leading-relaxed text-sm">
-            Experience luxury living with our premium apartment bookings. Unmatched comfort, exceptional service, and memorable stays await you.
+            {{ settings?.data?.footer_description }}
           </p>
           <div class="flex gap-3">
             <a :href="`${settings.data?.facebook_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
@@ -103,22 +103,12 @@ const { data: footers } = await useAsyncData('footers', () =>
         <!-- Newsletter & App Download -->
         <div class="lg:col-span-1">
           <!-- Newsletter -->
-          <div class="bg-white/5 backdrop-blur-sm p-6 mb-8 border border-white/10">
-            <h3 class="text-white font-primary font-bold text-lg mb-3">Stay Updated</h3>
-            <p class="text-gray-300 font-secondary  text-sm mb-4">
-              Get exclusive deals and apartment updates
-            </p>
+          <div class="bg-background backdrop-blur-sm p-6 mb-8 border border-white/10">
+            <h3 class="text-primary text-center font-primary font-bold text-lg mb-3">Join Barobi Previlage Club</h3>
             <div class="space-y-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                class="w-full bg-white/10 border border-white/20  px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-              />
-              <button
-                class="w-full font-primary  bg-secondary text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
-              >
-                Subscribe
-              </button>
+              <NuxtLink to="/club-registration">
+                <button class="w-full font-primary  bg-secondary text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">Join Now</button>
+              </NuxtLink>
             </div>
           </div>
 

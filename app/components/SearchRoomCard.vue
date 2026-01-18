@@ -166,7 +166,7 @@ const props = defineProps({
           <div class="flex flex-col">
             <div class="flex flex-row items-center gap-1">
               <div class="text-lg font-primary font-bold text-primary">
-                {{ room?.currency }}  <span class="text-xs font-secondary opacity-90 line-through">{{ room.price }}</span> {{  room.price - (room.price * room.discount / 100) }} <br><span class="text-xs font-secondary text-gray-500 opacity-90">(+{{ room.currency }} {{ (room.rack_price - room.after_discount).toFixed(2) }} Tax & Service)</span>
+                <span class="text-xs font-secondary opacity-90 line-through">{{ room?.currency }}{{ room.price }}</span> {{ room?.currency }}{{  room.price - (room.price * room.discount / 100) }} <br><span class="text-xs font-secondary text-gray-500 opacity-90">(+{{ room?.currency }}{{ (room.rack_price - room.after_discount).toFixed(2) }} Tax & Service)</span>
               </div>
               <div class="text-xs font-secondary opacity-90">{{ room.period }}</div>
             </div>
