@@ -67,7 +67,7 @@ const handleAirportPickupChange = () => {
 const { data: bedCharges } = await useAsyncData("bed-charges", () => $api("/get-bed-charges"));
 const { data: pickupTypes } = await useAsyncData("pickup-types", () => $api("/get-pickup-charges"));
 
-const roomRate = computed(() => Number(accommodation.value?.data?.price || 0));
+const roomRate = computed(() => Number(accommodation.value?.data?.rack_price || 0));
 
 const checkInDate = computed(() => (formData.checkIn ? new Date(formData.checkIn) : new Date()));
 const checkOutDate = computed(() => (formData.checkOut ? new Date(formData.checkOut) : new Date(Date.now() + 86400000)));
@@ -78,10 +78,12 @@ const nights = computed(() => {
   return Math.max(Math.ceil(diffTime / (1000 * 60 * 60 * 24)), 1);
 });
 
-const roomTotal = computed(() => (nights.value * formData.rooms * roomRate.value));
-const grandTotal = computed(
-  () => roomTotal.value + Number(extraBedPrice.value) + (airportPickup.value === 'yes' ? Number(pickupTypePrice.value) : 0)
-);
+const roomTotal = computed(() => {
+  return Number((nights.value * formData.rooms * roomRate.value).toFixed(2));
+});
+const grandTotal = computed(() => {
+  return ((roomTotal.value + Number(extraBedPrice.value) + (airportPickup.value === 'yes' ? Number(pickupTypePrice.value) : 0)).toFixed(2));
+});
 const getPaymentMethodName = (method: string) => {
   const methods = { cash: "Cash" };
   return methods[method] || method;
@@ -241,8 +243,8 @@ const handleSubmit = async () => {
         adults: formData.adults,
         children: formData.children,
         country: formData.country,
-        bed_charge_id: extraBedId.value,
-        pickup_charge_id: pickupTypeId.value,
+        bed_id: extraBedId.value,
+        pickup_id: pickupTypeId.value,
         special_notes: specialNotes.value,
         flight_number: flightNumber.value,
         check_in: formData.checkIn,
