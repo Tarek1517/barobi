@@ -158,9 +158,14 @@
               <div class="text-start mb-6">
                 <h1 class="text-3xl font-primary font-bold text-gray-900 mb-4">{{ room.title }}</h1>
                 <div class="flex flex-col items-start gap-4 text-lg text-gray-600">
-                  <div class="text-2xl font-primary font-bold text-primary">
-                    {{ room.currency_symbol }} {{ room.price }}
+                 <div class="text-2xl font-primary font-bold text-primary">
+                    <span class="text-xs font-secondary opacity-90 line-through"> {{ room.currency_symbol }}{{ room.price }}</span>
+                    {{ room.currency_symbol }}{{ (room.price - (room.price * room.discount / 100)).toFixed(2) }}
                     <span class="text-sm font-secondary font-normal text-gray-500">/per night</span>
+                    <br>
+                    <span class="text-xs font-secondary text-gray-500 opacity-90">
+                      (+{{ room.currency_symbol }} {{ (room.rack_price - room.after_discount).toFixed(2) }} Tax & Service)
+                    </span>
                   </div>
                 </div>
               </div>
@@ -250,13 +255,10 @@
             </div>
           </div>
           </div>
-
-         
-
           <!-- Description -->
           <div class="bg-white p-8 border border-gray-200">
             <h2 class="text-3xl font-primary font-bold text-gray-900 mb-6">Description</h2>
-            <div class="text-gray-600 font-secondary text-lg break-words" v-html="room.description"></div>
+            <div class="text-gray-600 font-primary text-lg break-words" v-html="room.description"></div>
           </div>
 
           <!-- Amenities -->

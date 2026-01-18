@@ -7,7 +7,10 @@ export interface Accommodation {
   max_guest: number;
   bed: string;
   view: string;
-  price: string; 
+  price: number;
+  discount: number;
+  rack_price: number;
+  after_discount: number;
   currency_symbol: string;
   quantity: number;
   available_rooms: number;
@@ -32,7 +35,10 @@ export interface Accommodation {
     quantity: number;
     bed: string;
     view: string;
-    price: string;
+    price: number;
+    discount: number;
+    rack_price: number;
+    after_discount: number;
   }[];
   
   bedding: { title: string; icon: string }[];
