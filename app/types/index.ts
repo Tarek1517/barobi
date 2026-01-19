@@ -95,12 +95,14 @@ export interface Accommodation {
   export interface Offer{
     id: number;
     title: string;
+    slug: string;
     image: string;
     category: string;
     offer: string;
     start_date: string;
     expiry_date: string;
     tag_line: string[];
+    description?: string;
   }
 
 

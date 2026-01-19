@@ -1,8 +1,13 @@
 <script setup lang="ts">
 const isExpanded = ref(false);
 
-const fullText = `Discover a new level of comfort, convenience, and elevated living at Barobi Apartment — a modern hospitality concept designed for travelers seeking a seamless blend of privacy, space, and hotel-standard service. Ideally located just 3 minutes from Hazrat Shahjalal International Airport, Dhaka. Barobi Apartment is the perfect destination for families, business travelers, corporate guests, expatriates, and long-stay visitors who value accessibility without compromising comfort. With 20 beautifully designed rooms spread across four thoughtfully curated categories, each living space reflects modern design, warm tones, and premium furnishing to ensure a calming and restful environment. Guests can choose from our spacious Family Suite (700 sq. ft), stylish Executive Suite Large (545 sq. ft) and Executive Suite (503 sq. ft) or the cozy yet elegant Premium Deluxe (302 sq. ft). Each room includes essential modern amenities, ensuring a relaxing stay—whether for a single night or an extended visit. For guests looking to unwind, the Lobby Garden Coffee Shop being set will offer a peaceful Environment—surrounded by natural tones and greenery, ideal for enjoying coffee, reading, working, or informal conversation. Business guests will also appreciate our private meeting room once stablished will, designed to accommodate up to 10 persons with comfort, privacy, and a professional setting for discussions, presentations, and virtual meetings. From thoughtful design to attentive service, Barobi Apartment offers a welcoming environment built around convenience, comfort, and modern hospitality values. Whether your journey is for business, leisure, or a transition between destinations, we invite you to experience genuine hospitality where every detail is crafted to make you feel at home. At Barobi Apartment, you'll feel right at home away from your home.`;
+// const fullText = `Discover a new level of comfort, convenience, and elevated living at Barobi Apartment — a modern hospitality concept designed for travelers seeking a seamless blend of privacy, space, and hotel-standard service. Ideally located just 3 minutes from Hazrat Shahjalal International Airport, Dhaka. Barobi Apartment is the perfect destination for families, business travelers, corporate guests, expatriates, and long-stay visitors who value accessibility without compromising comfort. With 20 beautifully designed rooms spread across four thoughtfully curated categories, each living space reflects modern design, warm tones, and premium furnishing to ensure a calming and restful environment. Guests can choose from our spacious Family Suite (700 sq. ft), stylish Executive Suite Large (545 sq. ft) and Executive Suite (503 sq. ft) or the cozy yet elegant Premium Deluxe (302 sq. ft). Each room includes essential modern amenities, ensuring a relaxing stay—whether for a single night or an extended visit. For guests looking to unwind, the Lobby Garden Coffee Shop being set will offer a peaceful Environment—surrounded by natural tones and greenery, ideal for enjoying coffee, reading, working, or informal conversation. Business guests will also appreciate our private meeting room once stablished will, designed to accommodate up to 10 persons with comfort, privacy, and a professional setting for discussions, presentations, and virtual meetings. From thoughtful design to attentive service, Barobi Apartment offers a welcoming environment built around convenience, comfort, and modern hospitality values. Whether your journey is for business, leisure, or a transition between destinations, we invite you to experience genuine hospitality where every detail is crafted to make you feel at home. At Barobi Apartment, you'll feel right at home away from your home.`;
+const { $api } = useNuxtApp();
 
+const { data: settings } = await useAsyncData('settings', () =>
+    $api('/get-settings')
+  );
+const fullText = settings.value?.data?.hero_description;
 // Split text into words and get first 20 words
 const words = fullText.split(" ");
 const shortText = words.slice(0, 30).join(" ") + "...";
@@ -14,6 +19,8 @@ const displayText = computed(() => {
 const toggleExpand = () => {
   isExpanded.value = !isExpanded.value;
 };
+
+
 </script>
 
 <template>
@@ -40,9 +47,9 @@ const toggleExpand = () => {
                 <Icon name="mdi:star" class="w-6 h-6 text-white" />
               </div>
               <div class="font-primary">
-                <div class="text-2xl font-bold text-gray-900">4.9/5</div>
+                <div class="text-2xl font-bold text-gray-900">{{ settings?.data?.hero_rating }}</div>
                 <div class="font-secondary text-sm text-gray-600">
-                  Guest Rating
+                  {{ settings?.data?.hero_rating_title }}
                 </div>
               </div>
             </div>

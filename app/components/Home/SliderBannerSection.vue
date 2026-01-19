@@ -28,8 +28,9 @@ const {data:offers} = await useAPI<ApiResponse>('/get-home-offers');
           item: 'basis-full sm:basis-2/3 lg:basis-1/2 xl:basis-1/3',
         }"
       >
-        <div
-          class="flex flex-col lg:flex-row relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 mx-2 border border-primary/15 group bg-white"
+        <NuxtLink
+          :to="`/offer/${offer.slug}`"
+          class="flex flex-col lg:flex-row relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 mx-2 border border-primary/15 group bg-white cursor-pointer"
         >
           <!-- Image Section - Left -->
           <div class="lg:w-3/5 h-40 lg:h-auto relative overflow-hidden">
@@ -75,8 +76,8 @@ const {data:offers} = await useAPI<ApiResponse>('/get-home-offers');
                 </span>
               </div>
             </div>
-          </div>
-        </div>
+            </div>
+          </NuxtLink>
       </UCarousel>
     </div>
   </div>
