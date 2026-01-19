@@ -172,7 +172,7 @@ const validateForm = () => {
   errors.telephone = ''
   errors.email = ''
   errors.room_message = ''
-  if(formData.rooms === 0){
+  if (formData.rooms === 0) {
     isValid = false
     errors.room_message = 'At least one room is required'
   }
@@ -285,24 +285,24 @@ onMounted(() => {
     <div class="container mx-auto px-2">
       <div class="flex flex-col lg:flex-row gap-8">
         <div class="lg:w-2/3">
-          <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="bg-light rounded-lg shadow-md p-6">
             <section class="mb-4">
-              <h2 class="text-xl font-primary font-semibold mb-4">ROOM RESERVATION</h2>
+              <h2 class="text-xl font-primary font-semibold mb-4 text-gray-700">ROOM RESERVATION</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Check in date</label>
                   <input type="date" v-model="formData.checkIn"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Check out date</label>
                   <input type="date" v-model="formData.checkOut"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of rooms</label>
                   <select v-model="formData.rooms" :disabled="isCheckingAvailability || availableRooms === 0"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed">
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed text-gray-700">
                     <option value="0" disabled>
                       Select rooms
                     </option>
@@ -337,7 +337,7 @@ onMounted(() => {
                 <div class="col-span-2">
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Full Name</label>
                   <input type="text" v-model="formData.fullName" :readonly="isLoggedIn" :class="[
-                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700',
                     isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
                   ]" />
                   <p v-if="errors.fullName" class="text-xs text-red-500 mt-1">{{ errors.fullName }}</p>
@@ -345,7 +345,7 @@ onMounted(() => {
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Telephone</label>
                   <input type="text" v-model="formData.telephone" :readonly="isLoggedIn" :class="[
-                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700',
                     isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
                   ]" />
                   <p v-if="errors.telephone" class="text-xs text-red-500 mt-1">{{ errors.telephone }}</p>
@@ -353,7 +353,7 @@ onMounted(() => {
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Email</label>
                   <input type="email" v-model="formData.email" :readonly="isLoggedIn" :class="[
-                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                    'w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700',
                     isLoggedIn ? 'bg-gray-100 cursor-not-allowed' : ''
                   ]" />
                   <p v-if="errors.email" class="text-xs text-red-500 mt-1">{{ errors.email }}</p>
@@ -366,21 +366,21 @@ onMounted(() => {
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of Adult</label>
                   <select v-model="formData.adults"
-                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
                     <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
                   </select>
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of Children</label>
                   <select v-model="formData.children"
-                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
                     <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
                   </select>
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Country</label>
                   <input type="text" v-model="formData.country"
-                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" />
                 </div>
               </div>
             </section>
@@ -389,7 +389,8 @@ onMounted(() => {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Extra Bed</label>
-                  <select v-model="extraBedId" class="w-full font-secondary border border-gray-300 px-3 py-2">
+                  <select v-model="extraBedId"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 text-gray-700">
                     <option :value="null">No Extra Bed</option>
                     <option v-for="bed in bedCharges?.data" :key="bed.id" :value="bed.id">
                       {{ bed.name }} ({{ bed.price }})
@@ -400,13 +401,13 @@ onMounted(() => {
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Extra Bed Charge</label>
                   <div
                     class="border font-secondary border-gray-300 px-3 py-2 bg-gray-50 min-h-[42px] flex items-center">
-                    <span class="font-medium">{{ extraBedPrice || '0' }}</span>
+                    <span class="font-medium text-gray-700">{{ extraBedPrice || '0' }}</span>
                   </div>
                 </div>
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Airport Pickup</label>
                   <select v-model="airportPickup" @change="handleAirportPickupChange"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 text-gray-700">
                     <option value="">Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
@@ -415,14 +416,15 @@ onMounted(() => {
                 <div v-if="airportPickup === 'yes'">
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Flight Number</label>
                   <input type="text" v-model="flightNumber"
-                    class="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
               </div>
 
               <div v-if="airportPickup === 'yes'" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Type</label>
-                  <select v-model="pickupTypeId" class="w-full font-secondary border border-gray-300 px-3 py-2">
+                  <select v-model="pickupTypeId"
+                    class="w-full font-secondary border border-gray-300 px-3 py-2 text-gray-700">
                     <option :value="null">Select Type</option>
                     <option v-for="type in pickupTypes?.data" :key="type.id" :value="type.id">
                       {{ type.name }} ({{ accommodation?.data?.currency_symbol }} {{ type.price }})
@@ -432,7 +434,7 @@ onMounted(() => {
                 <div>
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Pickup Charge</label>
                   <input type="text" :value="pickupTypePrice" readonly
-                    class="w-full border border-gray-300 px-3 py-2 bg-gray-50 font-medium" />
+                    class="w-full border border-gray-300 px-3 py-2 bg-gray-50 font-medium text-gray-700" />
                 </div>
               </div>
 
@@ -440,17 +442,17 @@ onMounted(() => {
                 <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">Special Notes /
                   Requests</label>
                 <textarea v-model="specialNotes" rows="3" placeholder="Any special requests or notes for your pickup..."
-                  class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                  class="w-full border border-gray-300 px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
               </div>
             </section>
 
             <section>
-              <h2 class="text-xl font-primary font-semibold mb-4">Payment details</h2>
+              <h2 class="text-xl font-primary font-semibold mb-4 text-gray-700">Payment details</h2>
               <p class="text-sm font-secondary text-gray-600 mb-4">Safe, secure transactions. Your personal information
                 is protected.</p>
               <div class="mb-4">
-                <h3 class="font-medium font-secondary mb-2">Payment Method</h3>
-                <div class="flex flex-col space-y-4">
+                <h3 class="font-medium font-secondary mb-2 text-gray-700">Payment Method</h3>
+                <div class="flex flex-col space-y-4 text-gray-700">
                   <label class="flex items-center">
                     <input type="radio" value="cash" v-model="formData.paymentMethod" class="mr-2" /> Cash
                   </label>
@@ -466,15 +468,15 @@ onMounted(() => {
               loading="lazy" />
             <div class="flex flex-col p-6">
               <div class="mb-6">
-                <h3 class="font-bold font-primary text-xl">
+                <h3 class="font-bold font-primary text-xl text-gray-700">
                   {{ accommodation?.data?.title }}, Guest room,
                   <span>{{ formData.adults }} Adult{{ formData.adults > 1 ? 's' : '' }}</span>
                   <span v-if="formData.children">, {{ formData.children }} Child{{ formData.children > 1 ? 'ren' : ''
-                    }}</span>
+                  }}</span>
                 </h3>
-                <p class="text-sm font-secondary text-gray-600 mt-1">Room Details</p>
                 <div class="mt-4">
-                  <p class="font-medium font-secondary">{{ formatDate(checkInDate) }} - {{ formatDate(checkOutDate) }}
+                  <p class="font-medium font-secondary text-gray-700">{{ formatDate(checkInDate) }} - {{
+                    formatDate(checkOutDate) }}
                   </p>
                   <p class="text-sm text-gray-600 font-secondary mt-1">{{ nights }} night{{ nights > 1 ? 's' : '' }} ·
                     {{ formData.rooms }} room{{ formData.rooms > 1 ? 's' : '' }}</p>
@@ -489,22 +491,22 @@ onMounted(() => {
               </div>
 
               <div class="border-t border-b border-primary py-4">
-                <h3 class="font-medium font-primary mb-2">Price details</h3>
+                <h3 class="font-medium font-primary mb-2 text-gray-700">Price details</h3>
                 <div class="space-y-2">
-                  <div class="flex justify-between font-secondary">
+                  <div class="flex justify-between font-secondary text-gray-700">
                     <span>{{ nights }} nights × {{ formData.rooms }} rooms × {{ roomRate }}</span>
                     <span>{{ roomTotal }}</span>
                   </div>
-                  <div v-if="selectedBedCharge" class="flex justify-between text-sm font-secondary">
+                  <div v-if="selectedBedCharge" class="flex justify-between text-sm font-secondary text-gray-700">
                     <span>Extra Bed ({{ selectedBedCharge.name }})</span>
                     <span>{{ selectedBedCharge.price }}</span>
                   </div>
                   <div v-if="airportPickup === 'yes' && selectedPickupType"
-                    class="flex justify-between text-sm font-secondary">
+                    class="flex justify-between text-sm font-secondary text-gray-700">
                     <span>Airport Pickup ({{ selectedPickupType.name }})</span>
                     <span>{{ selectedPickupType.price }}</span>
                   </div>
-                  <div class="flex justify-between font-secondary font-bold mt-2 text-lg border-t pt-2">
+                  <div class="flex justify-between font-secondary font-bold mt-2 text-lg border-t pt-2 text-gray-700">
                     <span>Grand Total</span>
                     <span>{{ accommodation?.data?.currency_symbol }} {{ grandTotal }}</span>
                   </div>
@@ -522,10 +524,10 @@ onMounted(() => {
 
           <div class="bg-white p-6 rounded-lg shadow-md">
             <div>
-              <h3 class="font-medium font-primary mb-2">Cancellation policy</h3>
+              <h3 class="font-medium font-primary mb-2 text-gray-700">Cancellation policy</h3>
               <div class="text-sm font-secondary text-gray-600 space-y-2">
                 <p><strong>Non-refundable</strong></p>
-                <p class="font-secondary">
+                <p class="font-secondary text-gray-700">
                   This rate is non-cancellable. If you change or cancel your
                   booking you will not get a refund or credit to use for a
                   future trip.

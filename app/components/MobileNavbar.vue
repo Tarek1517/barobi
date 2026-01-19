@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 
 const { $api } = useNuxtApp()
 
@@ -11,6 +12,14 @@ const toggleMobileMenu = () => mobileMenuOpen.value = !mobileMenuOpen.value
 const toggleApartments = () => apartmentsOpen.value = !apartmentsOpen.value
 const toggleCategory = (id: number) =>
   openCategory.value = openCategory.value === id ? null : id
+
+const auth = useAuthStore()
+
+function handleLogout() {
+  auth.logout()
+  navigateTo('/')
+  mobileMenuOpen.value = false
+}
 
 const { data: categories } = await useAsyncData('room-categories-mobile', () =>
   $api('/get-categories-with-room')
@@ -94,6 +103,35 @@ const { data: categories } = await useAsyncData('room-categories-mobile', () =>
             !
           </span>
         </NuxtLink>
+
+        <!-- Auth Buttons -->
+        <div class="pt-4 mt-4 border-t border-gray-200 grid grid-cols-2 gap-3">
+          <template v-if="!auth.loggedIn">
+            <NuxtLink to="/auth/login" @click="toggleMobileMenu"
+              class="flex items-center justify-center font-primary group space-x-1 px-2 py-2 bg-primary hover:bg-background border border-primary text-white hover:text-primary font-medium transition-all duration-300 shadow-md rounded-md">
+              <Icon name="solar:login-3-bold-duotone" class="text-lg group-hover:scale-110 transition-transform" />
+              <span>Login</span>
+            </NuxtLink>
+            <NuxtLink to="/auth/register" @click="toggleMobileMenu"
+              class="flex items-center justify-center font-primary group space-x-1 px-2 py-2 bg-background hover:bg-primary border border-primary text-primary hover:text-white font-bold transition-all duration-300 shadow-md rounded-md">
+              <Icon name="carbon:join-node" class="text-lg group-hover:scale-110 transition-transform" />
+              <span>Join Now</span>
+            </NuxtLink>
+          </template>
+
+          <template v-else>
+            <NuxtLink to="/dashboard" @click="toggleMobileMenu"
+              class="flex items-center justify-center font-primary group space-x-1 px-2 py-2 bg-primary hover:bg-background border border-primary text-white hover:text-primary font-medium transition-all duration-300 shadow-md rounded-md">
+              <Icon name="solar:dashboard-bold" class="text-lg group-hover:scale-110 transition-transform" />
+              <span>Dashboard</span>
+            </NuxtLink>
+            <button @click="handleLogout"
+              class="flex items-center justify-center font-primary group space-x-1 px-2 py-2 bg-red-500 hover:bg-white border border-red-500 text-white hover:text-red-500 font-medium transition-all duration-300 shadow-md rounded-md">
+              <Icon name="solar:logout-bold" class="text-lg group-hover:scale-110 transition-transform" />
+              <span>Logout</span>
+            </button>
+          </template>
+        </div>
       </nav>
     </transition>
   </header>

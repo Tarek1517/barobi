@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 definePageMeta({
   middleware: 'auth'
 })
@@ -6,11 +6,14 @@ definePageMeta({
 
 const user = useAuthStore().user
 const { $api } = useNuxtApp();
-
-
+const toast = useToast();
+const auth = useAuthStore();
 const { data: response } = await useAsyncData('bookings', () =>
-  $api(`/get-member-bookings?user_id=${user.id}`, {
+  $api('/get-member-bookings', {
     method: 'GET',
+    headers: {
+      Authorization: `Bearer ${auth.accessToken}`,
+    },
   })
 );
 
@@ -62,26 +65,48 @@ const formatDate = (dateStr) => {
   });
 };
 
-// Calculate days until check-in
-const daysUntilCheckIn = (checkInDate) => {
-  const today = new Date();
-  const checkIn = new Date(checkInDate);
-  const diffTime = checkIn - today;
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  return diffDays;
-};
-
 // Save settings
 const saveSettings = () => {
   // In a real app, this would call an API
   alert("Settings saved successfully!");
 };
 
-// Cancel booking
-const cancelBooking = (bookingId) => {
-  if (confirm("Are you sure you want to cancel this booking?")) {
-    // In a real app, this would call an API
-    alert("Booking cancelled successfully!");
+// Feedback Modal State
+const feedbackModalOpen = ref(false);
+const selectedBooking = ref(null);
+const isSubmittingFeedback = ref(false);
+
+const openFeedbackModal = (booking) => {
+  selectedBooking.value = booking;
+  feedbackModalOpen.value = true;
+};
+
+const handleFeedbackSubmit = async (feedbackData) => {
+  isSubmittingFeedback.value = true;
+  try {
+    const response = await $api('/feedback', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${auth.accessToken}`,
+      },
+      body: feedbackData
+    });
+
+    if (response) {
+      toast.add({
+        title: "Success",
+        description: "Feedback submitted successfully!",
+      });
+      feedbackModalOpen.value = false;
+    }
+  } catch (error) {
+    console.error("Error submitting feedback:", error);
+    toast.add({
+      title: "Error",
+      description: "Failed to submit feedback. Please try again.",
+    });
+  } finally {
+    isSubmittingFeedback.value = false;
   }
 };
 </script>
@@ -144,21 +169,16 @@ const cancelBooking = (bookingId) => {
                 </div>
               </button>
 
-              <button
-                @click="activeTab = 'bookings'"
-                :class="[
-                  'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
-                  activeTab === 'bookings'
-                    ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
-                    : 'text-gray-600 font-primary hover:bg-gray-100',
-                ]"
-              >
+              <button @click="activeTab = 'bookings'" :class="[
+                'w-full text-left px-4 py-3 transition-all duration-200 font-medium',
+                activeTab === 'bookings'
+                  ? 'bg-primary/10 font-primary text-primary border-l-4 border-primary'
+                  : 'text-gray-600 font-primary hover:bg-gray-100',
+              ]">
                 <div class="flex items-center gap-3">
                   <Icon name="mdi:calendar-check" class="w-5 h-5" />
                   <span>My Bookings</span>
-                  <span
-                    class="bg-primary text-white text-xs px-2 py-1 rounded-full ml-auto"
-                  >
+                  <span class="bg-primary text-white text-xs px-2 py-1 rounded-full ml-auto">
                     {{ bookings.length }}
                   </span>
                 </div>
@@ -251,9 +271,9 @@ const cancelBooking = (bookingId) => {
                         <span :class="[
                           'px-3 py-1 font-primary rounded-full text-sm font-medium',
                           booking.status === 'Confirmed' ? 'bg-green-100 text-green-800' :
-                          booking.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
-                          booking.status === 'Cancelled' ? 'bg-red-100 text-red-800' :
-                          'bg-gray-100 text-gray-800'
+                            booking.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+                              booking.status === 'Cancelled' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800'
                         ]">
                           {{
                             booking.status.charAt(0).toUpperCase() +
@@ -277,7 +297,8 @@ const cancelBooking = (bookingId) => {
                         </div>
                         <div>
                           <p class="text-gray-500 font-secondary">Guests</p>
-                          <p class="font-semibold font-primary">{{ booking.adults + booking.children }} ({{ booking.adults }} adults + {{ booking.children }} children)</p>
+                          <p class="font-semibold font-primary">{{ booking.adults + booking.children }} ({{
+                            booking.adults }} adults + {{ booking.children }} children)</p>
                         </div>
                         <div>
                           <p class="text-gray-500 font-secondary">Total</p>
@@ -291,8 +312,13 @@ const cancelBooking = (bookingId) => {
                         <!-- <button class="bg-primary font-primary text-white px-4 py-2 text-sm hover:bg-primary/90 transition-colors">
                           View Details
                         </button> -->
-                        <button class="border border-gray-300 font-primary text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors">
+                        <button
+                          class="border border-gray-300 font-primary text-gray-700 px-4 py-2 text-sm hover:bg-gray-50 transition-colors">
                           Contact Support
+                        </button>
+                        <button v-if="booking.can_feedback" @click="openFeedbackModal(booking)"
+                          class="bg-blue-600 font-primary text-white px-4 py-2 text-sm hover:bg-blue-700 transition-colors">
+                          Feedback
                         </button>
                       </div>
                     </div>
@@ -377,6 +403,8 @@ const cancelBooking = (bookingId) => {
       </div>
     </div>
   </div>
+  <FeedbackModal :is-open="feedbackModalOpen" :booking="selectedBooking" :is-loading="isSubmittingFeedback"
+    @close="feedbackModalOpen = false" @submit="handleFeedbackSubmit" />
 </template>
 
 <style scoped>

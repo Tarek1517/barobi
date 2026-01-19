@@ -176,6 +176,11 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   }
 }
 
+onMounted(() => {
+  if (auth.loggedIn && auth.accessToken) {
+    navigateTo('/dashboard')
+  }
+})
 
 </script>
 
