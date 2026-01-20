@@ -100,17 +100,27 @@ const { data: footers } = await useAsyncData('footers', () =>
           </div>
         </div>
 
-        <!-- Newsletter & App Download -->
+        <!--Club -->
         <div class="lg:col-span-1">
-          <!-- Newsletter -->
-          <div class="bg-background backdrop-blur-sm p-6 mb-8 border border-white/10">
-            <h3 class="text-primary text-center font-primary font-bold text-lg mb-3">Barobi Previlage Club</h3>
-            <div class="space-y-3">
-              <NuxtLink to="/club-registration">
-                <button class="w-full font-primary  bg-secondary text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">Join Now</button>
-              </NuxtLink>
-            </div>
-          </div>
+          <!-- Club -->
+         <div class="max-w-md mx-auto bg-white p-3">
+          <h1 class="text-[#741b1b] font-primary font-bold leading-tight mb-6">
+            Barobi <br />
+            Privilage Club
+          </h1>
+
+  <p class="text-black font-primary text-xs font-bold leading-snug mb-8">
+    Barobi Privilage Club is an exclusive loyalty program designed to reward our valued guests for their continued trust and repeat stays at Barobi Apartment.
+  </p>
+
+  <div class="inline-block">
+    <NuxtLink to="/club-registration">
+      <button class="bg-[#741b1b] text-white font-primary  text-xs px-8 py-2 transition-all duration-300 hover:brightness-110 active:scale-95">
+        Join Now
+      </button>
+    </NuxtLink>
+  </div>
+</div>
 
         </div>
       </div>

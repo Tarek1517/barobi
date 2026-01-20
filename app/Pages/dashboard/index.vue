@@ -41,30 +41,42 @@ if (user) {
 
 const activeTab = ref("overview");
 
+
 const updateSettings = async () => {
   try {
     const response = await $api('/update-profile', {
-      method: "POST",
-      data: settingsForm.value,
+      method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${auth.accessToken}`,
       },
+      body: JSON.stringify(settingsForm.value),
     });
 
-    if (response.success) {
+    if (response.status === 'success') {
+      // Update Pinia store reactively
+      auth.user = response.user;
+
+      // Optional: update local form to match saved data
+      settingsForm.value.name = response.user.name;
+      settingsForm.value.email = response.user.email;
+      settingsForm.value.phone = response.user.phone;
+
       toast.add({
-        title: "Success",
-        description: "Settings updated successfully!",
+        title: 'Success',
+        description: 'Settings updated successfully!',
       });
     }
   } catch (error) {
-    console.error("Error updating settings:", error);
+    console.error('Error updating settings:', error);
     toast.add({
-      title: "Error",
-      description: "Failed to update settings. Please try again.",
+      title: 'Error',
+      description: 'Failed to update settings. Please try again.',
     });
   }
 };
+
+
 
 
 // Format date
@@ -151,13 +163,14 @@ const handleFeedbackSubmit = async (feedbackData) => {
             <div class="text-center mb-8">
               <div
                 class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span class="text-white font-primary text-2xl font-bold">{{ user.name.charAt(0) }}</span>
+                <span class="text-white font-primary text-2xl font-bold">{{ auth.user?.name.charAt(0) }}</span>
               </div>
-              <h3 class="font-semibold font-primary text-gray-900">{{ user.name }}</h3>
-              <p class="text-gray-600 font-secondary text-sm">{{ user.email }}</p>
-              <p class="text-gray-500 font-secondary text-xs mt-1">
-                Member since {{ formatDate(user.created_at) }}
+            <h3 class="font-semibold font-primary text-gray-900">{{ auth.user?.name }}</h3>
+              <p class="text-gray-600 font-primary text-sm">{{ auth.user?.email }}</p>
+              <p class="text-gray-500 font-primary text-xs mt-1">
+                Member since {{ formatDate(auth.user?.created_at) }}
               </p>
+
             </div>
 
             <!-- Navigation -->
@@ -213,7 +226,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
               <div class="flex flex-col md:flex-row items-center justify-between">
                 <div>
                   <h2 class="text-3xl font-primary font-bold mb-2">
-                    Welcome back, {{ user.name }}! 👋
+                    Welcome back, {{ auth.user?.name }}! 👋
                   </h2>
                   <p class="text-white/90 font-secondary text-lg">
                     Ready for your next apartment stay?
@@ -236,7 +249,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Upcoming Stays</p>
                     <p class="text-2xl font-primary font-bold text-gray-900">
-                      {{ user.upcoming_stays }}
+                      {{ auth?.user?.upcoming_stays }}
                     </p>
                   </div>
                 </div>
@@ -250,7 +263,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Past Stays</p>
                     <p class="text-2xl font-primary font-bold text-gray-900">
-                      {{ user.previous_stays }}
+                      {{ auth?.user?.previous_stays }}
                     </p>
                   </div>
                 </div>
