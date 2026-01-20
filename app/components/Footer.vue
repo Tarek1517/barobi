@@ -104,7 +104,7 @@ const { data: footers } = await useAsyncData('footers', () =>
         <div class="lg:col-span-1">
           <!-- Club -->
          <div class="max-w-md mx-auto bg-white p-3">
-          <h1 class="text-[#741b1b] font-primary font-bold leading-tight mb-6">
+          <h1 class="text-[#741b1b] text-lg font-primary font-bold leading-tight mb-6">
             Barobi <br />
             Privilage Club
           </h1>

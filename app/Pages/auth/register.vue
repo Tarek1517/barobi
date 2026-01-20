@@ -8,7 +8,7 @@
           <div class="flex justify-center mb-6">
             <div class="relative">
               <NuxtLink to="/" class="relative flex items-center justify-center group">
-                <img class="object-cover w-28 h-auto" src="/images/Logo.png" alt="Logo" />
+                <img class="object-cover w-28 h-auto" :src="settings?.data?.logo_light" alt="Logo" />
               </NuxtLink>
             </div>
           </div>
@@ -160,6 +160,7 @@
 <script setup lang="ts">
 import { object, string, type InferType } from "yup";
 import type { FormSubmitEvent } from "#ui/types";
+import { settings } from "node:cluster";
 const registerForm = useTemplateRef("register-form");
 const toast = useToast();
 const auth = useAuthStore();
@@ -170,6 +171,11 @@ useSeoMeta({
 definePageMeta({
   title: "Register",
 });
+const { $api } = useNuxtApp();
+
+const { data: settings } = await useAsyncData('settings', () =>
+    $api('/get-settings')
+  );
 
 const registerSchema = object({
   name: string().required("Name Field is Required"),

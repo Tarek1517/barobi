@@ -69,8 +69,18 @@ export const useAuthStore = defineStore('auth', {
         this.user = response.user
 
         return response
-      } catch (error) {
-        throw error
+      } catch (error: any) {
+        if (error?.data?.errors) {
+          throw {
+            type: 'validation',
+            errors: error.data.errors,
+          }
+        }
+
+        throw {
+          type: 'api',
+          message: error?.data?.message || error.message || 'Something went wrong',
+        }
       }
     },
 
