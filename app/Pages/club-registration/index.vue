@@ -1,5 +1,5 @@
 <template>
-  <div class="light flex items-center justify-center p-4">
+  <div class="light flex flex-col items-center justify-center p-4">
     <div class="w-full max-w-6xl bg-white my-20 shadow-2xl overflow-hidden flex flex-col lg:flex-row">
       <div class="w-full lg:w-1/2 p-8 lg:p-12">
         <div class="text-center mb-8">
@@ -14,7 +14,6 @@
             class="text-3xl font-bold font-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
             Join Barobi Privilege Club
           </h1>
-          <p class="text-gray-500 font-secondary">{{ settings?.data?.club_description }}</p>
         </div>
 
         <UForm ref="clubFormRef" :schema="clubSchema" :state="clubState" class="space-y-5 mt-8" @submit="onSubmit">
@@ -73,8 +72,25 @@
         <img :src="settings?.data?.club_image || '/images/placeholder.jpg'" alt="Club Privileges"
           class="w-full h-full object-cover" />
       </div>
+      
     </div>
+ <div
+  v-if="settings?.data?.club_description"
+  class="w-full max-w-6xl mx-auto px-4 lg:px-0 -mt-10"
+>
+  <div class="bg-white shadow-2xl p-8 sm:p-12 border border-gray-100">
+    <h2 class="text-3xl font-bold font-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-center mb-2">
+      Club Details
+    </h2>
+    <div
+      class="text-gray-700 text-base sm:text-lg leading-relaxed font-primary prose prose-indigo prose-a:text-primary break-words"
+      v-html="settings.data.club_description"
+    ></div>
   </div>
+</div>
+
+  </div>
+  
 </template>
 
 <script setup lang="ts">

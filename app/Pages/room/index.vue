@@ -160,9 +160,9 @@ const clearFilters = () => {
           </nav>
 
           <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-            Our Luxury <span class="linear-wipe animate-gradient">Rooms & Suites</span>
+            <span class="linear-wipe animate-gradient">Luxury Rooms & Suites</span>
           </h1>
-          <p class="text-sm sm:text-base lg:text-lg text-white/90 max-w-2xl mx-auto">
+          <p class="text-sm sm:text-base lg:text-lg font-primary text-white/90 max-w-2xl mx-auto">
             Experience unparalleled comfort in our carefully designed accommodations.
           </p>
         </div>

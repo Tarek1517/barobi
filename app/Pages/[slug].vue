@@ -36,7 +36,7 @@ const { data: page } = await useAsyncData('page', () =>
   <section class="bg-background py-20">
     <div class="container mx-auto flex flex-wrap lg:py-5">
       <!-- Dinning Section -->
-      <div class="w-full rounded-lg px-4 break-words">
+      <div class="w-full rounded-lg px-4 font-primary break-words">
         <div v-html="page?.data?.content"></div>
       </div>
     </div>

@@ -23,13 +23,13 @@ const { data: footers } = await useAsyncData('footers', () =>
               <img
                 src="/images/logo2.png"
                 alt="LuxStay Apartments"
-                class="h-auto w-35 object-cover"
+                class="h-auto w-50 object-cover"
               />
               <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-sm opacity-30 -z-10"></div>
             </div>
           
           </div>
-          <p class="text-gray-300 mb-6 font-secondary leading-relaxed text-sm">
+          <p class="text-gray-300 mb-6 font-primary leading-relaxed text-sm">
             {{ settings?.data?.footer_description }}
           </p>
           <div class="flex gap-3">
@@ -91,7 +91,7 @@ const { data: footers } = await useAsyncData('footers', () =>
             </h3>
             <ul class="space-y-4">
               <li v-for="footer in footerSection?.pages" :key="footer.id">
-                <NuxtLink :to="footer.slug" class="text-gray-300 font-secondary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <NuxtLink :to="footer.slug" class="text-gray-300 font-primary  hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <div class="w-1.5 h-1.5 bg-gray-500 rounded-full group-hover:bg-green-500 transition-colors"></div>
                   {{ footer.title }}
                 </NuxtLink>
@@ -104,7 +104,7 @@ const { data: footers } = await useAsyncData('footers', () =>
         <div class="lg:col-span-1">
           <!-- Newsletter -->
           <div class="bg-background backdrop-blur-sm p-6 mb-8 border border-white/10">
-            <h3 class="text-primary text-center font-primary font-bold text-lg mb-3">Join Barobi Previlage Club</h3>
+            <h3 class="text-primary text-center font-primary font-bold text-lg mb-3">Barobi Previlage Club</h3>
             <div class="space-y-3">
               <NuxtLink to="/club-registration">
                 <button class="w-full font-primary  bg-secondary text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">Join Now</button>
@@ -129,19 +129,19 @@ const { data: footers } = await useAsyncData('footers', () =>
       <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
         <!-- Copyright -->
         <div class="text-center lg:text-left">
-          <p class="text-gray-400 font-secondary  text-sm">
+          <p class="text-gray-400 font-primary  text-sm">
             &copy; 2025 Barobi Apartments. All rights reserved.
           </p>
           <div class="flex gap-6 mt-2 text-xs text-gray-500">
-            <NuxtLink to="/privacy" class="hover:text-gray-300 font-secondary  transition-colors">Privacy Policy</NuxtLink>
-            <NuxtLink to="/terms" class="hover:text-gray-300 font-secondary  transition-colors">Terms of Service</NuxtLink>
-            <NuxtLink to="/cookies" class="hover:text-gray-300 font-secondary  transition-colors">Cookie Policy</NuxtLink>
+            <NuxtLink to="/privacy" class="hover:text-gray-300 font-primary  transition-colors">Privacy Policy</NuxtLink>
+            <NuxtLink to="/terms" class="hover:text-gray-300 font-primary  transition-colors">Terms of Service</NuxtLink>
+            <NuxtLink to="/cookies" class="hover:text-gray-300 font-primary  transition-colors">Cookie Policy</NuxtLink>
           </div>
         </div>
 
         <!-- Developer Credit -->
         <div class="text-center lg:text-right">
-          <p class="text-gray-400 font-secondary  text-sm">
+          <p class="text-gray-400 font-primary  text-sm">
             Crafted by 
             <a
               href="https://creativetechpark.com/"

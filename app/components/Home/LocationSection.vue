@@ -42,7 +42,7 @@ const { data: settings } = await useAsyncData('settings', () =>
               <h3 class="text-xl lg:text-2xl font-primary font-semibold text-gray-800">
                 BAROBI APARTMENT
               </h3>
-              <p class="text-gray-700 font-secondary w-full max-w-sm leading-relaxed">
+              <p class="text-gray-700 font-primary w-full max-w-sm leading-relaxed">
                 {{ settings.data?.address }}
               </p>
             </div>
@@ -55,7 +55,7 @@ const { data: settings } = await useAsyncData('settings', () =>
                 <span class="text-base font-primary font-semibold text-gray-900 block">
                   Reservations
                 </span>
-                <span class="text-gray-900 font-medium group-hover:text-blue-600 transition-colors">
+                <span class="text-gray-900 font-medium font-primary group-hover:text-blue-600 transition-colors">
                   {{ settings.data?.phone_number }}
                 </span>
               </div>

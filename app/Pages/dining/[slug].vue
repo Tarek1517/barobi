@@ -32,7 +32,7 @@ const { data: dining } = useAPI < SingleDiningApiResponse > (`/get-dining/${useR
           <h1 class="text-4xl lg:text-5xl font-primary  font-bold mb-6 leading-tight tracking-tight">
             {{ dining?.data?.title }}
           </h1>
-          <p class="text-lg text-gray-200 font-secondary mb-8 leading-relaxed max-w-3xl">
+          <p class="text-lg text-gray-200 font-primary mb-8 leading-relaxed max-w-3xl">
             {{ dining?.data?.short_description }}
           </p>
 
@@ -69,7 +69,7 @@ const { data: dining } = useAPI < SingleDiningApiResponse > (`/get-dining/${useR
             <!-- Content -->
             <div
               v-html="dining?.data?.description"
-              class="prose prose-lg max-w-full break-words overflow-hidden font-secondary mb-12"
+              class="prose prose-lg max-w-full break-words overflow-hidden font-primary mb-12"
             ></div>
           </article>
         </div>

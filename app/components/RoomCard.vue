@@ -150,7 +150,7 @@ const props = defineProps({
         </div> -->
 
         <!-- Excerpt -->
-        <p class="text-gray-600  font-secondary text-sm leading-relaxed max-w-xl mb-3 mt-2">
+        <p class="text-gray-600  font-primary text-sm leading-relaxed max-w-xl mb-3 mt-2">
           {{ room.short_description }}
         </p>
 

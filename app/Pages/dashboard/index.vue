@@ -84,7 +84,7 @@ const openFeedbackModal = (booking) => {
 const handleFeedbackSubmit = async (feedbackData) => {
   isSubmittingFeedback.value = true;
   try {
-    const response = await $api('/feedback', {
+    const response = await $api('/member-feedback', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${auth.accessToken}`,
@@ -231,7 +231,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Upcoming Stays</p>
                     <p class="text-2xl font-primary font-bold text-gray-900">
-                      5
+                      {{ bookings?.length }}
                     </p>
                   </div>
                 </div>
@@ -245,7 +245,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Past Stays</p>
                     <p class="text-2xl font-primary font-bold text-gray-900">
-                      5
+                      {{ bookings?.length }}
                     </p>
                   </div>
                 </div>

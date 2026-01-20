@@ -137,10 +137,10 @@ const formatRelativeTime = (dateStr: string) => {
               </div>
             </div>
 
-            <h1 class="text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight max-w-4xl">
+            <h1 class="text-4xl lg:text-5xl font-secondary font-bold mb-6 leading-tight tracking-tight max-w-4xl">
               {{ blogData.title }}
             </h1>
-            <p class="text-lg text-gray-200 mb-8 leading-relaxed max-w-3xl">
+            <p class="text-lg text-gray-200 mb-8 font-primary leading-relaxed max-w-3xl">
               {{ blogData.short_description }}
             </p>
           </div>
@@ -153,7 +153,7 @@ const formatRelativeTime = (dateStr: string) => {
         <div class="flex flex-col lg:flex-row gap-12">
           <div class="w-full lg:w-2/3">
             <article class="bg-white shadow-sm border border-gray-100 p-8 lg:p-12">
-              <div v-html="blogData.content" class="prose break-words overflow-hidden prose-lg max-w-none mb-12"></div>
+              <div v-html="blogData.content" class="prose break-words overflow-hidden prose-lg max-w-none mb-12 font-primary"></div>
 
               <div class="border-t border-gray-200 pt-12">
                 <h3 class="text-2xl font-bold text-gray-900 mb-8">Community Reviews</h3>
@@ -179,7 +179,7 @@ const formatRelativeTime = (dateStr: string) => {
                     </div>
 
                     <!-- Message -->
-                    <p class="text-gray-700 leading-relaxed">
+                    <p class="text-gray-700 leading-relaxed font-primary">
                       {{ rev.message }}
                     </p>
                   </div>

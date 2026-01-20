@@ -79,7 +79,7 @@
               class="flex items-center font-secondary text-blue-600 hover:text-blue-700 transition-colors"
             >
               <Icon name="mdi:directions" class="mr-1" />
-              Directions
+              <a :href="item.map_link" target="_blank">Directions</a>
             </button>
             <a :href="`tel:${item.phone}`"
               class="flex items-center font-secondary text-purple-600 hover:text-purple-700 transition-colors ml-auto"
