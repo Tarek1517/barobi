@@ -21,7 +21,7 @@ const { data: footers } = await useAsyncData('footers', () =>
           <div class="flex items-center gap-4 mb-6">
             <div class="relative">
               <img
-                src="/images/logo2.png"
+                :src="settings?.data?.logo_dark"
                 alt="LuxStay Apartments"
                 class="h-auto w-50 object-cover"
               />

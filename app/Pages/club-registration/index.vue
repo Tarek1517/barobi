@@ -6,7 +6,7 @@
           <div class="flex justify-center mb-6">
             <div class="relative">
               <NuxtLink to="/" class="relative flex items-center justify-center group">
-                <img class="object-cover w-28 h-auto" src="/images/Logo.png" alt="Logo" />
+                <img class="object-cover w-28 h-auto" :src="settings?.data?.logo_light" alt="Logo" />
               </NuxtLink>
             </div>
           </div>

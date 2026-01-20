@@ -1,8 +1,13 @@
 <script setup lang="ts">
+
 const { $api } = useNuxtApp();
 
 const { data: categories } = await useAsyncData('room-categories', () =>
   $api('/get-categories-with-room')
+);
+
+const { data: settings } = await useAsyncData('settings', () =>
+  $api('/get-settings')
 );
 
 </script>
@@ -12,7 +17,7 @@ const { data: categories } = await useAsyncData('room-categories', () =>
     <div class="container mx-auto">
       <NuxtLink class="flex items-center justify-between h-20">
         <NuxtLink to="/" class="flex items-center">
-          <img class="object-contain rounded w-35 h-auto" src="/images/logo.png" />
+          <img class="object-contain rounded w-35 h-auto" :src="settings?.data?.logo_light" />
         </NuxtLink>
         <nav class="hidden font-primary text-lg lg:flex items-center gap-2">
           <div class="relative group">

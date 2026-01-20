@@ -1,3 +1,4 @@
+
 <template>
   <div class="bg-background flex items-center justify-center p-4">
     <div class="w-full max-w-6xl bg-white shadow-2xl my-20 overflow-hidden flex flex-col lg:flex-row">
@@ -8,7 +9,7 @@
           <div class="flex justify-center mb-6">
             <div class="relative">
               <NuxtLink to="/" class="relative flex items-center justify-center group">
-                <img class="object-cover w-28 h-auto" src="/images/Logo.png" alt="Logo" />
+                <img class="object-cover w-28 h-auto" :src="settings?.data?.logo_light" alt="Logo" />
               </NuxtLink>
             </div>
           </div>
@@ -136,6 +137,11 @@ const toast = useToast();
 const form = useTemplateRef("login-form");
 const auth = useAuthStore();
 const show = ref(false);
+const { $api } = useNuxtApp();
+
+const { data: settings } = await useAsyncData('settings', () =>
+  $api('/get-settings')
+);
 useSeoMeta({
   title: "Login",
 });

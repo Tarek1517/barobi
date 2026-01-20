@@ -30,7 +30,7 @@ const settingsForm = ref({
   phone: '',
   current_password: '',
   old_password: '',
-  confirm_password: '',
+  password_confirmation: '',
 });
 
 if (user) {
@@ -43,18 +43,29 @@ const activeTab = ref("overview");
 
 const updateSettings = async () => {
   try {
-    const response = await $api(`/update-member/${user.id}`, {
-      method: "PUT",
+    const response = await $api('/update-profile', {
+      method: "POST",
       data: settingsForm.value,
+      headers: {
+        Authorization: `Bearer ${auth.accessToken}`,
+      },
     });
+
     if (response.success) {
-      alert("Settings updated successfully!");
+      toast.add({
+        title: "Success",
+        description: "Settings updated successfully!",
+      });
     }
   } catch (error) {
     console.error("Error updating settings:", error);
-    alert("Failed to update settings. Please try again.");
+    toast.add({
+      title: "Error",
+      description: "Failed to update settings. Please try again.",
+    });
   }
 };
+
 
 // Format date
 const formatDate = (dateStr) => {
@@ -63,12 +74,6 @@ const formatDate = (dateStr) => {
     month: "short",
     day: "numeric",
   });
-};
-
-// Save settings
-const saveSettings = () => {
-  // In a real app, this would call an API
-  alert("Settings saved successfully!");
 };
 
 // Feedback Modal State
@@ -231,7 +236,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Upcoming Stays</p>
                     <p class="text-2xl font-primary font-bold text-gray-900">
-                      {{ bookings?.length }}
+                      {{ user.upcoming_stays }}
                     </p>
                   </div>
                 </div>
@@ -245,7 +250,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
                   <div>
                     <p class="text-gray-600 font-primary text-sm">Past Stays</p>
                     <p class="text-2xl font-primary font-bold text-gray-900">
-                      {{ bookings?.length }}
+                      {{ user.previous_stays }}
                     </p>
                   </div>
                 </div>
@@ -383,7 +388,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
                     <div>
                       <label class="block font-secondary text-sm font-medium text-gray-700 mb-2">Confirm
                         Password</label>
-                      <input v-model="settingsForm.confirm_password" type="password"
+                      <input v-model="settingsForm.password_confirmation" type="password"
                         class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                   </div>
@@ -391,7 +396,7 @@ const handleFeedbackSubmit = async (feedbackData) => {
 
                 <!-- Save Button -->
                 <div class="flex justify-end">
-                  <button @click="saveSettings"
+                  <button @click="updateSettings"
                     class="bg-primary font-primary text-white px-8 py-3 font-semibold hover:bg-primary/90 transition-colors">
                     Save Changes
                   </button>
