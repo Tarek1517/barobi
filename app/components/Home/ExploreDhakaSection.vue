@@ -21,7 +21,7 @@ const slides = computed(() => {
       <!-- Section Header -->
       <div class="text-center pb-8">
         <h2 class="text-4xl md:text-5xl font-secondary font-bold text-gray-900 mb-6">
-          <span class="linear-wipe animate-gradient">Discover Dhaka</span>
+          <span class="linear-wipe animate-gradient">Explore Dhaka</span>
         </h2>
         <p class="text-xl font-primary text-gray-600 font-secondary max-w-3xl mx-auto leading-relaxed">
           Explore the most iconic and must-visit attractions in Dhaka, from

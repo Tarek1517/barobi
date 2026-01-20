@@ -29,8 +29,7 @@ const settingsForm = ref({
   email: '',
   phone: '',
   current_password: '',
-  old_password: '',
-  password_confirmation: '',
+  password: '',
 });
 
 if (user) {
@@ -71,7 +70,7 @@ const updateSettings = async () => {
     console.error('Error updating settings:', error);
     toast.add({
       title: 'Error',
-      description: 'Failed to update settings. Please try again.',
+      description: error?.data?.message || 'Failed to update settings. Please try again.',
     });
   }
 };
@@ -394,14 +393,9 @@ const handleFeedbackSubmit = async (feedbackData) => {
                         class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                     <div>
-                      <label class="block text-sm font-secondary font-medium text-gray-700 mb-2">Old Password</label>
-                      <input v-model="settingsForm.old_password" type="password"
-                        class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
-                    </div>
-                    <div>
-                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-2">Confirm
+                      <label class="block font-secondary text-sm font-medium text-gray-700 mb-2">New
                         Password</label>
-                      <input v-model="settingsForm.password_confirmation" type="password"
+                      <input v-model="settingsForm.password" type="password"
                         class="w-full p-3 font-secondary border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all" />
                     </div>
                   </div>

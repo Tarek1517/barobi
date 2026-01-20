@@ -47,8 +47,6 @@ const generateStars = (rating: number) => {
 
           <!-- Guest Info -->
           <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
-            <img :src="item.image" :alt="item.name"
-              class="w-12 h-12 rounded-full object-cover border-2 border-primary/20" />
             <div class="flex-1">
               <h4 class="font-semibold font-primary text-gray-900">{{ item.name }}</h4>
               <div class="flex items-center justify-between">
