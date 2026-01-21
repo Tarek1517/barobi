@@ -69,7 +69,7 @@ const getCurrentCategoryType = () => {
         </nav>
 
         <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
-          Explore <span class="linear-wipe drop-shadow-lg"> Dhaka</span>
+          <span class="linear-wipe drop-shadow-lg">Explore Dhaka</span>
         </h1>
         <p class="text-xl text-gray-200 mt-4">
           Discover amazing places and exciting things to do around you

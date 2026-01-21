@@ -105,7 +105,7 @@ onUnmounted(() => {
         </nav>
 
         <h1 class="text-5xl md:text-7xl font-secondary text-center font-bold text-white leading-tight tracking-tight">
-           <span class="linear-wipe drop-shadow-lg">Hotel Gallery </span>
+           <span class="linear-wipe drop-shadow-lg">Gallery </span>
         </h1>
         <p class="text-xl text-center font-primary text-gray-200 mt-4">
           Explore our luxurious accommodations, amenities, and facilities
