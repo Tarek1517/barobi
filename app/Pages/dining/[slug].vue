@@ -29,7 +29,7 @@ const { data: dining } = useAPI < SingleDiningApiResponse > (`/get-dining/${useR
             </span>
           </div>
 
-          <h1 class="text-4xl lg:text-5xl font-primary  font-bold mb-6 leading-tight tracking-tight">
+          <h1 class="text-4xl lg:text-5xl font-secondary  font-bold mb-6 leading-tight tracking-tight">
             {{ dining?.data?.title }}
           </h1>
           <p class="text-lg text-gray-200 font-primary mb-8 leading-relaxed max-w-3xl">

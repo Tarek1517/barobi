@@ -232,20 +232,22 @@ async function onRegister(event: FormSubmitEvent<RegisterSchema>) {
     await auth.register(event.data);
     navigateTo("/dashboard");
   } catch (err: any) {
-    const error = useApiError(err);
-    if (error.isValidationError) {
-      registerForm.value?.setErrors(error.bag);
-      return;
+    let message = "Something went wrong";
+
+    if (err.type === "validation" && err.errors) {
+      message = Object.values(err.errors).flat().join(", ");                        
+    } else if (err.message) {
+      message = err.message;
     }
 
     toast.add({
       title: "Something went wrong",
-      description: "Please try again later",
+      description: message,
       icon: "i-lucide-triangle-alert",
-      color: "red",
     });
   }
 }
+
 
 onMounted(() => {
   if (auth.loggedIn && auth.accessToken) {

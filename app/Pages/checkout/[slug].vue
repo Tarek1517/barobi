@@ -254,7 +254,7 @@ const handleSubmit = async () => {
         payment_method: 'cash',
       }
     })
-    alert('Reservation confirmed successfully!')
+    alert('Thank you! Your reservation request has been received successfully.')
     resetForm();
   } catch (error: any) {
     console.error(error)
@@ -374,7 +374,7 @@ onMounted(() => {
                   <label class="block font-secondary text-sm font-medium text-gray-700 mb-1">No. of Children</label>
                   <select v-model="formData.children"
                     class="w-full border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                    <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+                    <option v-for="n in 11" :key="n-1" :value="n-1">{{ n-1 }}</option>
                   </select>
                 </div>
                 <div>

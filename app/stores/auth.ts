@@ -70,6 +70,7 @@ export const useAuthStore = defineStore('auth', {
 
         return response
       } catch (error: any) {
+        console.log(error)
         if (error?.data?.errors) {
           throw {
             type: 'validation',

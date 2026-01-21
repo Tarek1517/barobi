@@ -27,10 +27,10 @@ const { data: settings } = await useAsyncData('settings', () =>
           <span class="text-white font-medium">Location</span>
         </nav>
 
-        <h1 class="text-5xl md:text-7xl font-primary text-center font-bold text-white leading-tight tracking-tight">
+        <h1 class="text-5xl md:text-7xl font-secondary text-center font-bold text-white leading-tight tracking-tight">
           <span class="linear-wipe drop-shadow-lg">Location</span>
         </h1>
-        <p class="text-xl font-secondary text-center text-gray-200 mt-4">
+        <p class="text-xl font-primary text-center text-gray-200 mt-4">
           Find us easily and plan your visit to our premium apartment
         </p>
       </div>
