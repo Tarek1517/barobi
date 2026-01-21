@@ -21,6 +21,16 @@ onMounted(() => {
   setTimeout(() => {
     isLoading.value = false;
   }, 2000);
+
+  // Sync logout across tabs using BroadcastChannel
+  const authChannel = new BroadcastChannel('auth_channel');
+  authChannel.onmessage = (event) => {
+    if (event.data.type === 'logout') {
+      const auth = useAuthStore();
+      auth.reset();
+      navigateTo('/auth/login');
+    }
+  };
 });
 </script>
 

@@ -1,4 +1,3 @@
-
 <template>
   <div class="bg-background flex items-center justify-center p-4">
     <div class="w-full max-w-6xl bg-white shadow-2xl my-20 overflow-hidden flex flex-col lg:flex-row">
@@ -22,19 +21,19 @@
 
         <!-- Login Form -->
         <UForm ref="login-form" :schema="schema" :state="state" class="space-y-6 mt-8" @submit="onSubmit">
-          <!-- Phone Input -->
-          <UFormField label="Phone Number" name="phone" class="w-full">
+          <!-- Email Input -->
+          <UFormField label="Email Address" name="email" class="w-full">
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <UIcon name="i-lucide-phone" class="text-blue-500" />
+                <UIcon name="i-lucide-mail" class="text-blue-500" />
               </div>
-              <UInput placeholder="Enter your phone number" v-model="state.phone" class="w-full font-secondary pl-10"
+              <UInput placeholder="Enter your email address" v-model="state.email" class="w-full font-secondary pl-10"
                 size="xl" :ui="{
                   base: 'p-3 border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300',
                 }" />
             </div>
             <p class="text-xs font-secondary text-gray-500 mt-1">
-              We'll never share your phone with anyone else.
+              We'll never share your email with anyone else.
             </p>
           </UFormField>
 
@@ -150,14 +149,14 @@ definePageMeta({
 });
 
 const schema = object({
-  phone: string().required("Phone Field is Required"),
+  email: string().email("Invalid email format").required("Email Field is Required"),
   password: string().required("Password Field is Required"),
 });
 
 type Schema = InferType<typeof schema>;
 
 const state = reactive({
-  phone: undefined,
+  email: undefined,
   password: undefined,
 });
 
@@ -176,7 +175,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
     toast.add({
       title: "Login failed",
-      description: err.message || "Invalid phone or password",
+      description: err.message || "Invalid email or password",
       icon: "i-lucide-triangle-alert",
     });
   }

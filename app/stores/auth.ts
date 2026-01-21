@@ -113,6 +113,9 @@ export const useAuthStore = defineStore('auth', {
         console.error('Logout error', error)
       } finally {
         this.reset()
+        const authChannel = new BroadcastChannel('auth_channel')
+        authChannel.postMessage({ type: 'logout' })
+        authChannel.close()
       }
     },
 
