@@ -7,7 +7,7 @@ const slug = route.params.slug as string;
 // Fetch offers using the existing API endpoint
 // In a real app, we would prefer an endpoint like `/get-offer/${slug}`
 type ApiResponse = {
-  data: Offer[];
+  data: Offer[];    
 }
 
 const { data: offer, error } = await useAPI<ApiResponse>('/get-offer/' + slug);

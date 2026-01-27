@@ -21,7 +21,7 @@ const { data: settings } = await useAsyncData('settings', () =>
         <div class="bg-white shadow-xl overflow-hidden border border-gray-200 w-full flex flex-col">
           <div class="flex-grow min-h-[400px] lg:min-h-full bg-gray-100 border-[18px] border-primary relative">
             <iframe
-              :src="settings.data?.google_link"
+              :src="settings?.data?.google_link"
               width="100%" 
               height="100%" 
               style="border: 0; " 
@@ -43,7 +43,7 @@ const { data: settings } = await useAsyncData('settings', () =>
                 BAROBI APARTMENT
               </h3>
               <p class="text-gray-700 font-primary w-full max-w-sm leading-relaxed">
-                {{ settings.data?.address }}
+                {{ settings?.data?.address }}
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ const { data: settings } = await useAsyncData('settings', () =>
                   Reservations
                 </span>
                 <span class="text-gray-900 font-medium font-primary group-hover:text-blue-600 transition-colors">
-                  {{ settings.data?.phone_number }}
+                  {{ settings?.data?.phone_number }}
                 </span>
               </div>
             </div>
@@ -65,9 +65,9 @@ const { data: settings } = await useAsyncData('settings', () =>
           <div class="text-center">
             <div class="flex flex-col items-center gap-2">
               <Icon name="ic:sharp-alternate-email" class="text-red-500 text-3xl flex-shrink-0" />
-              <a :href="`mailto:${settings.data?.email}`"
+              <a :href="`mailto:${settings?.data?.email}`"
                 class="text-gray-900 font-primary font-medium hover:text-blue-600 transition-colors break-all">
-                {{ settings.data?.email }}
+                {{ settings?.data?.email }}
               </a>
             </div>
           </div>

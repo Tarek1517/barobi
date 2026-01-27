@@ -7,13 +7,16 @@ const { $api } = useNuxtApp();
 const { data: settings } = await useAsyncData('settings', () =>
     $api('/get-settings')
   );
-const fullText = settings.value?.data?.hero_description;
-// Split text into words and get first 20 words
-const words = fullText.split(" ");
-const shortText = words.slice(0, 30).join(" ") + "...";
+const fullText = computed(() => settings.value?.data?.hero_description || "");
+
+const shortText = computed(() => {
+  if (!fullText.value) return "";
+  const words = fullText.value.split(" ");
+  return words.slice(0, 30).join(" ") + "...";
+});
 
 const displayText = computed(() => {
-  return isExpanded.value ? fullText : shortText;
+  return isExpanded.value ? fullText.value : shortText.value;
 });
 
 const toggleExpand = () => {

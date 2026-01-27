@@ -48,15 +48,7 @@ export default defineNuxtPlugin(() => {
       },
   
       onResponseError({ response }) {
-        // if (typeof response._data === 'string' && response._data.trim()?.startsWith('<')) {
-        //   useToast().add({
-        //     icon: 'i-lucide-octagon-alert',
-        //     color: 'error',
-        //     title: 'Server Error',
-        //     description: 'Received an unexpected HTML response from the server. Please try again later.',
-        //   })
-        //   return
-        // }
+ 
   
         if (response.status === 401) {
           useToast().add({

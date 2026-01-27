@@ -1,15 +1,14 @@
-<script>
-  import { useAuthStore } from '@/stores/auth'
+<script setup>
+import { useAuthStore } from '@/stores/auth'
 const { $api } = useNuxtApp();
 
 const { data: settings } = await useAsyncData('settings', () =>
     $api('/get-settings')
-  );
+);
 
 const { data: footers } = await useAsyncData('footers', () =>
     $api('/get-footers')
 );
-
 </script>
 <template>
   <footer class="bg-primary text-white pt-20 pb-12">
@@ -33,16 +32,16 @@ const { data: footers } = await useAsyncData('footers', () =>
             {{ settings?.data?.footer_description }}
           </p>
           <div class="flex gap-3">
-            <a :href="`${settings.data?.facebook_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings?.data?.facebook_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:facebook" class="text-xl text-blue-400" />
             </a>
-            <a :href="`${settings.data?.instagram_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings?.data?.instagram_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:instagram" class="text-xl text-pink-400" />
             </a>
-            <a :href="`${settings.data?.linkedin_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings?.data?.linkedin_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:linkedin" class="text-xl text-blue-300" />
             </a>
-            <a :href="`${settings.data?.youtube_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
+            <a :href="`${settings?.data?.youtube_link}`" target="_blank" class="p-3 bg-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-110">
               <Icon name="mdi:youtube" class="text-xl text-red-400" />
             </a>
           </div>
@@ -168,9 +167,7 @@ const { data: footers } = await useAsyncData('footers', () =>
   </footer>
 </template>
 
-<script setup>
-// No script needed for static footer
-</script>
+
 
 <style scoped>
 /* Custom smooth transitions */
