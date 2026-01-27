@@ -1,8 +1,11 @@
 <template>
   <div>
+    <div v-if="!mounted" class="app-loader">
+      <GlobalPreloader :is-loading="true" />
+  </div>
+  <div v-else>
     <NuxtLoadingIndicator />
     <NuxtRouteAnnouncer />
-    <GlobalPreloader :is-loading="isLoading" />
     <UApp :toaster="appConfig.toaster">
       <NuxtLayout>
         <NuxtPage />
@@ -10,19 +13,15 @@
       </NuxtLayout>
     </UApp>
   </div>
+  </div>
 </template>
 
 <script setup>
 const appConfig = useAppConfig();
-const isLoading = ref(true);
+const mounted = ref(false)
 
 onMounted(() => {
-  // Simulate loading time for initial visit
-  setTimeout(() => {
-    isLoading.value = false;
-  }, 2000);
-
-  // Sync logout across tabs using BroadcastChannel
+  mounted.value = true
   const authChannel = new BroadcastChannel('auth_channel');
   authChannel.onmessage = (event) => {
     if (event.data.type === 'logout') {
